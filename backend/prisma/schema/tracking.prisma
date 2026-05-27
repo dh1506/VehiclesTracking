@@ -1,0 +1,51 @@
+model GpsLog {
+  gpsLogId         Int       @id @default(autoincrement()) @map("gps_log_id")
+  vehicleId        Int       @map("vehicle_id")
+  rentalId         Int?      @map("rental_id")
+  latitude         Decimal   @db.Decimal(10, 7)
+  longitude        Decimal   @db.Decimal(10, 7)
+  speedKmh         Decimal   @default(0.00) @map("speed_kmh") @db.Decimal(5, 2)
+  gpsStatus        GpsStatus @default(online) @map("gps_status")
+  recordedAt       DateTime  @default(now()) @map("recorded_at")
+  distanceFromHome Decimal?  @map("distance_from_home") @db.Decimal(10, 2)
+  homeLatitude     Decimal?  @map("home_latitude") @db.Decimal(10, 7)
+  homeLongitude    Decimal?  @map("home_longitude") @db.Decimal(10, 7)
+  rental           Rental?   @relation(fields: [rentalId], references: [rentalId])
+  vehicle          Vehicle   @relation(fields: [vehicleId], references: [vehicleId])
+
+  @@index([vehicleId, recordedAt])
+  @@index([rentalId])
+  @@map("gps_logs")
+}
+
+model VehicleAlert {
+  alertId        Int       @id @default(autoincrement()) @map("alert_id")
+  vehicleId      Int       @map("vehicle_id")
+  rentalId       Int?      @map("rental_id")
+  alertType      AlertType @map("alert_type")
+  latitude       Decimal?  @db.Decimal(10, 7)
+  longitude      Decimal?  @db.Decimal(10, 7)
+  alertMessage   String?   @map("alert_message") @db.Text
+  isAcknowledged Boolean   @default(false) @map("is_acknowledged")
+  acknowledgedAt DateTime? @map("acknowledged_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  resolvedAt     DateTime? @map("resolved_at")
+  rental         Rental?   @relation(fields: [rentalId], references: [rentalId])
+  vehicle        Vehicle   @relation(fields: [vehicleId], references: [vehicleId])
+
+  @@index([vehicleId, createdAt])
+  @@index([rentalId], map: "vehicle_alerts_rental_id_fkey")
+  @@map("vehicle_alerts")
+}
+
+enum GpsStatus {
+  online
+  offline
+}
+
+enum AlertType {
+  accident
+  impact
+  out_of_zone
+  disconnected
+}

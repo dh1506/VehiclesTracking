@@ -1,0 +1,42 @@
+model Geofence {
+  geofenceId   Int                  @id @default(autoincrement()) @map("geofence_id")
+  geofenceName String               @map("geofence_name") @db.VarChar(100)
+  geofenceType GeofenceType         @map("geofence_type")
+  centerLat    Decimal?             @map("center_lat") @db.Decimal(10, 7)
+  centerLon    Decimal?             @map("center_lon") @db.Decimal(10, 7)
+  radiusMeter  Decimal?             @map("radius_meter") @db.Decimal(10, 2)
+  polygonData  Json?                @map("polygon_data")
+  createdBy    Int                  @map("created_by")
+  createdAt    DateTime             @default(now()) @map("created_at")
+  creator      User                 @relation(fields: [createdBy], references: [userId])
+  geofenceLogs VehicleGeofenceLog[]
+
+  @@index([createdBy], map: "geofences_created_by_fkey")
+  @@map("geofences")
+}
+
+model VehicleGeofenceLog {
+  geofenceLogId Int           @id @default(autoincrement()) @map("geofence_log_id")
+  vehicleId     Int           @map("vehicle_id")
+  geofenceId    Int           @map("geofence_id")
+  eventType     GeofenceEvent @map("event_type")
+  latitude      Decimal       @db.Decimal(10, 7)
+  longitude     Decimal       @db.Decimal(10, 7)
+  createdAt     DateTime      @default(now()) @map("created_at")
+  geofence      Geofence      @relation(fields: [geofenceId], references: [geofenceId])
+  vehicle       Vehicle       @relation(fields: [vehicleId], references: [vehicleId])
+
+  @@index([vehicleId, createdAt])
+  @@index([geofenceId], map: "vehicle_geofence_logs_geofence_id_fkey")
+  @@map("vehicle_geofence_logs")
+}
+
+enum GeofenceType {
+  circle
+  polygon
+}
+
+enum GeofenceEvent {
+  enter
+  exit
+}

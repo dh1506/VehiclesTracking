@@ -1,0 +1,62 @@
+model Vehicle {
+  vehicleId         Int                       @id @default(autoincrement()) @map("vehicle_id")
+  plateNumber       String                    @unique @map("plate_number") @db.VarChar(20)
+  vehicleName       String                    @map("vehicle_name") @db.VarChar(100)
+  vehicleType       String                    @map("vehicle_type") @db.VarChar(50)
+  brand             String?                   @db.VarChar(50)
+  model             String?                   @db.VarChar(50)
+  color             String?                   @db.VarChar(30)
+  yearManufactured  Int?                      @map("year_manufactured")
+  status            VehicleStatus             @default(available)
+  totalKm           Decimal                   @default(0.00) @map("total_km") @db.Decimal(10, 2)
+  createdAt         DateTime                  @default(now()) @map("created_at")
+  gpsLogs           GpsLog[]
+  maintenanceLogs   MaintenanceLog[]
+  monthlyReports    MonthlyReport[]
+  rentals           Rental[]
+  alerts            VehicleAlert[]
+  deviceAssignments VehicleDeviceAssignment[]
+  geofenceLogs      VehicleGeofenceLog[]
+
+  @@map("vehicles")
+}
+
+model IotDevice {
+  deviceId        Int                       @id @default(autoincrement()) @map("device_id")
+  serialNumber    String                    @unique @map("serial_number") @db.VarChar(100)
+  mqttTopic       String                    @map("mqtt_topic") @db.VarChar(200)
+  simNumber       String?                   @map("sim_number") @db.VarChar(20)
+  firmwareVersion String?                   @map("firmware_version") @db.VarChar(50)
+  lastOnlineAt    DateTime?                 @map("last_online_at")
+  status          DeviceStatus              @default(offline)
+  createdAt       DateTime                  @default(now()) @map("created_at")
+  assignments     VehicleDeviceAssignment[]
+
+  @@map("iot_devices")
+}
+
+model VehicleDeviceAssignment {
+  assignmentId Int       @id @default(autoincrement()) @map("assignment_id")
+  vehicleId    Int       @map("vehicle_id")
+  deviceId     Int       @map("device_id")
+  assignedAt   DateTime  @default(now()) @map("assigned_at")
+  removedAt    DateTime? @map("removed_at")
+  isActive     Boolean   @default(true) @map("is_active")
+  device       IotDevice @relation(fields: [deviceId], references: [deviceId])
+  vehicle      Vehicle   @relation(fields: [vehicleId], references: [vehicleId])
+
+  @@index([deviceId], map: "vehicle_device_assignments_device_id_fkey")
+  @@index([vehicleId], map: "vehicle_device_assignments_vehicle_id_fkey")
+  @@map("vehicle_device_assignments")
+}
+
+enum VehicleStatus {
+  available
+  rented
+  maintenance
+}
+
+enum DeviceStatus {
+  online
+  offline
+}

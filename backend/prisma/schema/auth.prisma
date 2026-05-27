@@ -1,0 +1,30 @@
+model Role {
+  roleId   Int    @id @default(autoincrement()) @map("role_id")
+  roleName String @unique @map("role_name") @db.VarChar(50)
+  users    User[]
+
+  @@map("roles")
+}
+
+model User {
+  userId          Int              @id @default(autoincrement()) @map("user_id")
+  fullName        String           @map("full_name") @db.VarChar(100)
+  email           String           @unique @db.VarChar(150)
+  passwordHash    String           @map("password_hash") @db.VarChar(255)
+  phone           String?          @db.VarChar(20)
+  roleId          Int              @map("role_id")
+  status          UserStatus       @default(active)
+  createdAt       DateTime         @default(now()) @map("created_at")
+  geofences       Geofence[]
+  maintenanceLogs MaintenanceLog[]
+  rentals         Rental[]         @relation("StaffRentals")
+  role            Role             @relation(fields: [roleId], references: [roleId])
+
+  @@index([roleId], map: "users_role_id_fkey")
+  @@map("users")
+}
+
+enum UserStatus {
+  active
+  inactive
+}

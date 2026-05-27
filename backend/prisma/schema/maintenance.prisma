@@ -1,0 +1,17 @@
+model MaintenanceLog {
+  maintenanceId   Int      @id @default(autoincrement()) @map("maintenance_id")
+  vehicleId       Int      @map("vehicle_id")
+  maintenanceType String   @map("maintenance_type") @db.VarChar(100)
+  description     String?  @db.Text
+  maintenanceDate DateTime @map("maintenance_date") @db.Date
+  currentKm       Decimal  @default(0.00) @map("current_km") @db.Decimal(10, 2)
+  cost            Decimal? @db.Decimal(12, 2)
+  createdBy       Int      @map("created_by")
+  createdAt       DateTime @default(now()) @map("created_at")
+  creator         User     @relation(fields: [createdBy], references: [userId])
+  vehicle         Vehicle  @relation(fields: [vehicleId], references: [vehicleId])
+
+  @@index([createdBy], map: "maintenance_logs_created_by_fkey")
+  @@index([vehicleId], map: "maintenance_logs_vehicle_id_fkey")
+  @@map("maintenance_logs")
+}
