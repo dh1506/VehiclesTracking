@@ -190,7 +190,8 @@ exports.Prisma.RentalScalarFieldEnum = {
   startKm: 'startKm',
   endKm: 'endKm',
   rentalStatus: 'rentalStatus',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  rentalFee: 'rentalFee'
 };
 
 exports.Prisma.MonthlyReportScalarFieldEnum = {
@@ -212,10 +213,10 @@ exports.Prisma.GpsLogScalarFieldEnum = {
   longitude: 'longitude',
   speedKmh: 'speedKmh',
   gpsStatus: 'gpsStatus',
-  homeLatitude: 'homeLatitude',
-  homeLongitude: 'homeLongitude',
+  recordedAt: 'recordedAt',
   distanceFromHome: 'distanceFromHome',
-  recordedAt: 'recordedAt'
+  homeLatitude: 'homeLatitude',
+  homeLongitude: 'homeLongitude'
 };
 
 exports.Prisma.VehicleAlertScalarFieldEnum = {
@@ -228,8 +229,8 @@ exports.Prisma.VehicleAlertScalarFieldEnum = {
   alertMessage: 'alertMessage',
   isAcknowledged: 'isAcknowledged',
   acknowledgedAt: 'acknowledgedAt',
-  resolvedAt: 'resolvedAt',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  resolvedAt: 'resolvedAt'
 };
 
 exports.Prisma.VehicleScalarFieldEnum = {

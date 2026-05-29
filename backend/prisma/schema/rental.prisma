@@ -26,6 +26,7 @@ model Rental {
   customer     Customer       @relation(fields: [customerId], references: [customerId])
   staff        User           @relation("StaffRentals", fields: [rentedBy], references: [userId])
   vehicle      Vehicle        @relation(fields: [vehicleId], references: [vehicleId])
+  rentalFee    Float    @default(0)
   alerts       VehicleAlert[]
 
   @@index([customerId], map: "rentals_customer_id_fkey")

@@ -8,6 +8,7 @@ import trackingRoute from './tracking.route.js';
 import rentalRoute from './rental.route.js';
 import maintenanceRoute from './maintenance.route.js';
 import reportRoute from './report.route.js';
+import customerRoute from './customer.route.js';
 
 const router = Router();
 
@@ -20,9 +21,7 @@ router.use('/tracking', trackingRoute);
 router.use('/rentals', rentalRoute);
 router.use('/maintenances', maintenanceRoute);
 router.use('/reports', reportRoute);
+router.use('/customers', customerRoute);
 
-// Các routes khác sẽ được thêm vào đây
-// router.use('/users', userRoute);
-// ...
 
 export default router;

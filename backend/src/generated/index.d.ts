@@ -1989,15 +1989,15 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    rentals: number
     geofences: number
     maintenanceLogs: number
+    rentals: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    rentals?: boolean | UserCountOutputTypeCountRentalsArgs
     geofences?: boolean | UserCountOutputTypeCountGeofencesArgs
     maintenanceLogs?: boolean | UserCountOutputTypeCountMaintenanceLogsArgs
+    rentals?: boolean | UserCountOutputTypeCountRentalsArgs
   }
 
   // Custom InputTypes
@@ -2014,13 +2014,6 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountRentalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RentalWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountGeofencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GeofenceWhereInput
   }
@@ -2030,6 +2023,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountMaintenanceLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MaintenanceLogWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRentalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RentalWhereInput
   }
 
 
@@ -2140,23 +2140,23 @@ export namespace Prisma {
    */
 
   export type VehicleCountOutputType = {
-    deviceAssignments: number
-    rentals: number
     gpsLogs: number
-    alerts: number
-    geofenceLogs: number
     maintenanceLogs: number
     monthlyReports: number
+    rentals: number
+    alerts: number
+    deviceAssignments: number
+    geofenceLogs: number
   }
 
   export type VehicleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    deviceAssignments?: boolean | VehicleCountOutputTypeCountDeviceAssignmentsArgs
-    rentals?: boolean | VehicleCountOutputTypeCountRentalsArgs
     gpsLogs?: boolean | VehicleCountOutputTypeCountGpsLogsArgs
-    alerts?: boolean | VehicleCountOutputTypeCountAlertsArgs
-    geofenceLogs?: boolean | VehicleCountOutputTypeCountGeofenceLogsArgs
     maintenanceLogs?: boolean | VehicleCountOutputTypeCountMaintenanceLogsArgs
     monthlyReports?: boolean | VehicleCountOutputTypeCountMonthlyReportsArgs
+    rentals?: boolean | VehicleCountOutputTypeCountRentalsArgs
+    alerts?: boolean | VehicleCountOutputTypeCountAlertsArgs
+    deviceAssignments?: boolean | VehicleCountOutputTypeCountDeviceAssignmentsArgs
+    geofenceLogs?: boolean | VehicleCountOutputTypeCountGeofenceLogsArgs
   }
 
   // Custom InputTypes
@@ -2173,36 +2173,8 @@ export namespace Prisma {
   /**
    * VehicleCountOutputType without action
    */
-  export type VehicleCountOutputTypeCountDeviceAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VehicleDeviceAssignmentWhereInput
-  }
-
-  /**
-   * VehicleCountOutputType without action
-   */
-  export type VehicleCountOutputTypeCountRentalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RentalWhereInput
-  }
-
-  /**
-   * VehicleCountOutputType without action
-   */
   export type VehicleCountOutputTypeCountGpsLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GpsLogWhereInput
-  }
-
-  /**
-   * VehicleCountOutputType without action
-   */
-  export type VehicleCountOutputTypeCountAlertsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VehicleAlertWhereInput
-  }
-
-  /**
-   * VehicleCountOutputType without action
-   */
-  export type VehicleCountOutputTypeCountGeofenceLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VehicleGeofenceLogWhereInput
   }
 
   /**
@@ -2217,6 +2189,34 @@ export namespace Prisma {
    */
   export type VehicleCountOutputTypeCountMonthlyReportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MonthlyReportWhereInput
+  }
+
+  /**
+   * VehicleCountOutputType without action
+   */
+  export type VehicleCountOutputTypeCountRentalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RentalWhereInput
+  }
+
+  /**
+   * VehicleCountOutputType without action
+   */
+  export type VehicleCountOutputTypeCountAlertsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleAlertWhereInput
+  }
+
+  /**
+   * VehicleCountOutputType without action
+   */
+  export type VehicleCountOutputTypeCountDeviceAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleDeviceAssignmentWhereInput
+  }
+
+  /**
+   * VehicleCountOutputType without action
+   */
+  export type VehicleCountOutputTypeCountGeofenceLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleGeofenceLogWhereInput
   }
 
 
@@ -3442,10 +3442,10 @@ export namespace Prisma {
     roleId?: boolean
     status?: boolean
     createdAt?: boolean
-    role?: boolean | RoleDefaultArgs<ExtArgs>
-    rentals?: boolean | User$rentalsArgs<ExtArgs>
     geofences?: boolean | User$geofencesArgs<ExtArgs>
     maintenanceLogs?: boolean | User$maintenanceLogsArgs<ExtArgs>
+    rentals?: boolean | User$rentalsArgs<ExtArgs>
+    role?: boolean | RoleDefaultArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3464,20 +3464,20 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "fullName" | "email" | "passwordHash" | "phone" | "roleId" | "status" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    role?: boolean | RoleDefaultArgs<ExtArgs>
-    rentals?: boolean | User$rentalsArgs<ExtArgs>
     geofences?: boolean | User$geofencesArgs<ExtArgs>
     maintenanceLogs?: boolean | User$maintenanceLogsArgs<ExtArgs>
+    rentals?: boolean | User$rentalsArgs<ExtArgs>
+    role?: boolean | RoleDefaultArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      role: Prisma.$RolePayload<ExtArgs>
-      rentals: Prisma.$RentalPayload<ExtArgs>[]
       geofences: Prisma.$GeofencePayload<ExtArgs>[]
       maintenanceLogs: Prisma.$MaintenanceLogPayload<ExtArgs>[]
+      rentals: Prisma.$RentalPayload<ExtArgs>[]
+      role: Prisma.$RolePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       userId: number
@@ -3828,10 +3828,10 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    rentals<T extends User$rentalsArgs<ExtArgs> = {}>(args?: Subset<T, User$rentalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     geofences<T extends User$geofencesArgs<ExtArgs> = {}>(args?: Subset<T, User$geofencesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GeofencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     maintenanceLogs<T extends User$maintenanceLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$maintenanceLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenanceLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    rentals<T extends User$rentalsArgs<ExtArgs> = {}>(args?: Subset<T, User$rentalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4217,30 +4217,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.rentals
-   */
-  export type User$rentalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Rental
-     */
-    select?: RentalSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Rental
-     */
-    omit?: RentalOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RentalInclude<ExtArgs> | null
-    where?: RentalWhereInput
-    orderBy?: RentalOrderByWithRelationInput | RentalOrderByWithRelationInput[]
-    cursor?: RentalWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: RentalScalarFieldEnum | RentalScalarFieldEnum[]
-  }
-
-  /**
    * User.geofences
    */
   export type User$geofencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4286,6 +4262,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MaintenanceLogScalarFieldEnum | MaintenanceLogScalarFieldEnum[]
+  }
+
+  /**
+   * User.rentals
+   */
+  export type User$rentalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rental
+     */
+    select?: RentalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rental
+     */
+    omit?: RentalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RentalInclude<ExtArgs> | null
+    where?: RentalWhereInput
+    orderBy?: RentalOrderByWithRelationInput | RentalOrderByWithRelationInput[]
+    cursor?: RentalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RentalScalarFieldEnum | RentalScalarFieldEnum[]
   }
 
   /**
@@ -5591,8 +5591,8 @@ export namespace Prisma {
     latitude?: boolean
     longitude?: boolean
     createdAt?: boolean
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     geofence?: boolean | GeofenceDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vehicleGeofenceLog"]>
 
 
@@ -5609,15 +5609,15 @@ export namespace Prisma {
 
   export type VehicleGeofenceLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"geofenceLogId" | "vehicleId" | "geofenceId" | "eventType" | "latitude" | "longitude" | "createdAt", ExtArgs["result"]["vehicleGeofenceLog"]>
   export type VehicleGeofenceLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     geofence?: boolean | GeofenceDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
 
   export type $VehicleGeofenceLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "VehicleGeofenceLog"
     objects: {
-      vehicle: Prisma.$VehiclePayload<ExtArgs>
       geofence: Prisma.$GeofencePayload<ExtArgs>
+      vehicle: Prisma.$VehiclePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       geofenceLogId: number
@@ -5967,8 +5967,8 @@ export namespace Prisma {
    */
   export interface Prisma__VehicleGeofenceLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     geofence<T extends GeofenceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GeofenceDefaultArgs<ExtArgs>>): Prisma__GeofenceClient<$Result.GetResult<Prisma.$GeofencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6617,8 +6617,8 @@ export namespace Prisma {
     cost?: boolean
     createdBy?: boolean
     createdAt?: boolean
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     creator?: boolean | UserDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["maintenanceLog"]>
 
 
@@ -6637,15 +6637,15 @@ export namespace Prisma {
 
   export type MaintenanceLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"maintenanceId" | "vehicleId" | "maintenanceType" | "description" | "maintenanceDate" | "currentKm" | "cost" | "createdBy" | "createdAt", ExtArgs["result"]["maintenanceLog"]>
   export type MaintenanceLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     creator?: boolean | UserDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
 
   export type $MaintenanceLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "MaintenanceLog"
     objects: {
-      vehicle: Prisma.$VehiclePayload<ExtArgs>
       creator: Prisma.$UserPayload<ExtArgs>
+      vehicle: Prisma.$VehiclePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       maintenanceId: number
@@ -6997,8 +6997,8 @@ export namespace Prisma {
    */
   export interface Prisma__MaintenanceLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     creator<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8438,6 +8438,7 @@ export namespace Prisma {
     rentedBy: number | null
     startKm: Decimal | null
     endKm: Decimal | null
+    rentalFee: number | null
   }
 
   export type RentalSumAggregateOutputType = {
@@ -8447,6 +8448,7 @@ export namespace Prisma {
     rentedBy: number | null
     startKm: Decimal | null
     endKm: Decimal | null
+    rentalFee: number | null
   }
 
   export type RentalMinAggregateOutputType = {
@@ -8460,6 +8462,7 @@ export namespace Prisma {
     endKm: Decimal | null
     rentalStatus: $Enums.RentalStatus | null
     createdAt: Date | null
+    rentalFee: number | null
   }
 
   export type RentalMaxAggregateOutputType = {
@@ -8473,6 +8476,7 @@ export namespace Prisma {
     endKm: Decimal | null
     rentalStatus: $Enums.RentalStatus | null
     createdAt: Date | null
+    rentalFee: number | null
   }
 
   export type RentalCountAggregateOutputType = {
@@ -8486,6 +8490,7 @@ export namespace Prisma {
     endKm: number
     rentalStatus: number
     createdAt: number
+    rentalFee: number
     _all: number
   }
 
@@ -8497,6 +8502,7 @@ export namespace Prisma {
     rentedBy?: true
     startKm?: true
     endKm?: true
+    rentalFee?: true
   }
 
   export type RentalSumAggregateInputType = {
@@ -8506,6 +8512,7 @@ export namespace Prisma {
     rentedBy?: true
     startKm?: true
     endKm?: true
+    rentalFee?: true
   }
 
   export type RentalMinAggregateInputType = {
@@ -8519,6 +8526,7 @@ export namespace Prisma {
     endKm?: true
     rentalStatus?: true
     createdAt?: true
+    rentalFee?: true
   }
 
   export type RentalMaxAggregateInputType = {
@@ -8532,6 +8540,7 @@ export namespace Prisma {
     endKm?: true
     rentalStatus?: true
     createdAt?: true
+    rentalFee?: true
   }
 
   export type RentalCountAggregateInputType = {
@@ -8545,6 +8554,7 @@ export namespace Prisma {
     endKm?: true
     rentalStatus?: true
     createdAt?: true
+    rentalFee?: true
     _all?: true
   }
 
@@ -8645,6 +8655,7 @@ export namespace Prisma {
     endKm: Decimal | null
     rentalStatus: $Enums.RentalStatus
     createdAt: Date
+    rentalFee: number
     _count: RentalCountAggregateOutputType | null
     _avg: RentalAvgAggregateOutputType | null
     _sum: RentalSumAggregateOutputType | null
@@ -8677,10 +8688,11 @@ export namespace Prisma {
     endKm?: boolean
     rentalStatus?: boolean
     createdAt?: boolean
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
+    rentalFee?: boolean
+    gpsLogs?: boolean | Rental$gpsLogsArgs<ExtArgs>
     customer?: boolean | CustomerDefaultArgs<ExtArgs>
     staff?: boolean | UserDefaultArgs<ExtArgs>
-    gpsLogs?: boolean | Rental$gpsLogsArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     alerts?: boolean | Rental$alertsArgs<ExtArgs>
     _count?: boolean | RentalCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["rental"]>
@@ -8698,14 +8710,15 @@ export namespace Prisma {
     endKm?: boolean
     rentalStatus?: boolean
     createdAt?: boolean
+    rentalFee?: boolean
   }
 
-  export type RentalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"rentalId" | "vehicleId" | "customerId" | "rentedBy" | "startTime" | "endTime" | "startKm" | "endKm" | "rentalStatus" | "createdAt", ExtArgs["result"]["rental"]>
+  export type RentalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"rentalId" | "vehicleId" | "customerId" | "rentedBy" | "startTime" | "endTime" | "startKm" | "endKm" | "rentalStatus" | "createdAt" | "rentalFee", ExtArgs["result"]["rental"]>
   export type RentalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
+    gpsLogs?: boolean | Rental$gpsLogsArgs<ExtArgs>
     customer?: boolean | CustomerDefaultArgs<ExtArgs>
     staff?: boolean | UserDefaultArgs<ExtArgs>
-    gpsLogs?: boolean | Rental$gpsLogsArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     alerts?: boolean | Rental$alertsArgs<ExtArgs>
     _count?: boolean | RentalCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -8713,10 +8726,10 @@ export namespace Prisma {
   export type $RentalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Rental"
     objects: {
-      vehicle: Prisma.$VehiclePayload<ExtArgs>
+      gpsLogs: Prisma.$GpsLogPayload<ExtArgs>[]
       customer: Prisma.$CustomerPayload<ExtArgs>
       staff: Prisma.$UserPayload<ExtArgs>
-      gpsLogs: Prisma.$GpsLogPayload<ExtArgs>[]
+      vehicle: Prisma.$VehiclePayload<ExtArgs>
       alerts: Prisma.$VehicleAlertPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -8730,6 +8743,7 @@ export namespace Prisma {
       endKm: Prisma.Decimal | null
       rentalStatus: $Enums.RentalStatus
       createdAt: Date
+      rentalFee: number
     }, ExtArgs["result"]["rental"]>
     composites: {}
   }
@@ -9070,10 +9084,10 @@ export namespace Prisma {
    */
   export interface Prisma__RentalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    gpsLogs<T extends Rental$gpsLogsArgs<ExtArgs> = {}>(args?: Subset<T, Rental$gpsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GpsLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     customer<T extends CustomerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CustomerDefaultArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     staff<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    gpsLogs<T extends Rental$gpsLogsArgs<ExtArgs> = {}>(args?: Subset<T, Rental$gpsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GpsLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     alerts<T extends Rental$alertsArgs<ExtArgs> = {}>(args?: Subset<T, Rental$alertsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9114,6 +9128,7 @@ export namespace Prisma {
     readonly endKm: FieldRef<"Rental", 'Decimal'>
     readonly rentalStatus: FieldRef<"Rental", 'RentalStatus'>
     readonly createdAt: FieldRef<"Rental", 'DateTime'>
+    readonly rentalFee: FieldRef<"Rental", 'Float'>
   }
     
 
@@ -10568,9 +10583,9 @@ export namespace Prisma {
     latitude: Decimal | null
     longitude: Decimal | null
     speedKmh: Decimal | null
+    distanceFromHome: Decimal | null
     homeLatitude: Decimal | null
     homeLongitude: Decimal | null
-    distanceFromHome: Decimal | null
   }
 
   export type GpsLogSumAggregateOutputType = {
@@ -10580,9 +10595,9 @@ export namespace Prisma {
     latitude: Decimal | null
     longitude: Decimal | null
     speedKmh: Decimal | null
+    distanceFromHome: Decimal | null
     homeLatitude: Decimal | null
     homeLongitude: Decimal | null
-    distanceFromHome: Decimal | null
   }
 
   export type GpsLogMinAggregateOutputType = {
@@ -10593,10 +10608,10 @@ export namespace Prisma {
     longitude: Decimal | null
     speedKmh: Decimal | null
     gpsStatus: $Enums.GpsStatus | null
+    recordedAt: Date | null
+    distanceFromHome: Decimal | null
     homeLatitude: Decimal | null
     homeLongitude: Decimal | null
-    distanceFromHome: Decimal | null
-    recordedAt: Date | null
   }
 
   export type GpsLogMaxAggregateOutputType = {
@@ -10607,10 +10622,10 @@ export namespace Prisma {
     longitude: Decimal | null
     speedKmh: Decimal | null
     gpsStatus: $Enums.GpsStatus | null
+    recordedAt: Date | null
+    distanceFromHome: Decimal | null
     homeLatitude: Decimal | null
     homeLongitude: Decimal | null
-    distanceFromHome: Decimal | null
-    recordedAt: Date | null
   }
 
   export type GpsLogCountAggregateOutputType = {
@@ -10621,10 +10636,10 @@ export namespace Prisma {
     longitude: number
     speedKmh: number
     gpsStatus: number
+    recordedAt: number
+    distanceFromHome: number
     homeLatitude: number
     homeLongitude: number
-    distanceFromHome: number
-    recordedAt: number
     _all: number
   }
 
@@ -10636,9 +10651,9 @@ export namespace Prisma {
     latitude?: true
     longitude?: true
     speedKmh?: true
+    distanceFromHome?: true
     homeLatitude?: true
     homeLongitude?: true
-    distanceFromHome?: true
   }
 
   export type GpsLogSumAggregateInputType = {
@@ -10648,9 +10663,9 @@ export namespace Prisma {
     latitude?: true
     longitude?: true
     speedKmh?: true
+    distanceFromHome?: true
     homeLatitude?: true
     homeLongitude?: true
-    distanceFromHome?: true
   }
 
   export type GpsLogMinAggregateInputType = {
@@ -10661,10 +10676,10 @@ export namespace Prisma {
     longitude?: true
     speedKmh?: true
     gpsStatus?: true
+    recordedAt?: true
+    distanceFromHome?: true
     homeLatitude?: true
     homeLongitude?: true
-    distanceFromHome?: true
-    recordedAt?: true
   }
 
   export type GpsLogMaxAggregateInputType = {
@@ -10675,10 +10690,10 @@ export namespace Prisma {
     longitude?: true
     speedKmh?: true
     gpsStatus?: true
+    recordedAt?: true
+    distanceFromHome?: true
     homeLatitude?: true
     homeLongitude?: true
-    distanceFromHome?: true
-    recordedAt?: true
   }
 
   export type GpsLogCountAggregateInputType = {
@@ -10689,10 +10704,10 @@ export namespace Prisma {
     longitude?: true
     speedKmh?: true
     gpsStatus?: true
+    recordedAt?: true
+    distanceFromHome?: true
     homeLatitude?: true
     homeLongitude?: true
-    distanceFromHome?: true
-    recordedAt?: true
     _all?: true
   }
 
@@ -10790,10 +10805,10 @@ export namespace Prisma {
     longitude: Decimal
     speedKmh: Decimal
     gpsStatus: $Enums.GpsStatus
+    recordedAt: Date
+    distanceFromHome: Decimal | null
     homeLatitude: Decimal | null
     homeLongitude: Decimal | null
-    distanceFromHome: Decimal | null
-    recordedAt: Date
     _count: GpsLogCountAggregateOutputType | null
     _avg: GpsLogAvgAggregateOutputType | null
     _sum: GpsLogSumAggregateOutputType | null
@@ -10823,12 +10838,12 @@ export namespace Prisma {
     longitude?: boolean
     speedKmh?: boolean
     gpsStatus?: boolean
+    recordedAt?: boolean
+    distanceFromHome?: boolean
     homeLatitude?: boolean
     homeLongitude?: boolean
-    distanceFromHome?: boolean
-    recordedAt?: boolean
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     rental?: boolean | GpsLog$rentalArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gpsLog"]>
 
 
@@ -10841,23 +10856,23 @@ export namespace Prisma {
     longitude?: boolean
     speedKmh?: boolean
     gpsStatus?: boolean
+    recordedAt?: boolean
+    distanceFromHome?: boolean
     homeLatitude?: boolean
     homeLongitude?: boolean
-    distanceFromHome?: boolean
-    recordedAt?: boolean
   }
 
-  export type GpsLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"gpsLogId" | "vehicleId" | "rentalId" | "latitude" | "longitude" | "speedKmh" | "gpsStatus" | "homeLatitude" | "homeLongitude" | "distanceFromHome" | "recordedAt", ExtArgs["result"]["gpsLog"]>
+  export type GpsLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"gpsLogId" | "vehicleId" | "rentalId" | "latitude" | "longitude" | "speedKmh" | "gpsStatus" | "recordedAt" | "distanceFromHome" | "homeLatitude" | "homeLongitude", ExtArgs["result"]["gpsLog"]>
   export type GpsLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     rental?: boolean | GpsLog$rentalArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
 
   export type $GpsLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "GpsLog"
     objects: {
-      vehicle: Prisma.$VehiclePayload<ExtArgs>
       rental: Prisma.$RentalPayload<ExtArgs> | null
+      vehicle: Prisma.$VehiclePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       gpsLogId: number
@@ -10867,10 +10882,10 @@ export namespace Prisma {
       longitude: Prisma.Decimal
       speedKmh: Prisma.Decimal
       gpsStatus: $Enums.GpsStatus
+      recordedAt: Date
+      distanceFromHome: Prisma.Decimal | null
       homeLatitude: Prisma.Decimal | null
       homeLongitude: Prisma.Decimal | null
-      distanceFromHome: Prisma.Decimal | null
-      recordedAt: Date
     }, ExtArgs["result"]["gpsLog"]>
     composites: {}
   }
@@ -11211,8 +11226,8 @@ export namespace Prisma {
    */
   export interface Prisma__GpsLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     rental<T extends GpsLog$rentalArgs<ExtArgs> = {}>(args?: Subset<T, GpsLog$rentalArgs<ExtArgs>>): Prisma__RentalClient<$Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11249,10 +11264,10 @@ export namespace Prisma {
     readonly longitude: FieldRef<"GpsLog", 'Decimal'>
     readonly speedKmh: FieldRef<"GpsLog", 'Decimal'>
     readonly gpsStatus: FieldRef<"GpsLog", 'GpsStatus'>
+    readonly recordedAt: FieldRef<"GpsLog", 'DateTime'>
+    readonly distanceFromHome: FieldRef<"GpsLog", 'Decimal'>
     readonly homeLatitude: FieldRef<"GpsLog", 'Decimal'>
     readonly homeLongitude: FieldRef<"GpsLog", 'Decimal'>
-    readonly distanceFromHome: FieldRef<"GpsLog", 'Decimal'>
-    readonly recordedAt: FieldRef<"GpsLog", 'DateTime'>
   }
     
 
@@ -11676,8 +11691,8 @@ export namespace Prisma {
     alertMessage: string | null
     isAcknowledged: boolean | null
     acknowledgedAt: Date | null
-    resolvedAt: Date | null
     createdAt: Date | null
+    resolvedAt: Date | null
   }
 
   export type VehicleAlertMaxAggregateOutputType = {
@@ -11690,8 +11705,8 @@ export namespace Prisma {
     alertMessage: string | null
     isAcknowledged: boolean | null
     acknowledgedAt: Date | null
-    resolvedAt: Date | null
     createdAt: Date | null
+    resolvedAt: Date | null
   }
 
   export type VehicleAlertCountAggregateOutputType = {
@@ -11704,8 +11719,8 @@ export namespace Prisma {
     alertMessage: number
     isAcknowledged: number
     acknowledgedAt: number
-    resolvedAt: number
     createdAt: number
+    resolvedAt: number
     _all: number
   }
 
@@ -11736,8 +11751,8 @@ export namespace Prisma {
     alertMessage?: true
     isAcknowledged?: true
     acknowledgedAt?: true
-    resolvedAt?: true
     createdAt?: true
+    resolvedAt?: true
   }
 
   export type VehicleAlertMaxAggregateInputType = {
@@ -11750,8 +11765,8 @@ export namespace Prisma {
     alertMessage?: true
     isAcknowledged?: true
     acknowledgedAt?: true
-    resolvedAt?: true
     createdAt?: true
+    resolvedAt?: true
   }
 
   export type VehicleAlertCountAggregateInputType = {
@@ -11764,8 +11779,8 @@ export namespace Prisma {
     alertMessage?: true
     isAcknowledged?: true
     acknowledgedAt?: true
-    resolvedAt?: true
     createdAt?: true
+    resolvedAt?: true
     _all?: true
   }
 
@@ -11865,8 +11880,8 @@ export namespace Prisma {
     alertMessage: string | null
     isAcknowledged: boolean
     acknowledgedAt: Date | null
-    resolvedAt: Date | null
     createdAt: Date
+    resolvedAt: Date | null
     _count: VehicleAlertCountAggregateOutputType | null
     _avg: VehicleAlertAvgAggregateOutputType | null
     _sum: VehicleAlertSumAggregateOutputType | null
@@ -11898,10 +11913,10 @@ export namespace Prisma {
     alertMessage?: boolean
     isAcknowledged?: boolean
     acknowledgedAt?: boolean
-    resolvedAt?: boolean
     createdAt?: boolean
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
+    resolvedAt?: boolean
     rental?: boolean | VehicleAlert$rentalArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vehicleAlert"]>
 
 
@@ -11916,21 +11931,21 @@ export namespace Prisma {
     alertMessage?: boolean
     isAcknowledged?: boolean
     acknowledgedAt?: boolean
-    resolvedAt?: boolean
     createdAt?: boolean
+    resolvedAt?: boolean
   }
 
-  export type VehicleAlertOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"alertId" | "vehicleId" | "rentalId" | "alertType" | "latitude" | "longitude" | "alertMessage" | "isAcknowledged" | "acknowledgedAt" | "resolvedAt" | "createdAt", ExtArgs["result"]["vehicleAlert"]>
+  export type VehicleAlertOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"alertId" | "vehicleId" | "rentalId" | "alertType" | "latitude" | "longitude" | "alertMessage" | "isAcknowledged" | "acknowledgedAt" | "createdAt" | "resolvedAt", ExtArgs["result"]["vehicleAlert"]>
   export type VehicleAlertInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     rental?: boolean | VehicleAlert$rentalArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
 
   export type $VehicleAlertPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "VehicleAlert"
     objects: {
-      vehicle: Prisma.$VehiclePayload<ExtArgs>
       rental: Prisma.$RentalPayload<ExtArgs> | null
+      vehicle: Prisma.$VehiclePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       alertId: number
@@ -11942,8 +11957,8 @@ export namespace Prisma {
       alertMessage: string | null
       isAcknowledged: boolean
       acknowledgedAt: Date | null
-      resolvedAt: Date | null
       createdAt: Date
+      resolvedAt: Date | null
     }, ExtArgs["result"]["vehicleAlert"]>
     composites: {}
   }
@@ -12284,8 +12299,8 @@ export namespace Prisma {
    */
   export interface Prisma__VehicleAlertClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     rental<T extends VehicleAlert$rentalArgs<ExtArgs> = {}>(args?: Subset<T, VehicleAlert$rentalArgs<ExtArgs>>): Prisma__RentalClient<$Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12324,8 +12339,8 @@ export namespace Prisma {
     readonly alertMessage: FieldRef<"VehicleAlert", 'String'>
     readonly isAcknowledged: FieldRef<"VehicleAlert", 'Boolean'>
     readonly acknowledgedAt: FieldRef<"VehicleAlert", 'DateTime'>
-    readonly resolvedAt: FieldRef<"VehicleAlert", 'DateTime'>
     readonly createdAt: FieldRef<"VehicleAlert", 'DateTime'>
+    readonly resolvedAt: FieldRef<"VehicleAlert", 'DateTime'>
   }
     
 
@@ -12965,13 +12980,13 @@ export namespace Prisma {
     status?: boolean
     totalKm?: boolean
     createdAt?: boolean
-    deviceAssignments?: boolean | Vehicle$deviceAssignmentsArgs<ExtArgs>
-    rentals?: boolean | Vehicle$rentalsArgs<ExtArgs>
     gpsLogs?: boolean | Vehicle$gpsLogsArgs<ExtArgs>
-    alerts?: boolean | Vehicle$alertsArgs<ExtArgs>
-    geofenceLogs?: boolean | Vehicle$geofenceLogsArgs<ExtArgs>
     maintenanceLogs?: boolean | Vehicle$maintenanceLogsArgs<ExtArgs>
     monthlyReports?: boolean | Vehicle$monthlyReportsArgs<ExtArgs>
+    rentals?: boolean | Vehicle$rentalsArgs<ExtArgs>
+    alerts?: boolean | Vehicle$alertsArgs<ExtArgs>
+    deviceAssignments?: boolean | Vehicle$deviceAssignmentsArgs<ExtArgs>
+    geofenceLogs?: boolean | Vehicle$geofenceLogsArgs<ExtArgs>
     _count?: boolean | VehicleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vehicle"]>
 
@@ -12993,26 +13008,26 @@ export namespace Prisma {
 
   export type VehicleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"vehicleId" | "plateNumber" | "vehicleName" | "vehicleType" | "brand" | "model" | "color" | "yearManufactured" | "status" | "totalKm" | "createdAt", ExtArgs["result"]["vehicle"]>
   export type VehicleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    deviceAssignments?: boolean | Vehicle$deviceAssignmentsArgs<ExtArgs>
-    rentals?: boolean | Vehicle$rentalsArgs<ExtArgs>
     gpsLogs?: boolean | Vehicle$gpsLogsArgs<ExtArgs>
-    alerts?: boolean | Vehicle$alertsArgs<ExtArgs>
-    geofenceLogs?: boolean | Vehicle$geofenceLogsArgs<ExtArgs>
     maintenanceLogs?: boolean | Vehicle$maintenanceLogsArgs<ExtArgs>
     monthlyReports?: boolean | Vehicle$monthlyReportsArgs<ExtArgs>
+    rentals?: boolean | Vehicle$rentalsArgs<ExtArgs>
+    alerts?: boolean | Vehicle$alertsArgs<ExtArgs>
+    deviceAssignments?: boolean | Vehicle$deviceAssignmentsArgs<ExtArgs>
+    geofenceLogs?: boolean | Vehicle$geofenceLogsArgs<ExtArgs>
     _count?: boolean | VehicleCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $VehiclePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Vehicle"
     objects: {
-      deviceAssignments: Prisma.$VehicleDeviceAssignmentPayload<ExtArgs>[]
-      rentals: Prisma.$RentalPayload<ExtArgs>[]
       gpsLogs: Prisma.$GpsLogPayload<ExtArgs>[]
-      alerts: Prisma.$VehicleAlertPayload<ExtArgs>[]
-      geofenceLogs: Prisma.$VehicleGeofenceLogPayload<ExtArgs>[]
       maintenanceLogs: Prisma.$MaintenanceLogPayload<ExtArgs>[]
       monthlyReports: Prisma.$MonthlyReportPayload<ExtArgs>[]
+      rentals: Prisma.$RentalPayload<ExtArgs>[]
+      alerts: Prisma.$VehicleAlertPayload<ExtArgs>[]
+      deviceAssignments: Prisma.$VehicleDeviceAssignmentPayload<ExtArgs>[]
+      geofenceLogs: Prisma.$VehicleGeofenceLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       vehicleId: number
@@ -13366,13 +13381,13 @@ export namespace Prisma {
    */
   export interface Prisma__VehicleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    deviceAssignments<T extends Vehicle$deviceAssignmentsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$deviceAssignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleDeviceAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    rentals<T extends Vehicle$rentalsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$rentalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     gpsLogs<T extends Vehicle$gpsLogsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$gpsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GpsLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    alerts<T extends Vehicle$alertsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$alertsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    geofenceLogs<T extends Vehicle$geofenceLogsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$geofenceLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleGeofenceLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     maintenanceLogs<T extends Vehicle$maintenanceLogsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$maintenanceLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenanceLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     monthlyReports<T extends Vehicle$monthlyReportsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$monthlyReportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonthlyReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    rentals<T extends Vehicle$rentalsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$rentalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    alerts<T extends Vehicle$alertsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$alertsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    deviceAssignments<T extends Vehicle$deviceAssignmentsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$deviceAssignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleDeviceAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    geofenceLogs<T extends Vehicle$geofenceLogsArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$geofenceLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehicleGeofenceLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13761,54 +13776,6 @@ export namespace Prisma {
   }
 
   /**
-   * Vehicle.deviceAssignments
-   */
-  export type Vehicle$deviceAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VehicleDeviceAssignment
-     */
-    select?: VehicleDeviceAssignmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VehicleDeviceAssignment
-     */
-    omit?: VehicleDeviceAssignmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VehicleDeviceAssignmentInclude<ExtArgs> | null
-    where?: VehicleDeviceAssignmentWhereInput
-    orderBy?: VehicleDeviceAssignmentOrderByWithRelationInput | VehicleDeviceAssignmentOrderByWithRelationInput[]
-    cursor?: VehicleDeviceAssignmentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: VehicleDeviceAssignmentScalarFieldEnum | VehicleDeviceAssignmentScalarFieldEnum[]
-  }
-
-  /**
-   * Vehicle.rentals
-   */
-  export type Vehicle$rentalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Rental
-     */
-    select?: RentalSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Rental
-     */
-    omit?: RentalOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RentalInclude<ExtArgs> | null
-    where?: RentalWhereInput
-    orderBy?: RentalOrderByWithRelationInput | RentalOrderByWithRelationInput[]
-    cursor?: RentalWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: RentalScalarFieldEnum | RentalScalarFieldEnum[]
-  }
-
-  /**
    * Vehicle.gpsLogs
    */
   export type Vehicle$gpsLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13830,54 +13797,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: GpsLogScalarFieldEnum | GpsLogScalarFieldEnum[]
-  }
-
-  /**
-   * Vehicle.alerts
-   */
-  export type Vehicle$alertsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VehicleAlert
-     */
-    select?: VehicleAlertSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VehicleAlert
-     */
-    omit?: VehicleAlertOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VehicleAlertInclude<ExtArgs> | null
-    where?: VehicleAlertWhereInput
-    orderBy?: VehicleAlertOrderByWithRelationInput | VehicleAlertOrderByWithRelationInput[]
-    cursor?: VehicleAlertWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: VehicleAlertScalarFieldEnum | VehicleAlertScalarFieldEnum[]
-  }
-
-  /**
-   * Vehicle.geofenceLogs
-   */
-  export type Vehicle$geofenceLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VehicleGeofenceLog
-     */
-    select?: VehicleGeofenceLogSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VehicleGeofenceLog
-     */
-    omit?: VehicleGeofenceLogOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VehicleGeofenceLogInclude<ExtArgs> | null
-    where?: VehicleGeofenceLogWhereInput
-    orderBy?: VehicleGeofenceLogOrderByWithRelationInput | VehicleGeofenceLogOrderByWithRelationInput[]
-    cursor?: VehicleGeofenceLogWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: VehicleGeofenceLogScalarFieldEnum | VehicleGeofenceLogScalarFieldEnum[]
   }
 
   /**
@@ -13926,6 +13845,102 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MonthlyReportScalarFieldEnum | MonthlyReportScalarFieldEnum[]
+  }
+
+  /**
+   * Vehicle.rentals
+   */
+  export type Vehicle$rentalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rental
+     */
+    select?: RentalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Rental
+     */
+    omit?: RentalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RentalInclude<ExtArgs> | null
+    where?: RentalWhereInput
+    orderBy?: RentalOrderByWithRelationInput | RentalOrderByWithRelationInput[]
+    cursor?: RentalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RentalScalarFieldEnum | RentalScalarFieldEnum[]
+  }
+
+  /**
+   * Vehicle.alerts
+   */
+  export type Vehicle$alertsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleAlert
+     */
+    select?: VehicleAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleAlert
+     */
+    omit?: VehicleAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleAlertInclude<ExtArgs> | null
+    where?: VehicleAlertWhereInput
+    orderBy?: VehicleAlertOrderByWithRelationInput | VehicleAlertOrderByWithRelationInput[]
+    cursor?: VehicleAlertWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleAlertScalarFieldEnum | VehicleAlertScalarFieldEnum[]
+  }
+
+  /**
+   * Vehicle.deviceAssignments
+   */
+  export type Vehicle$deviceAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleDeviceAssignment
+     */
+    select?: VehicleDeviceAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleDeviceAssignment
+     */
+    omit?: VehicleDeviceAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleDeviceAssignmentInclude<ExtArgs> | null
+    where?: VehicleDeviceAssignmentWhereInput
+    orderBy?: VehicleDeviceAssignmentOrderByWithRelationInput | VehicleDeviceAssignmentOrderByWithRelationInput[]
+    cursor?: VehicleDeviceAssignmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleDeviceAssignmentScalarFieldEnum | VehicleDeviceAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * Vehicle.geofenceLogs
+   */
+  export type Vehicle$geofenceLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VehicleGeofenceLog
+     */
+    select?: VehicleGeofenceLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VehicleGeofenceLog
+     */
+    omit?: VehicleGeofenceLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VehicleGeofenceLogInclude<ExtArgs> | null
+    where?: VehicleGeofenceLogWhereInput
+    orderBy?: VehicleGeofenceLogOrderByWithRelationInput | VehicleGeofenceLogOrderByWithRelationInput[]
+    cursor?: VehicleGeofenceLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VehicleGeofenceLogScalarFieldEnum | VehicleGeofenceLogScalarFieldEnum[]
   }
 
   /**
@@ -15188,8 +15203,8 @@ export namespace Prisma {
     assignedAt?: boolean
     removedAt?: boolean
     isActive?: boolean
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     device?: boolean | IotDeviceDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vehicleDeviceAssignment"]>
 
 
@@ -15205,15 +15220,15 @@ export namespace Prisma {
 
   export type VehicleDeviceAssignmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"assignmentId" | "vehicleId" | "deviceId" | "assignedAt" | "removedAt" | "isActive", ExtArgs["result"]["vehicleDeviceAssignment"]>
   export type VehicleDeviceAssignmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     device?: boolean | IotDeviceDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
 
   export type $VehicleDeviceAssignmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "VehicleDeviceAssignment"
     objects: {
-      vehicle: Prisma.$VehiclePayload<ExtArgs>
       device: Prisma.$IotDevicePayload<ExtArgs>
+      vehicle: Prisma.$VehiclePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       assignmentId: number
@@ -15562,8 +15577,8 @@ export namespace Prisma {
    */
   export interface Prisma__VehicleDeviceAssignmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     device<T extends IotDeviceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, IotDeviceDefaultArgs<ExtArgs>>): Prisma__IotDeviceClient<$Result.GetResult<Prisma.$IotDevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16067,7 +16082,8 @@ export namespace Prisma {
     startKm: 'startKm',
     endKm: 'endKm',
     rentalStatus: 'rentalStatus',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    rentalFee: 'rentalFee'
   };
 
   export type RentalScalarFieldEnum = (typeof RentalScalarFieldEnum)[keyof typeof RentalScalarFieldEnum]
@@ -16095,10 +16111,10 @@ export namespace Prisma {
     longitude: 'longitude',
     speedKmh: 'speedKmh',
     gpsStatus: 'gpsStatus',
-    homeLatitude: 'homeLatitude',
-    homeLongitude: 'homeLongitude',
+    recordedAt: 'recordedAt',
     distanceFromHome: 'distanceFromHome',
-    recordedAt: 'recordedAt'
+    homeLatitude: 'homeLatitude',
+    homeLongitude: 'homeLongitude'
   };
 
   export type GpsLogScalarFieldEnum = (typeof GpsLogScalarFieldEnum)[keyof typeof GpsLogScalarFieldEnum]
@@ -16114,8 +16130,8 @@ export namespace Prisma {
     alertMessage: 'alertMessage',
     isAcknowledged: 'isAcknowledged',
     acknowledgedAt: 'acknowledgedAt',
-    resolvedAt: 'resolvedAt',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    resolvedAt: 'resolvedAt'
   };
 
   export type VehicleAlertScalarFieldEnum = (typeof VehicleAlertScalarFieldEnum)[keyof typeof VehicleAlertScalarFieldEnum]
@@ -16353,6 +16369,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
    * Reference to a field of type 'GpsStatus'
    */
   export type EnumGpsStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GpsStatus'>
@@ -16384,13 +16407,6 @@ export namespace Prisma {
    * Reference to a field of type 'DeviceStatus'
    */
   export type EnumDeviceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DeviceStatus'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
   /**
    * Deep Input Types
@@ -16452,10 +16468,10 @@ export namespace Prisma {
     roleId?: IntFilter<"User"> | number
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     createdAt?: DateTimeFilter<"User"> | Date | string
-    role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
-    rentals?: RentalListRelationFilter
     geofences?: GeofenceListRelationFilter
     maintenanceLogs?: MaintenanceLogListRelationFilter
+    rentals?: RentalListRelationFilter
+    role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
   }
 
   export type UserOrderByWithRelationInput = {
@@ -16467,10 +16483,10 @@ export namespace Prisma {
     roleId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
-    role?: RoleOrderByWithRelationInput
-    rentals?: RentalOrderByRelationAggregateInput
     geofences?: GeofenceOrderByRelationAggregateInput
     maintenanceLogs?: MaintenanceLogOrderByRelationAggregateInput
+    rentals?: RentalOrderByRelationAggregateInput
+    role?: RoleOrderByWithRelationInput
     _relevance?: UserOrderByRelevanceInput
   }
 
@@ -16486,10 +16502,10 @@ export namespace Prisma {
     roleId?: IntFilter<"User"> | number
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     createdAt?: DateTimeFilter<"User"> | Date | string
-    role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
-    rentals?: RentalListRelationFilter
     geofences?: GeofenceListRelationFilter
     maintenanceLogs?: MaintenanceLogListRelationFilter
+    rentals?: RentalListRelationFilter
+    role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
   }, "userId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -16614,8 +16630,8 @@ export namespace Prisma {
     latitude?: DecimalFilter<"VehicleGeofenceLog"> | Decimal | DecimalJsLike | number | string
     longitude?: DecimalFilter<"VehicleGeofenceLog"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFilter<"VehicleGeofenceLog"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     geofence?: XOR<GeofenceScalarRelationFilter, GeofenceWhereInput>
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }
 
   export type VehicleGeofenceLogOrderByWithRelationInput = {
@@ -16626,8 +16642,8 @@ export namespace Prisma {
     latitude?: SortOrder
     longitude?: SortOrder
     createdAt?: SortOrder
-    vehicle?: VehicleOrderByWithRelationInput
     geofence?: GeofenceOrderByWithRelationInput
+    vehicle?: VehicleOrderByWithRelationInput
   }
 
   export type VehicleGeofenceLogWhereUniqueInput = Prisma.AtLeast<{
@@ -16641,8 +16657,8 @@ export namespace Prisma {
     latitude?: DecimalFilter<"VehicleGeofenceLog"> | Decimal | DecimalJsLike | number | string
     longitude?: DecimalFilter<"VehicleGeofenceLog"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFilter<"VehicleGeofenceLog"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     geofence?: XOR<GeofenceScalarRelationFilter, GeofenceWhereInput>
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }, "geofenceLogId">
 
   export type VehicleGeofenceLogOrderByWithAggregationInput = {
@@ -16686,8 +16702,8 @@ export namespace Prisma {
     cost?: DecimalNullableFilter<"MaintenanceLog"> | Decimal | DecimalJsLike | number | string | null
     createdBy?: IntFilter<"MaintenanceLog"> | number
     createdAt?: DateTimeFilter<"MaintenanceLog"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     creator?: XOR<UserScalarRelationFilter, UserWhereInput>
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }
 
   export type MaintenanceLogOrderByWithRelationInput = {
@@ -16700,8 +16716,8 @@ export namespace Prisma {
     cost?: SortOrderInput | SortOrder
     createdBy?: SortOrder
     createdAt?: SortOrder
-    vehicle?: VehicleOrderByWithRelationInput
     creator?: UserOrderByWithRelationInput
+    vehicle?: VehicleOrderByWithRelationInput
     _relevance?: MaintenanceLogOrderByRelevanceInput
   }
 
@@ -16718,8 +16734,8 @@ export namespace Prisma {
     cost?: DecimalNullableFilter<"MaintenanceLog"> | Decimal | DecimalJsLike | number | string | null
     createdBy?: IntFilter<"MaintenanceLog"> | number
     createdAt?: DateTimeFilter<"MaintenanceLog"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     creator?: XOR<UserScalarRelationFilter, UserWhereInput>
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }, "maintenanceId">
 
   export type MaintenanceLogOrderByWithAggregationInput = {
@@ -16836,10 +16852,11 @@ export namespace Prisma {
     endKm?: DecimalNullableFilter<"Rental"> | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFilter<"Rental"> | $Enums.RentalStatus
     createdAt?: DateTimeFilter<"Rental"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
+    rentalFee?: FloatFilter<"Rental"> | number
+    gpsLogs?: GpsLogListRelationFilter
     customer?: XOR<CustomerScalarRelationFilter, CustomerWhereInput>
     staff?: XOR<UserScalarRelationFilter, UserWhereInput>
-    gpsLogs?: GpsLogListRelationFilter
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     alerts?: VehicleAlertListRelationFilter
   }
 
@@ -16854,10 +16871,11 @@ export namespace Prisma {
     endKm?: SortOrderInput | SortOrder
     rentalStatus?: SortOrder
     createdAt?: SortOrder
-    vehicle?: VehicleOrderByWithRelationInput
+    rentalFee?: SortOrder
+    gpsLogs?: GpsLogOrderByRelationAggregateInput
     customer?: CustomerOrderByWithRelationInput
     staff?: UserOrderByWithRelationInput
-    gpsLogs?: GpsLogOrderByRelationAggregateInput
+    vehicle?: VehicleOrderByWithRelationInput
     alerts?: VehicleAlertOrderByRelationAggregateInput
   }
 
@@ -16875,10 +16893,11 @@ export namespace Prisma {
     endKm?: DecimalNullableFilter<"Rental"> | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFilter<"Rental"> | $Enums.RentalStatus
     createdAt?: DateTimeFilter<"Rental"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
+    rentalFee?: FloatFilter<"Rental"> | number
+    gpsLogs?: GpsLogListRelationFilter
     customer?: XOR<CustomerScalarRelationFilter, CustomerWhereInput>
     staff?: XOR<UserScalarRelationFilter, UserWhereInput>
-    gpsLogs?: GpsLogListRelationFilter
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     alerts?: VehicleAlertListRelationFilter
   }, "rentalId">
 
@@ -16893,6 +16912,7 @@ export namespace Prisma {
     endKm?: SortOrderInput | SortOrder
     rentalStatus?: SortOrder
     createdAt?: SortOrder
+    rentalFee?: SortOrder
     _count?: RentalCountOrderByAggregateInput
     _avg?: RentalAvgOrderByAggregateInput
     _max?: RentalMaxOrderByAggregateInput
@@ -16914,6 +16934,7 @@ export namespace Prisma {
     endKm?: DecimalNullableWithAggregatesFilter<"Rental"> | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusWithAggregatesFilter<"Rental"> | $Enums.RentalStatus
     createdAt?: DateTimeWithAggregatesFilter<"Rental"> | Date | string
+    rentalFee?: FloatWithAggregatesFilter<"Rental"> | number
   }
 
   export type MonthlyReportWhereInput = {
@@ -17000,12 +17021,12 @@ export namespace Prisma {
     longitude?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFilter<"GpsLog"> | $Enums.GpsStatus
+    recordedAt?: DateTimeFilter<"GpsLog"> | Date | string
+    distanceFromHome?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFilter<"GpsLog"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     rental?: XOR<RentalNullableScalarRelationFilter, RentalWhereInput> | null
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }
 
   export type GpsLogOrderByWithRelationInput = {
@@ -17016,12 +17037,12 @@ export namespace Prisma {
     longitude?: SortOrder
     speedKmh?: SortOrder
     gpsStatus?: SortOrder
+    recordedAt?: SortOrder
+    distanceFromHome?: SortOrderInput | SortOrder
     homeLatitude?: SortOrderInput | SortOrder
     homeLongitude?: SortOrderInput | SortOrder
-    distanceFromHome?: SortOrderInput | SortOrder
-    recordedAt?: SortOrder
-    vehicle?: VehicleOrderByWithRelationInput
     rental?: RentalOrderByWithRelationInput
+    vehicle?: VehicleOrderByWithRelationInput
   }
 
   export type GpsLogWhereUniqueInput = Prisma.AtLeast<{
@@ -17035,12 +17056,12 @@ export namespace Prisma {
     longitude?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFilter<"GpsLog"> | $Enums.GpsStatus
+    recordedAt?: DateTimeFilter<"GpsLog"> | Date | string
+    distanceFromHome?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFilter<"GpsLog"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     rental?: XOR<RentalNullableScalarRelationFilter, RentalWhereInput> | null
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }, "gpsLogId">
 
   export type GpsLogOrderByWithAggregationInput = {
@@ -17051,10 +17072,10 @@ export namespace Prisma {
     longitude?: SortOrder
     speedKmh?: SortOrder
     gpsStatus?: SortOrder
+    recordedAt?: SortOrder
+    distanceFromHome?: SortOrderInput | SortOrder
     homeLatitude?: SortOrderInput | SortOrder
     homeLongitude?: SortOrderInput | SortOrder
-    distanceFromHome?: SortOrderInput | SortOrder
-    recordedAt?: SortOrder
     _count?: GpsLogCountOrderByAggregateInput
     _avg?: GpsLogAvgOrderByAggregateInput
     _max?: GpsLogMaxOrderByAggregateInput
@@ -17073,10 +17094,10 @@ export namespace Prisma {
     longitude?: DecimalWithAggregatesFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalWithAggregatesFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusWithAggregatesFilter<"GpsLog"> | $Enums.GpsStatus
+    recordedAt?: DateTimeWithAggregatesFilter<"GpsLog"> | Date | string
+    distanceFromHome?: DecimalNullableWithAggregatesFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: DecimalNullableWithAggregatesFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: DecimalNullableWithAggregatesFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: DecimalNullableWithAggregatesFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeWithAggregatesFilter<"GpsLog"> | Date | string
   }
 
   export type VehicleAlertWhereInput = {
@@ -17092,10 +17113,10 @@ export namespace Prisma {
     alertMessage?: StringNullableFilter<"VehicleAlert"> | string | null
     isAcknowledged?: BoolFilter<"VehicleAlert"> | boolean
     acknowledgedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
-    resolvedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
     createdAt?: DateTimeFilter<"VehicleAlert"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
+    resolvedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
     rental?: XOR<RentalNullableScalarRelationFilter, RentalWhereInput> | null
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }
 
   export type VehicleAlertOrderByWithRelationInput = {
@@ -17108,10 +17129,10 @@ export namespace Prisma {
     alertMessage?: SortOrderInput | SortOrder
     isAcknowledged?: SortOrder
     acknowledgedAt?: SortOrderInput | SortOrder
-    resolvedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    vehicle?: VehicleOrderByWithRelationInput
+    resolvedAt?: SortOrderInput | SortOrder
     rental?: RentalOrderByWithRelationInput
+    vehicle?: VehicleOrderByWithRelationInput
     _relevance?: VehicleAlertOrderByRelevanceInput
   }
 
@@ -17128,10 +17149,10 @@ export namespace Prisma {
     alertMessage?: StringNullableFilter<"VehicleAlert"> | string | null
     isAcknowledged?: BoolFilter<"VehicleAlert"> | boolean
     acknowledgedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
-    resolvedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
     createdAt?: DateTimeFilter<"VehicleAlert"> | Date | string
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
+    resolvedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
     rental?: XOR<RentalNullableScalarRelationFilter, RentalWhereInput> | null
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }, "alertId">
 
   export type VehicleAlertOrderByWithAggregationInput = {
@@ -17144,8 +17165,8 @@ export namespace Prisma {
     alertMessage?: SortOrderInput | SortOrder
     isAcknowledged?: SortOrder
     acknowledgedAt?: SortOrderInput | SortOrder
-    resolvedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    resolvedAt?: SortOrderInput | SortOrder
     _count?: VehicleAlertCountOrderByAggregateInput
     _avg?: VehicleAlertAvgOrderByAggregateInput
     _max?: VehicleAlertMaxOrderByAggregateInput
@@ -17166,8 +17187,8 @@ export namespace Prisma {
     alertMessage?: StringNullableWithAggregatesFilter<"VehicleAlert"> | string | null
     isAcknowledged?: BoolWithAggregatesFilter<"VehicleAlert"> | boolean
     acknowledgedAt?: DateTimeNullableWithAggregatesFilter<"VehicleAlert"> | Date | string | null
-    resolvedAt?: DateTimeNullableWithAggregatesFilter<"VehicleAlert"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"VehicleAlert"> | Date | string
+    resolvedAt?: DateTimeNullableWithAggregatesFilter<"VehicleAlert"> | Date | string | null
   }
 
   export type VehicleWhereInput = {
@@ -17185,13 +17206,13 @@ export namespace Prisma {
     status?: EnumVehicleStatusFilter<"Vehicle"> | $Enums.VehicleStatus
     totalKm?: DecimalFilter<"Vehicle"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFilter<"Vehicle"> | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentListRelationFilter
-    rentals?: RentalListRelationFilter
     gpsLogs?: GpsLogListRelationFilter
-    alerts?: VehicleAlertListRelationFilter
-    geofenceLogs?: VehicleGeofenceLogListRelationFilter
     maintenanceLogs?: MaintenanceLogListRelationFilter
     monthlyReports?: MonthlyReportListRelationFilter
+    rentals?: RentalListRelationFilter
+    alerts?: VehicleAlertListRelationFilter
+    deviceAssignments?: VehicleDeviceAssignmentListRelationFilter
+    geofenceLogs?: VehicleGeofenceLogListRelationFilter
   }
 
   export type VehicleOrderByWithRelationInput = {
@@ -17206,13 +17227,13 @@ export namespace Prisma {
     status?: SortOrder
     totalKm?: SortOrder
     createdAt?: SortOrder
-    deviceAssignments?: VehicleDeviceAssignmentOrderByRelationAggregateInput
-    rentals?: RentalOrderByRelationAggregateInput
     gpsLogs?: GpsLogOrderByRelationAggregateInput
-    alerts?: VehicleAlertOrderByRelationAggregateInput
-    geofenceLogs?: VehicleGeofenceLogOrderByRelationAggregateInput
     maintenanceLogs?: MaintenanceLogOrderByRelationAggregateInput
     monthlyReports?: MonthlyReportOrderByRelationAggregateInput
+    rentals?: RentalOrderByRelationAggregateInput
+    alerts?: VehicleAlertOrderByRelationAggregateInput
+    deviceAssignments?: VehicleDeviceAssignmentOrderByRelationAggregateInput
+    geofenceLogs?: VehicleGeofenceLogOrderByRelationAggregateInput
     _relevance?: VehicleOrderByRelevanceInput
   }
 
@@ -17231,13 +17252,13 @@ export namespace Prisma {
     status?: EnumVehicleStatusFilter<"Vehicle"> | $Enums.VehicleStatus
     totalKm?: DecimalFilter<"Vehicle"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFilter<"Vehicle"> | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentListRelationFilter
-    rentals?: RentalListRelationFilter
     gpsLogs?: GpsLogListRelationFilter
-    alerts?: VehicleAlertListRelationFilter
-    geofenceLogs?: VehicleGeofenceLogListRelationFilter
     maintenanceLogs?: MaintenanceLogListRelationFilter
     monthlyReports?: MonthlyReportListRelationFilter
+    rentals?: RentalListRelationFilter
+    alerts?: VehicleAlertListRelationFilter
+    deviceAssignments?: VehicleDeviceAssignmentListRelationFilter
+    geofenceLogs?: VehicleGeofenceLogListRelationFilter
   }, "vehicleId" | "plateNumber">
 
   export type VehicleOrderByWithAggregationInput = {
@@ -17359,8 +17380,8 @@ export namespace Prisma {
     assignedAt?: DateTimeFilter<"VehicleDeviceAssignment"> | Date | string
     removedAt?: DateTimeNullableFilter<"VehicleDeviceAssignment"> | Date | string | null
     isActive?: BoolFilter<"VehicleDeviceAssignment"> | boolean
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     device?: XOR<IotDeviceScalarRelationFilter, IotDeviceWhereInput>
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }
 
   export type VehicleDeviceAssignmentOrderByWithRelationInput = {
@@ -17370,8 +17391,8 @@ export namespace Prisma {
     assignedAt?: SortOrder
     removedAt?: SortOrderInput | SortOrder
     isActive?: SortOrder
-    vehicle?: VehicleOrderByWithRelationInput
     device?: IotDeviceOrderByWithRelationInput
+    vehicle?: VehicleOrderByWithRelationInput
   }
 
   export type VehicleDeviceAssignmentWhereUniqueInput = Prisma.AtLeast<{
@@ -17384,8 +17405,8 @@ export namespace Prisma {
     assignedAt?: DateTimeFilter<"VehicleDeviceAssignment"> | Date | string
     removedAt?: DateTimeNullableFilter<"VehicleDeviceAssignment"> | Date | string | null
     isActive?: BoolFilter<"VehicleDeviceAssignment"> | boolean
-    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     device?: XOR<IotDeviceScalarRelationFilter, IotDeviceWhereInput>
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
   }, "assignmentId">
 
   export type VehicleDeviceAssignmentOrderByWithAggregationInput = {
@@ -17457,10 +17478,10 @@ export namespace Prisma {
     phone?: string | null
     status?: $Enums.UserStatus
     createdAt?: Date | string
-    role: RoleCreateNestedOneWithoutUsersInput
-    rentals?: RentalCreateNestedManyWithoutStaffInput
     geofences?: GeofenceCreateNestedManyWithoutCreatorInput
     maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutCreatorInput
+    rentals?: RentalCreateNestedManyWithoutStaffInput
+    role: RoleCreateNestedOneWithoutUsersInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -17472,9 +17493,9 @@ export namespace Prisma {
     roleId: number
     status?: $Enums.UserStatus
     createdAt?: Date | string
-    rentals?: RentalUncheckedCreateNestedManyWithoutStaffInput
     geofences?: GeofenceUncheckedCreateNestedManyWithoutCreatorInput
     maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutCreatorInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutStaffInput
   }
 
   export type UserUpdateInput = {
@@ -17484,10 +17505,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
-    rentals?: RentalUpdateManyWithoutStaffNestedInput
     geofences?: GeofenceUpdateManyWithoutCreatorNestedInput
     maintenanceLogs?: MaintenanceLogUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUpdateManyWithoutStaffNestedInput
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -17499,9 +17520,9 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    rentals?: RentalUncheckedUpdateManyWithoutStaffNestedInput
     geofences?: GeofenceUncheckedUpdateManyWithoutCreatorNestedInput
     maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutStaffNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -17624,8 +17645,8 @@ export namespace Prisma {
     latitude: Decimal | DecimalJsLike | number | string
     longitude: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutGeofenceLogsInput
     geofence: GeofenceCreateNestedOneWithoutGeofenceLogsInput
+    vehicle: VehicleCreateNestedOneWithoutGeofenceLogsInput
   }
 
   export type VehicleGeofenceLogUncheckedCreateInput = {
@@ -17643,8 +17664,8 @@ export namespace Prisma {
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutGeofenceLogsNestedInput
     geofence?: GeofenceUpdateOneRequiredWithoutGeofenceLogsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutGeofenceLogsNestedInput
   }
 
   export type VehicleGeofenceLogUncheckedUpdateInput = {
@@ -17691,8 +17712,8 @@ export namespace Prisma {
     currentKm?: Decimal | DecimalJsLike | number | string
     cost?: Decimal | DecimalJsLike | number | string | null
     createdAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutMaintenanceLogsInput
     creator: UserCreateNestedOneWithoutMaintenanceLogsInput
+    vehicle: VehicleCreateNestedOneWithoutMaintenanceLogsInput
   }
 
   export type MaintenanceLogUncheckedCreateInput = {
@@ -17714,8 +17735,8 @@ export namespace Prisma {
     currentKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     cost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutMaintenanceLogsNestedInput
     creator?: UserUpdateOneRequiredWithoutMaintenanceLogsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutMaintenanceLogsNestedInput
   }
 
   export type MaintenanceLogUncheckedUpdateInput = {
@@ -17774,7 +17795,7 @@ export namespace Prisma {
   }
 
   export type CustomerUncheckedCreateInput = {
-    customerId?: number
+    customerId?: number | undefined
     fullName: string
     phone: string
     email?: string | null
@@ -17795,7 +17816,7 @@ export namespace Prisma {
   }
 
   export type CustomerUncheckedUpdateInput = {
-    customerId?: IntFieldUpdateOperationsInput | number
+    customerId?: IntFieldUpdateOperationsInput | number | undefined
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17841,10 +17862,11 @@ export namespace Prisma {
     endKm?: Decimal | DecimalJsLike | number | string | null
     rentalStatus?: $Enums.RentalStatus
     createdAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutRentalsInput
+    rentalFee?: number
+    gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
     customer: CustomerCreateNestedOneWithoutRentalsInput
     staff: UserCreateNestedOneWithoutRentalsInput
-    gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
+    vehicle: VehicleCreateNestedOneWithoutRentalsInput
     alerts?: VehicleAlertCreateNestedManyWithoutRentalInput
   }
 
@@ -17859,6 +17881,7 @@ export namespace Prisma {
     endKm?: Decimal | DecimalJsLike | number | string | null
     rentalStatus?: $Enums.RentalStatus
     createdAt?: Date | string
+    rentalFee?: number
     gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutRentalInput
     alerts?: VehicleAlertUncheckedCreateNestedManyWithoutRentalInput
   }
@@ -17870,10 +17893,11 @@ export namespace Prisma {
     endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
     customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
     staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
-    gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
     alerts?: VehicleAlertUpdateManyWithoutRentalNestedInput
   }
 
@@ -17888,6 +17912,7 @@ export namespace Prisma {
     endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
     gpsLogs?: GpsLogUncheckedUpdateManyWithoutRentalNestedInput
     alerts?: VehicleAlertUncheckedUpdateManyWithoutRentalNestedInput
   }
@@ -17903,6 +17928,7 @@ export namespace Prisma {
     endKm?: Decimal | DecimalJsLike | number | string | null
     rentalStatus?: $Enums.RentalStatus
     createdAt?: Date | string
+    rentalFee?: number
   }
 
   export type RentalUpdateManyMutationInput = {
@@ -17912,6 +17938,7 @@ export namespace Prisma {
     endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
   }
 
   export type RentalUncheckedUpdateManyInput = {
@@ -17925,6 +17952,7 @@ export namespace Prisma {
     endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
   }
 
   export type MonthlyReportCreateInput = {
@@ -18005,12 +18033,12 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     speedKmh?: Decimal | DecimalJsLike | number | string
     gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
     homeLatitude?: Decimal | DecimalJsLike | number | string | null
     homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutGpsLogsInput
     rental?: RentalCreateNestedOneWithoutGpsLogsInput
+    vehicle: VehicleCreateNestedOneWithoutGpsLogsInput
   }
 
   export type GpsLogUncheckedCreateInput = {
@@ -18021,10 +18049,10 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     speedKmh?: Decimal | DecimalJsLike | number | string
     gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
     homeLatitude?: Decimal | DecimalJsLike | number | string | null
     homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
   }
 
   export type GpsLogUpdateInput = {
@@ -18032,12 +18060,12 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutGpsLogsNestedInput
     rental?: RentalUpdateOneWithoutGpsLogsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutGpsLogsNestedInput
   }
 
   export type GpsLogUncheckedUpdateInput = {
@@ -18048,10 +18076,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GpsLogCreateManyInput = {
@@ -18062,10 +18090,10 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     speedKmh?: Decimal | DecimalJsLike | number | string
     gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
     homeLatitude?: Decimal | DecimalJsLike | number | string | null
     homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
   }
 
   export type GpsLogUpdateManyMutationInput = {
@@ -18073,10 +18101,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GpsLogUncheckedUpdateManyInput = {
@@ -18087,10 +18115,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VehicleAlertCreateInput = {
@@ -18100,10 +18128,10 @@ export namespace Prisma {
     alertMessage?: string | null
     isAcknowledged?: boolean
     acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
     createdAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutAlertsInput
+    resolvedAt?: Date | string | null
     rental?: RentalCreateNestedOneWithoutAlertsInput
+    vehicle: VehicleCreateNestedOneWithoutAlertsInput
   }
 
   export type VehicleAlertUncheckedCreateInput = {
@@ -18116,8 +18144,8 @@ export namespace Prisma {
     alertMessage?: string | null
     isAcknowledged?: boolean
     acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
     createdAt?: Date | string
+    resolvedAt?: Date | string | null
   }
 
   export type VehicleAlertUpdateInput = {
@@ -18127,10 +18155,10 @@ export namespace Prisma {
     alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
     isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
     acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutAlertsNestedInput
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rental?: RentalUpdateOneWithoutAlertsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutAlertsNestedInput
   }
 
   export type VehicleAlertUncheckedUpdateInput = {
@@ -18143,8 +18171,8 @@ export namespace Prisma {
     alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
     isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
     acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type VehicleAlertCreateManyInput = {
@@ -18157,8 +18185,8 @@ export namespace Prisma {
     alertMessage?: string | null
     isAcknowledged?: boolean
     acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
     createdAt?: Date | string
+    resolvedAt?: Date | string | null
   }
 
   export type VehicleAlertUpdateManyMutationInput = {
@@ -18168,8 +18196,8 @@ export namespace Prisma {
     alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
     isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
     acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type VehicleAlertUncheckedUpdateManyInput = {
@@ -18182,8 +18210,8 @@ export namespace Prisma {
     alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
     isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
     acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type VehicleCreateInput = {
@@ -18197,17 +18225,17 @@ export namespace Prisma {
     status?: $Enums.VehicleStatus
     totalKm?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
-    rentals?: RentalCreateNestedManyWithoutVehicleInput
     gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
     maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
     monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
+    rentals?: RentalCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUncheckedCreateInput = {
-    vehicleId?: number | undefined
+    vehicleId?: number
     plateNumber: string
     vehicleName: string
     vehicleType: string
@@ -18218,13 +18246,13 @@ export namespace Prisma {
     status?: $Enums.VehicleStatus
     totalKm?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
-    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
     gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
     maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
     monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUpdateInput = {
@@ -18238,17 +18266,17 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUpdateManyWithoutVehicleNestedInput
     gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
     maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
     monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleUncheckedUpdateInput = {
-    vehicleId?: IntFieldUpdateOperationsInput | number | undefined
+    vehicleId?: IntFieldUpdateOperationsInput | number
     plateNumber?: StringFieldUpdateOperationsInput | string
     vehicleName?: StringFieldUpdateOperationsInput | string
     vehicleType?: StringFieldUpdateOperationsInput | string
@@ -18259,13 +18287,13 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
     gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
     maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
     monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleCreateManyInput = {
@@ -18391,8 +18419,8 @@ export namespace Prisma {
     assignedAt?: Date | string
     removedAt?: Date | string | null
     isActive?: boolean
-    vehicle: VehicleCreateNestedOneWithoutDeviceAssignmentsInput
     device: IotDeviceCreateNestedOneWithoutAssignmentsInput
+    vehicle: VehicleCreateNestedOneWithoutDeviceAssignmentsInput
   }
 
   export type VehicleDeviceAssignmentUncheckedCreateInput = {
@@ -18408,8 +18436,8 @@ export namespace Prisma {
     assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
-    vehicle?: VehicleUpdateOneRequiredWithoutDeviceAssignmentsNestedInput
     device?: IotDeviceUpdateOneRequiredWithoutAssignmentsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutDeviceAssignmentsNestedInput
   }
 
   export type VehicleDeviceAssignmentUncheckedUpdateInput = {
@@ -18577,17 +18605,6 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type RoleScalarRelationFilter = {
-    is?: RoleWhereInput
-    isNot?: RoleWhereInput
-  }
-
-  export type RentalListRelationFilter = {
-    every?: RentalWhereInput
-    some?: RentalWhereInput
-    none?: RentalWhereInput
-  }
-
   export type GeofenceListRelationFilter = {
     every?: GeofenceWhereInput
     some?: GeofenceWhereInput
@@ -18600,13 +18617,20 @@ export namespace Prisma {
     none?: MaintenanceLogWhereInput
   }
 
+  export type RentalListRelationFilter = {
+    every?: RentalWhereInput
+    some?: RentalWhereInput
+    none?: RentalWhereInput
+  }
+
+  export type RoleScalarRelationFilter = {
+    is?: RoleWhereInput
+    isNot?: RoleWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
-  }
-
-  export type RentalOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type GeofenceOrderByRelationAggregateInput = {
@@ -18614,6 +18638,10 @@ export namespace Prisma {
   }
 
   export type MaintenanceLogOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RentalOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18890,14 +18918,14 @@ export namespace Prisma {
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
-  export type VehicleScalarRelationFilter = {
-    is?: VehicleWhereInput
-    isNot?: VehicleWhereInput
-  }
-
   export type GeofenceScalarRelationFilter = {
     is?: GeofenceWhereInput
     isNot?: GeofenceWhereInput
+  }
+
+  export type VehicleScalarRelationFilter = {
+    is?: VehicleWhereInput
+    isNot?: VehicleWhereInput
   }
 
   export type VehicleGeofenceLogCountOrderByAggregateInput = {
@@ -19092,15 +19120,26 @@ export namespace Prisma {
     not?: NestedEnumRentalStatusFilter<$PrismaModel> | $Enums.RentalStatus
   }
 
-  export type CustomerScalarRelationFilter = {
-    is?: CustomerWhereInput
-    isNot?: CustomerWhereInput
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type GpsLogListRelationFilter = {
     every?: GpsLogWhereInput
     some?: GpsLogWhereInput
     none?: GpsLogWhereInput
+  }
+
+  export type CustomerScalarRelationFilter = {
+    is?: CustomerWhereInput
+    isNot?: CustomerWhereInput
   }
 
   export type VehicleAlertListRelationFilter = {
@@ -19128,6 +19167,7 @@ export namespace Prisma {
     endKm?: SortOrder
     rentalStatus?: SortOrder
     createdAt?: SortOrder
+    rentalFee?: SortOrder
   }
 
   export type RentalAvgOrderByAggregateInput = {
@@ -19137,6 +19177,7 @@ export namespace Prisma {
     rentedBy?: SortOrder
     startKm?: SortOrder
     endKm?: SortOrder
+    rentalFee?: SortOrder
   }
 
   export type RentalMaxOrderByAggregateInput = {
@@ -19150,6 +19191,7 @@ export namespace Prisma {
     endKm?: SortOrder
     rentalStatus?: SortOrder
     createdAt?: SortOrder
+    rentalFee?: SortOrder
   }
 
   export type RentalMinOrderByAggregateInput = {
@@ -19163,6 +19205,7 @@ export namespace Prisma {
     endKm?: SortOrder
     rentalStatus?: SortOrder
     createdAt?: SortOrder
+    rentalFee?: SortOrder
   }
 
   export type RentalSumOrderByAggregateInput = {
@@ -19172,6 +19215,7 @@ export namespace Prisma {
     rentedBy?: SortOrder
     startKm?: SortOrder
     endKm?: SortOrder
+    rentalFee?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19196,6 +19240,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRentalStatusFilter<$PrismaModel>
     _max?: NestedEnumRentalStatusFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type MonthlyReportVehicleIdReportMonthCompoundUniqueInput = {
@@ -19285,10 +19345,10 @@ export namespace Prisma {
     longitude?: SortOrder
     speedKmh?: SortOrder
     gpsStatus?: SortOrder
+    recordedAt?: SortOrder
+    distanceFromHome?: SortOrder
     homeLatitude?: SortOrder
     homeLongitude?: SortOrder
-    distanceFromHome?: SortOrder
-    recordedAt?: SortOrder
   }
 
   export type GpsLogAvgOrderByAggregateInput = {
@@ -19298,9 +19358,9 @@ export namespace Prisma {
     latitude?: SortOrder
     longitude?: SortOrder
     speedKmh?: SortOrder
+    distanceFromHome?: SortOrder
     homeLatitude?: SortOrder
     homeLongitude?: SortOrder
-    distanceFromHome?: SortOrder
   }
 
   export type GpsLogMaxOrderByAggregateInput = {
@@ -19311,10 +19371,10 @@ export namespace Prisma {
     longitude?: SortOrder
     speedKmh?: SortOrder
     gpsStatus?: SortOrder
+    recordedAt?: SortOrder
+    distanceFromHome?: SortOrder
     homeLatitude?: SortOrder
     homeLongitude?: SortOrder
-    distanceFromHome?: SortOrder
-    recordedAt?: SortOrder
   }
 
   export type GpsLogMinOrderByAggregateInput = {
@@ -19325,10 +19385,10 @@ export namespace Prisma {
     longitude?: SortOrder
     speedKmh?: SortOrder
     gpsStatus?: SortOrder
+    recordedAt?: SortOrder
+    distanceFromHome?: SortOrder
     homeLatitude?: SortOrder
     homeLongitude?: SortOrder
-    distanceFromHome?: SortOrder
-    recordedAt?: SortOrder
   }
 
   export type GpsLogSumOrderByAggregateInput = {
@@ -19338,9 +19398,9 @@ export namespace Prisma {
     latitude?: SortOrder
     longitude?: SortOrder
     speedKmh?: SortOrder
+    distanceFromHome?: SortOrder
     homeLatitude?: SortOrder
     homeLongitude?: SortOrder
-    distanceFromHome?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19397,8 +19457,8 @@ export namespace Prisma {
     alertMessage?: SortOrder
     isAcknowledged?: SortOrder
     acknowledgedAt?: SortOrder
-    resolvedAt?: SortOrder
     createdAt?: SortOrder
+    resolvedAt?: SortOrder
   }
 
   export type VehicleAlertAvgOrderByAggregateInput = {
@@ -19419,8 +19479,8 @@ export namespace Prisma {
     alertMessage?: SortOrder
     isAcknowledged?: SortOrder
     acknowledgedAt?: SortOrder
-    resolvedAt?: SortOrder
     createdAt?: SortOrder
+    resolvedAt?: SortOrder
   }
 
   export type VehicleAlertMinOrderByAggregateInput = {
@@ -19433,8 +19493,8 @@ export namespace Prisma {
     alertMessage?: SortOrder
     isAcknowledged?: SortOrder
     acknowledgedAt?: SortOrder
-    resolvedAt?: SortOrder
     createdAt?: SortOrder
+    resolvedAt?: SortOrder
   }
 
   export type VehicleAlertSumOrderByAggregateInput = {
@@ -19470,23 +19530,23 @@ export namespace Prisma {
     not?: NestedEnumVehicleStatusFilter<$PrismaModel> | $Enums.VehicleStatus
   }
 
-  export type VehicleDeviceAssignmentListRelationFilter = {
-    every?: VehicleDeviceAssignmentWhereInput
-    some?: VehicleDeviceAssignmentWhereInput
-    none?: VehicleDeviceAssignmentWhereInput
-  }
-
   export type MonthlyReportListRelationFilter = {
     every?: MonthlyReportWhereInput
     some?: MonthlyReportWhereInput
     none?: MonthlyReportWhereInput
   }
 
-  export type VehicleDeviceAssignmentOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type VehicleDeviceAssignmentListRelationFilter = {
+    every?: VehicleDeviceAssignmentWhereInput
+    some?: VehicleDeviceAssignmentWhereInput
+    none?: VehicleDeviceAssignmentWhereInput
   }
 
   export type MonthlyReportOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VehicleDeviceAssignmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19722,19 +19782,6 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type RoleCreateNestedOneWithoutUsersInput = {
-    create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
-    connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
-    connect?: RoleWhereUniqueInput
-  }
-
-  export type RentalCreateNestedManyWithoutStaffInput = {
-    create?: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput> | RentalCreateWithoutStaffInput[] | RentalUncheckedCreateWithoutStaffInput[]
-    connectOrCreate?: RentalCreateOrConnectWithoutStaffInput | RentalCreateOrConnectWithoutStaffInput[]
-    createMany?: RentalCreateManyStaffInputEnvelope
-    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-  }
-
   export type GeofenceCreateNestedManyWithoutCreatorInput = {
     create?: XOR<GeofenceCreateWithoutCreatorInput, GeofenceUncheckedCreateWithoutCreatorInput> | GeofenceCreateWithoutCreatorInput[] | GeofenceUncheckedCreateWithoutCreatorInput[]
     connectOrCreate?: GeofenceCreateOrConnectWithoutCreatorInput | GeofenceCreateOrConnectWithoutCreatorInput[]
@@ -19749,11 +19796,17 @@ export namespace Prisma {
     connect?: MaintenanceLogWhereUniqueInput | MaintenanceLogWhereUniqueInput[]
   }
 
-  export type RentalUncheckedCreateNestedManyWithoutStaffInput = {
+  export type RentalCreateNestedManyWithoutStaffInput = {
     create?: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput> | RentalCreateWithoutStaffInput[] | RentalUncheckedCreateWithoutStaffInput[]
     connectOrCreate?: RentalCreateOrConnectWithoutStaffInput | RentalCreateOrConnectWithoutStaffInput[]
     createMany?: RentalCreateManyStaffInputEnvelope
     connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+  }
+
+  export type RoleCreateNestedOneWithoutUsersInput = {
+    create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
+    connect?: RoleWhereUniqueInput
   }
 
   export type GeofenceUncheckedCreateNestedManyWithoutCreatorInput = {
@@ -19770,6 +19823,13 @@ export namespace Prisma {
     connect?: MaintenanceLogWhereUniqueInput | MaintenanceLogWhereUniqueInput[]
   }
 
+  export type RentalUncheckedCreateNestedManyWithoutStaffInput = {
+    create?: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput> | RentalCreateWithoutStaffInput[] | RentalUncheckedCreateWithoutStaffInput[]
+    connectOrCreate?: RentalCreateOrConnectWithoutStaffInput | RentalCreateOrConnectWithoutStaffInput[]
+    createMany?: RentalCreateManyStaffInputEnvelope
+    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -19780,28 +19840,6 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
-  }
-
-  export type RoleUpdateOneRequiredWithoutUsersNestedInput = {
-    create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
-    connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
-    upsert?: RoleUpsertWithoutUsersInput
-    connect?: RoleWhereUniqueInput
-    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUsersInput, RoleUpdateWithoutUsersInput>, RoleUncheckedUpdateWithoutUsersInput>
-  }
-
-  export type RentalUpdateManyWithoutStaffNestedInput = {
-    create?: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput> | RentalCreateWithoutStaffInput[] | RentalUncheckedCreateWithoutStaffInput[]
-    connectOrCreate?: RentalCreateOrConnectWithoutStaffInput | RentalCreateOrConnectWithoutStaffInput[]
-    upsert?: RentalUpsertWithWhereUniqueWithoutStaffInput | RentalUpsertWithWhereUniqueWithoutStaffInput[]
-    createMany?: RentalCreateManyStaffInputEnvelope
-    set?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    disconnect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    delete?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    update?: RentalUpdateWithWhereUniqueWithoutStaffInput | RentalUpdateWithWhereUniqueWithoutStaffInput[]
-    updateMany?: RentalUpdateManyWithWhereWithoutStaffInput | RentalUpdateManyWithWhereWithoutStaffInput[]
-    deleteMany?: RentalScalarWhereInput | RentalScalarWhereInput[]
   }
 
   export type GeofenceUpdateManyWithoutCreatorNestedInput = {
@@ -19832,7 +19870,7 @@ export namespace Prisma {
     deleteMany?: MaintenanceLogScalarWhereInput | MaintenanceLogScalarWhereInput[]
   }
 
-  export type RentalUncheckedUpdateManyWithoutStaffNestedInput = {
+  export type RentalUpdateManyWithoutStaffNestedInput = {
     create?: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput> | RentalCreateWithoutStaffInput[] | RentalUncheckedCreateWithoutStaffInput[]
     connectOrCreate?: RentalCreateOrConnectWithoutStaffInput | RentalCreateOrConnectWithoutStaffInput[]
     upsert?: RentalUpsertWithWhereUniqueWithoutStaffInput | RentalUpsertWithWhereUniqueWithoutStaffInput[]
@@ -19844,6 +19882,14 @@ export namespace Prisma {
     update?: RentalUpdateWithWhereUniqueWithoutStaffInput | RentalUpdateWithWhereUniqueWithoutStaffInput[]
     updateMany?: RentalUpdateManyWithWhereWithoutStaffInput | RentalUpdateManyWithWhereWithoutStaffInput[]
     deleteMany?: RentalScalarWhereInput | RentalScalarWhereInput[]
+  }
+
+  export type RoleUpdateOneRequiredWithoutUsersNestedInput = {
+    create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
+    upsert?: RoleUpsertWithoutUsersInput
+    connect?: RoleWhereUniqueInput
+    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUsersInput, RoleUpdateWithoutUsersInput>, RoleUncheckedUpdateWithoutUsersInput>
   }
 
   export type GeofenceUncheckedUpdateManyWithoutCreatorNestedInput = {
@@ -19872,6 +19918,20 @@ export namespace Prisma {
     update?: MaintenanceLogUpdateWithWhereUniqueWithoutCreatorInput | MaintenanceLogUpdateWithWhereUniqueWithoutCreatorInput[]
     updateMany?: MaintenanceLogUpdateManyWithWhereWithoutCreatorInput | MaintenanceLogUpdateManyWithWhereWithoutCreatorInput[]
     deleteMany?: MaintenanceLogScalarWhereInput | MaintenanceLogScalarWhereInput[]
+  }
+
+  export type RentalUncheckedUpdateManyWithoutStaffNestedInput = {
+    create?: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput> | RentalCreateWithoutStaffInput[] | RentalUncheckedCreateWithoutStaffInput[]
+    connectOrCreate?: RentalCreateOrConnectWithoutStaffInput | RentalCreateOrConnectWithoutStaffInput[]
+    upsert?: RentalUpsertWithWhereUniqueWithoutStaffInput | RentalUpsertWithWhereUniqueWithoutStaffInput[]
+    createMany?: RentalCreateManyStaffInputEnvelope
+    set?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    disconnect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    delete?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    update?: RentalUpdateWithWhereUniqueWithoutStaffInput | RentalUpdateWithWhereUniqueWithoutStaffInput[]
+    updateMany?: RentalUpdateManyWithWhereWithoutStaffInput | RentalUpdateManyWithWhereWithoutStaffInput[]
+    deleteMany?: RentalScalarWhereInput | RentalScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutGeofencesInput = {
@@ -19942,16 +20002,16 @@ export namespace Prisma {
     deleteMany?: VehicleGeofenceLogScalarWhereInput | VehicleGeofenceLogScalarWhereInput[]
   }
 
-  export type VehicleCreateNestedOneWithoutGeofenceLogsInput = {
-    create?: XOR<VehicleCreateWithoutGeofenceLogsInput, VehicleUncheckedCreateWithoutGeofenceLogsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutGeofenceLogsInput
-    connect?: VehicleWhereUniqueInput
-  }
-
   export type GeofenceCreateNestedOneWithoutGeofenceLogsInput = {
     create?: XOR<GeofenceCreateWithoutGeofenceLogsInput, GeofenceUncheckedCreateWithoutGeofenceLogsInput>
     connectOrCreate?: GeofenceCreateOrConnectWithoutGeofenceLogsInput
     connect?: GeofenceWhereUniqueInput
+  }
+
+  export type VehicleCreateNestedOneWithoutGeofenceLogsInput = {
+    create?: XOR<VehicleCreateWithoutGeofenceLogsInput, VehicleUncheckedCreateWithoutGeofenceLogsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutGeofenceLogsInput
+    connect?: VehicleWhereUniqueInput
   }
 
   export type EnumGeofenceEventFieldUpdateOperationsInput = {
@@ -19966,14 +20026,6 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type VehicleUpdateOneRequiredWithoutGeofenceLogsNestedInput = {
-    create?: XOR<VehicleCreateWithoutGeofenceLogsInput, VehicleUncheckedCreateWithoutGeofenceLogsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutGeofenceLogsInput
-    upsert?: VehicleUpsertWithoutGeofenceLogsInput
-    connect?: VehicleWhereUniqueInput
-    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutGeofenceLogsInput, VehicleUpdateWithoutGeofenceLogsInput>, VehicleUncheckedUpdateWithoutGeofenceLogsInput>
-  }
-
   export type GeofenceUpdateOneRequiredWithoutGeofenceLogsNestedInput = {
     create?: XOR<GeofenceCreateWithoutGeofenceLogsInput, GeofenceUncheckedCreateWithoutGeofenceLogsInput>
     connectOrCreate?: GeofenceCreateOrConnectWithoutGeofenceLogsInput
@@ -19982,10 +20034,12 @@ export namespace Prisma {
     update?: XOR<XOR<GeofenceUpdateToOneWithWhereWithoutGeofenceLogsInput, GeofenceUpdateWithoutGeofenceLogsInput>, GeofenceUncheckedUpdateWithoutGeofenceLogsInput>
   }
 
-  export type VehicleCreateNestedOneWithoutMaintenanceLogsInput = {
-    create?: XOR<VehicleCreateWithoutMaintenanceLogsInput, VehicleUncheckedCreateWithoutMaintenanceLogsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutMaintenanceLogsInput
+  export type VehicleUpdateOneRequiredWithoutGeofenceLogsNestedInput = {
+    create?: XOR<VehicleCreateWithoutGeofenceLogsInput, VehicleUncheckedCreateWithoutGeofenceLogsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutGeofenceLogsInput
+    upsert?: VehicleUpsertWithoutGeofenceLogsInput
     connect?: VehicleWhereUniqueInput
+    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutGeofenceLogsInput, VehicleUpdateWithoutGeofenceLogsInput>, VehicleUncheckedUpdateWithoutGeofenceLogsInput>
   }
 
   export type UserCreateNestedOneWithoutMaintenanceLogsInput = {
@@ -19994,12 +20048,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type VehicleUpdateOneRequiredWithoutMaintenanceLogsNestedInput = {
+  export type VehicleCreateNestedOneWithoutMaintenanceLogsInput = {
     create?: XOR<VehicleCreateWithoutMaintenanceLogsInput, VehicleUncheckedCreateWithoutMaintenanceLogsInput>
     connectOrCreate?: VehicleCreateOrConnectWithoutMaintenanceLogsInput
-    upsert?: VehicleUpsertWithoutMaintenanceLogsInput
     connect?: VehicleWhereUniqueInput
-    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutMaintenanceLogsInput, VehicleUpdateWithoutMaintenanceLogsInput>, VehicleUncheckedUpdateWithoutMaintenanceLogsInput>
   }
 
   export type UserUpdateOneRequiredWithoutMaintenanceLogsNestedInput = {
@@ -20008,6 +20060,14 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutMaintenanceLogsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMaintenanceLogsInput, UserUpdateWithoutMaintenanceLogsInput>, UserUncheckedUpdateWithoutMaintenanceLogsInput>
+  }
+
+  export type VehicleUpdateOneRequiredWithoutMaintenanceLogsNestedInput = {
+    create?: XOR<VehicleCreateWithoutMaintenanceLogsInput, VehicleUncheckedCreateWithoutMaintenanceLogsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutMaintenanceLogsInput
+    upsert?: VehicleUpsertWithoutMaintenanceLogsInput
+    connect?: VehicleWhereUniqueInput
+    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutMaintenanceLogsInput, VehicleUpdateWithoutMaintenanceLogsInput>, VehicleUncheckedUpdateWithoutMaintenanceLogsInput>
   }
 
   export type RentalCreateNestedManyWithoutCustomerInput = {
@@ -20052,10 +20112,11 @@ export namespace Prisma {
     deleteMany?: RentalScalarWhereInput | RentalScalarWhereInput[]
   }
 
-  export type VehicleCreateNestedOneWithoutRentalsInput = {
-    create?: XOR<VehicleCreateWithoutRentalsInput, VehicleUncheckedCreateWithoutRentalsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutRentalsInput
-    connect?: VehicleWhereUniqueInput
+  export type GpsLogCreateNestedManyWithoutRentalInput = {
+    create?: XOR<GpsLogCreateWithoutRentalInput, GpsLogUncheckedCreateWithoutRentalInput> | GpsLogCreateWithoutRentalInput[] | GpsLogUncheckedCreateWithoutRentalInput[]
+    connectOrCreate?: GpsLogCreateOrConnectWithoutRentalInput | GpsLogCreateOrConnectWithoutRentalInput[]
+    createMany?: GpsLogCreateManyRentalInputEnvelope
+    connect?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
   }
 
   export type CustomerCreateNestedOneWithoutRentalsInput = {
@@ -20070,11 +20131,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type GpsLogCreateNestedManyWithoutRentalInput = {
-    create?: XOR<GpsLogCreateWithoutRentalInput, GpsLogUncheckedCreateWithoutRentalInput> | GpsLogCreateWithoutRentalInput[] | GpsLogUncheckedCreateWithoutRentalInput[]
-    connectOrCreate?: GpsLogCreateOrConnectWithoutRentalInput | GpsLogCreateOrConnectWithoutRentalInput[]
-    createMany?: GpsLogCreateManyRentalInputEnvelope
-    connect?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
+  export type VehicleCreateNestedOneWithoutRentalsInput = {
+    create?: XOR<VehicleCreateWithoutRentalsInput, VehicleUncheckedCreateWithoutRentalsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutRentalsInput
+    connect?: VehicleWhereUniqueInput
   }
 
   export type VehicleAlertCreateNestedManyWithoutRentalInput = {
@@ -20106,12 +20166,26 @@ export namespace Prisma {
     set?: $Enums.RentalStatus
   }
 
-  export type VehicleUpdateOneRequiredWithoutRentalsNestedInput = {
-    create?: XOR<VehicleCreateWithoutRentalsInput, VehicleUncheckedCreateWithoutRentalsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutRentalsInput
-    upsert?: VehicleUpsertWithoutRentalsInput
-    connect?: VehicleWhereUniqueInput
-    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutRentalsInput, VehicleUpdateWithoutRentalsInput>, VehicleUncheckedUpdateWithoutRentalsInput>
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type GpsLogUpdateManyWithoutRentalNestedInput = {
+    create?: XOR<GpsLogCreateWithoutRentalInput, GpsLogUncheckedCreateWithoutRentalInput> | GpsLogCreateWithoutRentalInput[] | GpsLogUncheckedCreateWithoutRentalInput[]
+    connectOrCreate?: GpsLogCreateOrConnectWithoutRentalInput | GpsLogCreateOrConnectWithoutRentalInput[]
+    upsert?: GpsLogUpsertWithWhereUniqueWithoutRentalInput | GpsLogUpsertWithWhereUniqueWithoutRentalInput[]
+    createMany?: GpsLogCreateManyRentalInputEnvelope
+    set?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
+    disconnect?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
+    delete?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
+    connect?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
+    update?: GpsLogUpdateWithWhereUniqueWithoutRentalInput | GpsLogUpdateWithWhereUniqueWithoutRentalInput[]
+    updateMany?: GpsLogUpdateManyWithWhereWithoutRentalInput | GpsLogUpdateManyWithWhereWithoutRentalInput[]
+    deleteMany?: GpsLogScalarWhereInput | GpsLogScalarWhereInput[]
   }
 
   export type CustomerUpdateOneRequiredWithoutRentalsNestedInput = {
@@ -20130,18 +20204,12 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRentalsInput, UserUpdateWithoutRentalsInput>, UserUncheckedUpdateWithoutRentalsInput>
   }
 
-  export type GpsLogUpdateManyWithoutRentalNestedInput = {
-    create?: XOR<GpsLogCreateWithoutRentalInput, GpsLogUncheckedCreateWithoutRentalInput> | GpsLogCreateWithoutRentalInput[] | GpsLogUncheckedCreateWithoutRentalInput[]
-    connectOrCreate?: GpsLogCreateOrConnectWithoutRentalInput | GpsLogCreateOrConnectWithoutRentalInput[]
-    upsert?: GpsLogUpsertWithWhereUniqueWithoutRentalInput | GpsLogUpsertWithWhereUniqueWithoutRentalInput[]
-    createMany?: GpsLogCreateManyRentalInputEnvelope
-    set?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
-    disconnect?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
-    delete?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
-    connect?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
-    update?: GpsLogUpdateWithWhereUniqueWithoutRentalInput | GpsLogUpdateWithWhereUniqueWithoutRentalInput[]
-    updateMany?: GpsLogUpdateManyWithWhereWithoutRentalInput | GpsLogUpdateManyWithWhereWithoutRentalInput[]
-    deleteMany?: GpsLogScalarWhereInput | GpsLogScalarWhereInput[]
+  export type VehicleUpdateOneRequiredWithoutRentalsNestedInput = {
+    create?: XOR<VehicleCreateWithoutRentalsInput, VehicleUncheckedCreateWithoutRentalsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutRentalsInput
+    upsert?: VehicleUpsertWithoutRentalsInput
+    connect?: VehicleWhereUniqueInput
+    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutRentalsInput, VehicleUpdateWithoutRentalsInput>, VehicleUncheckedUpdateWithoutRentalsInput>
   }
 
   export type VehicleAlertUpdateManyWithoutRentalNestedInput = {
@@ -20200,28 +20268,20 @@ export namespace Prisma {
     update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutMonthlyReportsInput, VehicleUpdateWithoutMonthlyReportsInput>, VehicleUncheckedUpdateWithoutMonthlyReportsInput>
   }
 
-  export type VehicleCreateNestedOneWithoutGpsLogsInput = {
-    create?: XOR<VehicleCreateWithoutGpsLogsInput, VehicleUncheckedCreateWithoutGpsLogsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutGpsLogsInput
-    connect?: VehicleWhereUniqueInput
-  }
-
   export type RentalCreateNestedOneWithoutGpsLogsInput = {
     create?: XOR<RentalCreateWithoutGpsLogsInput, RentalUncheckedCreateWithoutGpsLogsInput>
     connectOrCreate?: RentalCreateOrConnectWithoutGpsLogsInput
     connect?: RentalWhereUniqueInput
   }
 
-  export type EnumGpsStatusFieldUpdateOperationsInput = {
-    set?: $Enums.GpsStatus
-  }
-
-  export type VehicleUpdateOneRequiredWithoutGpsLogsNestedInput = {
+  export type VehicleCreateNestedOneWithoutGpsLogsInput = {
     create?: XOR<VehicleCreateWithoutGpsLogsInput, VehicleUncheckedCreateWithoutGpsLogsInput>
     connectOrCreate?: VehicleCreateOrConnectWithoutGpsLogsInput
-    upsert?: VehicleUpsertWithoutGpsLogsInput
     connect?: VehicleWhereUniqueInput
-    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutGpsLogsInput, VehicleUpdateWithoutGpsLogsInput>, VehicleUncheckedUpdateWithoutGpsLogsInput>
+  }
+
+  export type EnumGpsStatusFieldUpdateOperationsInput = {
+    set?: $Enums.GpsStatus
   }
 
   export type RentalUpdateOneWithoutGpsLogsNestedInput = {
@@ -20234,6 +20294,14 @@ export namespace Prisma {
     update?: XOR<XOR<RentalUpdateToOneWithWhereWithoutGpsLogsInput, RentalUpdateWithoutGpsLogsInput>, RentalUncheckedUpdateWithoutGpsLogsInput>
   }
 
+  export type VehicleUpdateOneRequiredWithoutGpsLogsNestedInput = {
+    create?: XOR<VehicleCreateWithoutGpsLogsInput, VehicleUncheckedCreateWithoutGpsLogsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutGpsLogsInput
+    upsert?: VehicleUpsertWithoutGpsLogsInput
+    connect?: VehicleWhereUniqueInput
+    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutGpsLogsInput, VehicleUpdateWithoutGpsLogsInput>, VehicleUncheckedUpdateWithoutGpsLogsInput>
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -20242,16 +20310,16 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type VehicleCreateNestedOneWithoutAlertsInput = {
-    create?: XOR<VehicleCreateWithoutAlertsInput, VehicleUncheckedCreateWithoutAlertsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutAlertsInput
-    connect?: VehicleWhereUniqueInput
-  }
-
   export type RentalCreateNestedOneWithoutAlertsInput = {
     create?: XOR<RentalCreateWithoutAlertsInput, RentalUncheckedCreateWithoutAlertsInput>
     connectOrCreate?: RentalCreateOrConnectWithoutAlertsInput
     connect?: RentalWhereUniqueInput
+  }
+
+  export type VehicleCreateNestedOneWithoutAlertsInput = {
+    create?: XOR<VehicleCreateWithoutAlertsInput, VehicleUncheckedCreateWithoutAlertsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutAlertsInput
+    connect?: VehicleWhereUniqueInput
   }
 
   export type EnumAlertTypeFieldUpdateOperationsInput = {
@@ -20260,14 +20328,6 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type VehicleUpdateOneRequiredWithoutAlertsNestedInput = {
-    create?: XOR<VehicleCreateWithoutAlertsInput, VehicleUncheckedCreateWithoutAlertsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutAlertsInput
-    upsert?: VehicleUpsertWithoutAlertsInput
-    connect?: VehicleWhereUniqueInput
-    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutAlertsInput, VehicleUpdateWithoutAlertsInput>, VehicleUncheckedUpdateWithoutAlertsInput>
   }
 
   export type RentalUpdateOneWithoutAlertsNestedInput = {
@@ -20280,18 +20340,12 @@ export namespace Prisma {
     update?: XOR<XOR<RentalUpdateToOneWithWhereWithoutAlertsInput, RentalUpdateWithoutAlertsInput>, RentalUncheckedUpdateWithoutAlertsInput>
   }
 
-  export type VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput = {
-    create?: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput> | VehicleDeviceAssignmentCreateWithoutVehicleInput[] | VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput | VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput[]
-    createMany?: VehicleDeviceAssignmentCreateManyVehicleInputEnvelope
-    connect?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
-  }
-
-  export type RentalCreateNestedManyWithoutVehicleInput = {
-    create?: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput> | RentalCreateWithoutVehicleInput[] | RentalUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: RentalCreateOrConnectWithoutVehicleInput | RentalCreateOrConnectWithoutVehicleInput[]
-    createMany?: RentalCreateManyVehicleInputEnvelope
-    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+  export type VehicleUpdateOneRequiredWithoutAlertsNestedInput = {
+    create?: XOR<VehicleCreateWithoutAlertsInput, VehicleUncheckedCreateWithoutAlertsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutAlertsInput
+    upsert?: VehicleUpsertWithoutAlertsInput
+    connect?: VehicleWhereUniqueInput
+    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutAlertsInput, VehicleUpdateWithoutAlertsInput>, VehicleUncheckedUpdateWithoutAlertsInput>
   }
 
   export type GpsLogCreateNestedManyWithoutVehicleInput = {
@@ -20299,20 +20353,6 @@ export namespace Prisma {
     connectOrCreate?: GpsLogCreateOrConnectWithoutVehicleInput | GpsLogCreateOrConnectWithoutVehicleInput[]
     createMany?: GpsLogCreateManyVehicleInputEnvelope
     connect?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
-  }
-
-  export type VehicleAlertCreateNestedManyWithoutVehicleInput = {
-    create?: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput> | VehicleAlertCreateWithoutVehicleInput[] | VehicleAlertUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleAlertCreateOrConnectWithoutVehicleInput | VehicleAlertCreateOrConnectWithoutVehicleInput[]
-    createMany?: VehicleAlertCreateManyVehicleInputEnvelope
-    connect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-  }
-
-  export type VehicleGeofenceLogCreateNestedManyWithoutVehicleInput = {
-    create?: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput> | VehicleGeofenceLogCreateWithoutVehicleInput[] | VehicleGeofenceLogUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleGeofenceLogCreateOrConnectWithoutVehicleInput | VehicleGeofenceLogCreateOrConnectWithoutVehicleInput[]
-    createMany?: VehicleGeofenceLogCreateManyVehicleInputEnvelope
-    connect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
   }
 
   export type MaintenanceLogCreateNestedManyWithoutVehicleInput = {
@@ -20329,18 +20369,32 @@ export namespace Prisma {
     connect?: MonthlyReportWhereUniqueInput | MonthlyReportWhereUniqueInput[]
   }
 
-  export type VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput = {
+  export type RentalCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput> | RentalCreateWithoutVehicleInput[] | RentalUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: RentalCreateOrConnectWithoutVehicleInput | RentalCreateOrConnectWithoutVehicleInput[]
+    createMany?: RentalCreateManyVehicleInputEnvelope
+    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+  }
+
+  export type VehicleAlertCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput> | VehicleAlertCreateWithoutVehicleInput[] | VehicleAlertUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleAlertCreateOrConnectWithoutVehicleInput | VehicleAlertCreateOrConnectWithoutVehicleInput[]
+    createMany?: VehicleAlertCreateManyVehicleInputEnvelope
+    connect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+  }
+
+  export type VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput = {
     create?: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput> | VehicleDeviceAssignmentCreateWithoutVehicleInput[] | VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput[]
     connectOrCreate?: VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput | VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput[]
     createMany?: VehicleDeviceAssignmentCreateManyVehicleInputEnvelope
     connect?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
   }
 
-  export type RentalUncheckedCreateNestedManyWithoutVehicleInput = {
-    create?: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput> | RentalCreateWithoutVehicleInput[] | RentalUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: RentalCreateOrConnectWithoutVehicleInput | RentalCreateOrConnectWithoutVehicleInput[]
-    createMany?: RentalCreateManyVehicleInputEnvelope
-    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+  export type VehicleGeofenceLogCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput> | VehicleGeofenceLogCreateWithoutVehicleInput[] | VehicleGeofenceLogUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleGeofenceLogCreateOrConnectWithoutVehicleInput | VehicleGeofenceLogCreateOrConnectWithoutVehicleInput[]
+    createMany?: VehicleGeofenceLogCreateManyVehicleInputEnvelope
+    connect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
   }
 
   export type GpsLogUncheckedCreateNestedManyWithoutVehicleInput = {
@@ -20348,20 +20402,6 @@ export namespace Prisma {
     connectOrCreate?: GpsLogCreateOrConnectWithoutVehicleInput | GpsLogCreateOrConnectWithoutVehicleInput[]
     createMany?: GpsLogCreateManyVehicleInputEnvelope
     connect?: GpsLogWhereUniqueInput | GpsLogWhereUniqueInput[]
-  }
-
-  export type VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput = {
-    create?: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput> | VehicleAlertCreateWithoutVehicleInput[] | VehicleAlertUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleAlertCreateOrConnectWithoutVehicleInput | VehicleAlertCreateOrConnectWithoutVehicleInput[]
-    createMany?: VehicleAlertCreateManyVehicleInputEnvelope
-    connect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-  }
-
-  export type VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput = {
-    create?: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput> | VehicleGeofenceLogCreateWithoutVehicleInput[] | VehicleGeofenceLogUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleGeofenceLogCreateOrConnectWithoutVehicleInput | VehicleGeofenceLogCreateOrConnectWithoutVehicleInput[]
-    createMany?: VehicleGeofenceLogCreateManyVehicleInputEnvelope
-    connect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
   }
 
   export type MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput = {
@@ -20378,36 +20418,36 @@ export namespace Prisma {
     connect?: MonthlyReportWhereUniqueInput | MonthlyReportWhereUniqueInput[]
   }
 
-  export type EnumVehicleStatusFieldUpdateOperationsInput = {
-    set?: $Enums.VehicleStatus
-  }
-
-  export type VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput = {
-    create?: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput> | VehicleDeviceAssignmentCreateWithoutVehicleInput[] | VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput | VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput[]
-    upsert?: VehicleDeviceAssignmentUpsertWithWhereUniqueWithoutVehicleInput | VehicleDeviceAssignmentUpsertWithWhereUniqueWithoutVehicleInput[]
-    createMany?: VehicleDeviceAssignmentCreateManyVehicleInputEnvelope
-    set?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
-    disconnect?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
-    delete?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
-    connect?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
-    update?: VehicleDeviceAssignmentUpdateWithWhereUniqueWithoutVehicleInput | VehicleDeviceAssignmentUpdateWithWhereUniqueWithoutVehicleInput[]
-    updateMany?: VehicleDeviceAssignmentUpdateManyWithWhereWithoutVehicleInput | VehicleDeviceAssignmentUpdateManyWithWhereWithoutVehicleInput[]
-    deleteMany?: VehicleDeviceAssignmentScalarWhereInput | VehicleDeviceAssignmentScalarWhereInput[]
-  }
-
-  export type RentalUpdateManyWithoutVehicleNestedInput = {
+  export type RentalUncheckedCreateNestedManyWithoutVehicleInput = {
     create?: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput> | RentalCreateWithoutVehicleInput[] | RentalUncheckedCreateWithoutVehicleInput[]
     connectOrCreate?: RentalCreateOrConnectWithoutVehicleInput | RentalCreateOrConnectWithoutVehicleInput[]
-    upsert?: RentalUpsertWithWhereUniqueWithoutVehicleInput | RentalUpsertWithWhereUniqueWithoutVehicleInput[]
     createMany?: RentalCreateManyVehicleInputEnvelope
-    set?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    disconnect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    delete?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
     connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    update?: RentalUpdateWithWhereUniqueWithoutVehicleInput | RentalUpdateWithWhereUniqueWithoutVehicleInput[]
-    updateMany?: RentalUpdateManyWithWhereWithoutVehicleInput | RentalUpdateManyWithWhereWithoutVehicleInput[]
-    deleteMany?: RentalScalarWhereInput | RentalScalarWhereInput[]
+  }
+
+  export type VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput> | VehicleAlertCreateWithoutVehicleInput[] | VehicleAlertUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleAlertCreateOrConnectWithoutVehicleInput | VehicleAlertCreateOrConnectWithoutVehicleInput[]
+    createMany?: VehicleAlertCreateManyVehicleInputEnvelope
+    connect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+  }
+
+  export type VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput> | VehicleDeviceAssignmentCreateWithoutVehicleInput[] | VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput | VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput[]
+    createMany?: VehicleDeviceAssignmentCreateManyVehicleInputEnvelope
+    connect?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
+  }
+
+  export type VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput> | VehicleGeofenceLogCreateWithoutVehicleInput[] | VehicleGeofenceLogUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleGeofenceLogCreateOrConnectWithoutVehicleInput | VehicleGeofenceLogCreateOrConnectWithoutVehicleInput[]
+    createMany?: VehicleGeofenceLogCreateManyVehicleInputEnvelope
+    connect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+  }
+
+  export type EnumVehicleStatusFieldUpdateOperationsInput = {
+    set?: $Enums.VehicleStatus
   }
 
   export type GpsLogUpdateManyWithoutVehicleNestedInput = {
@@ -20422,34 +20462,6 @@ export namespace Prisma {
     update?: GpsLogUpdateWithWhereUniqueWithoutVehicleInput | GpsLogUpdateWithWhereUniqueWithoutVehicleInput[]
     updateMany?: GpsLogUpdateManyWithWhereWithoutVehicleInput | GpsLogUpdateManyWithWhereWithoutVehicleInput[]
     deleteMany?: GpsLogScalarWhereInput | GpsLogScalarWhereInput[]
-  }
-
-  export type VehicleAlertUpdateManyWithoutVehicleNestedInput = {
-    create?: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput> | VehicleAlertCreateWithoutVehicleInput[] | VehicleAlertUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleAlertCreateOrConnectWithoutVehicleInput | VehicleAlertCreateOrConnectWithoutVehicleInput[]
-    upsert?: VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput | VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput[]
-    createMany?: VehicleAlertCreateManyVehicleInputEnvelope
-    set?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-    disconnect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-    delete?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-    connect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-    update?: VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput | VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput[]
-    updateMany?: VehicleAlertUpdateManyWithWhereWithoutVehicleInput | VehicleAlertUpdateManyWithWhereWithoutVehicleInput[]
-    deleteMany?: VehicleAlertScalarWhereInput | VehicleAlertScalarWhereInput[]
-  }
-
-  export type VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput = {
-    create?: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput> | VehicleGeofenceLogCreateWithoutVehicleInput[] | VehicleGeofenceLogUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleGeofenceLogCreateOrConnectWithoutVehicleInput | VehicleGeofenceLogCreateOrConnectWithoutVehicleInput[]
-    upsert?: VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput | VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput[]
-    createMany?: VehicleGeofenceLogCreateManyVehicleInputEnvelope
-    set?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
-    disconnect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
-    delete?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
-    connect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
-    update?: VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput | VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput[]
-    updateMany?: VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput | VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput[]
-    deleteMany?: VehicleGeofenceLogScalarWhereInput | VehicleGeofenceLogScalarWhereInput[]
   }
 
   export type MaintenanceLogUpdateManyWithoutVehicleNestedInput = {
@@ -20480,7 +20492,35 @@ export namespace Prisma {
     deleteMany?: MonthlyReportScalarWhereInput | MonthlyReportScalarWhereInput[]
   }
 
-  export type VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput = {
+  export type RentalUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput> | RentalCreateWithoutVehicleInput[] | RentalUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: RentalCreateOrConnectWithoutVehicleInput | RentalCreateOrConnectWithoutVehicleInput[]
+    upsert?: RentalUpsertWithWhereUniqueWithoutVehicleInput | RentalUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: RentalCreateManyVehicleInputEnvelope
+    set?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    disconnect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    delete?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    update?: RentalUpdateWithWhereUniqueWithoutVehicleInput | RentalUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: RentalUpdateManyWithWhereWithoutVehicleInput | RentalUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: RentalScalarWhereInput | RentalScalarWhereInput[]
+  }
+
+  export type VehicleAlertUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput> | VehicleAlertCreateWithoutVehicleInput[] | VehicleAlertUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleAlertCreateOrConnectWithoutVehicleInput | VehicleAlertCreateOrConnectWithoutVehicleInput[]
+    upsert?: VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput | VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: VehicleAlertCreateManyVehicleInputEnvelope
+    set?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+    disconnect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+    delete?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+    connect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+    update?: VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput | VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: VehicleAlertUpdateManyWithWhereWithoutVehicleInput | VehicleAlertUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: VehicleAlertScalarWhereInput | VehicleAlertScalarWhereInput[]
+  }
+
+  export type VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput = {
     create?: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput> | VehicleDeviceAssignmentCreateWithoutVehicleInput[] | VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput[]
     connectOrCreate?: VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput | VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput[]
     upsert?: VehicleDeviceAssignmentUpsertWithWhereUniqueWithoutVehicleInput | VehicleDeviceAssignmentUpsertWithWhereUniqueWithoutVehicleInput[]
@@ -20494,18 +20534,18 @@ export namespace Prisma {
     deleteMany?: VehicleDeviceAssignmentScalarWhereInput | VehicleDeviceAssignmentScalarWhereInput[]
   }
 
-  export type RentalUncheckedUpdateManyWithoutVehicleNestedInput = {
-    create?: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput> | RentalCreateWithoutVehicleInput[] | RentalUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: RentalCreateOrConnectWithoutVehicleInput | RentalCreateOrConnectWithoutVehicleInput[]
-    upsert?: RentalUpsertWithWhereUniqueWithoutVehicleInput | RentalUpsertWithWhereUniqueWithoutVehicleInput[]
-    createMany?: RentalCreateManyVehicleInputEnvelope
-    set?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    disconnect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    delete?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
-    update?: RentalUpdateWithWhereUniqueWithoutVehicleInput | RentalUpdateWithWhereUniqueWithoutVehicleInput[]
-    updateMany?: RentalUpdateManyWithWhereWithoutVehicleInput | RentalUpdateManyWithWhereWithoutVehicleInput[]
-    deleteMany?: RentalScalarWhereInput | RentalScalarWhereInput[]
+  export type VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput> | VehicleGeofenceLogCreateWithoutVehicleInput[] | VehicleGeofenceLogUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleGeofenceLogCreateOrConnectWithoutVehicleInput | VehicleGeofenceLogCreateOrConnectWithoutVehicleInput[]
+    upsert?: VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput | VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: VehicleGeofenceLogCreateManyVehicleInputEnvelope
+    set?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+    disconnect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+    delete?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+    connect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+    update?: VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput | VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput | VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: VehicleGeofenceLogScalarWhereInput | VehicleGeofenceLogScalarWhereInput[]
   }
 
   export type GpsLogUncheckedUpdateManyWithoutVehicleNestedInput = {
@@ -20520,34 +20560,6 @@ export namespace Prisma {
     update?: GpsLogUpdateWithWhereUniqueWithoutVehicleInput | GpsLogUpdateWithWhereUniqueWithoutVehicleInput[]
     updateMany?: GpsLogUpdateManyWithWhereWithoutVehicleInput | GpsLogUpdateManyWithWhereWithoutVehicleInput[]
     deleteMany?: GpsLogScalarWhereInput | GpsLogScalarWhereInput[]
-  }
-
-  export type VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput = {
-    create?: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput> | VehicleAlertCreateWithoutVehicleInput[] | VehicleAlertUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleAlertCreateOrConnectWithoutVehicleInput | VehicleAlertCreateOrConnectWithoutVehicleInput[]
-    upsert?: VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput | VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput[]
-    createMany?: VehicleAlertCreateManyVehicleInputEnvelope
-    set?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-    disconnect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-    delete?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-    connect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
-    update?: VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput | VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput[]
-    updateMany?: VehicleAlertUpdateManyWithWhereWithoutVehicleInput | VehicleAlertUpdateManyWithWhereWithoutVehicleInput[]
-    deleteMany?: VehicleAlertScalarWhereInput | VehicleAlertScalarWhereInput[]
-  }
-
-  export type VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput = {
-    create?: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput> | VehicleGeofenceLogCreateWithoutVehicleInput[] | VehicleGeofenceLogUncheckedCreateWithoutVehicleInput[]
-    connectOrCreate?: VehicleGeofenceLogCreateOrConnectWithoutVehicleInput | VehicleGeofenceLogCreateOrConnectWithoutVehicleInput[]
-    upsert?: VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput | VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput[]
-    createMany?: VehicleGeofenceLogCreateManyVehicleInputEnvelope
-    set?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
-    disconnect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
-    delete?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
-    connect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
-    update?: VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput | VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput[]
-    updateMany?: VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput | VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput[]
-    deleteMany?: VehicleGeofenceLogScalarWhereInput | VehicleGeofenceLogScalarWhereInput[]
   }
 
   export type MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput = {
@@ -20576,6 +20588,62 @@ export namespace Prisma {
     update?: MonthlyReportUpdateWithWhereUniqueWithoutVehicleInput | MonthlyReportUpdateWithWhereUniqueWithoutVehicleInput[]
     updateMany?: MonthlyReportUpdateManyWithWhereWithoutVehicleInput | MonthlyReportUpdateManyWithWhereWithoutVehicleInput[]
     deleteMany?: MonthlyReportScalarWhereInput | MonthlyReportScalarWhereInput[]
+  }
+
+  export type RentalUncheckedUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput> | RentalCreateWithoutVehicleInput[] | RentalUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: RentalCreateOrConnectWithoutVehicleInput | RentalCreateOrConnectWithoutVehicleInput[]
+    upsert?: RentalUpsertWithWhereUniqueWithoutVehicleInput | RentalUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: RentalCreateManyVehicleInputEnvelope
+    set?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    disconnect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    delete?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    connect?: RentalWhereUniqueInput | RentalWhereUniqueInput[]
+    update?: RentalUpdateWithWhereUniqueWithoutVehicleInput | RentalUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: RentalUpdateManyWithWhereWithoutVehicleInput | RentalUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: RentalScalarWhereInput | RentalScalarWhereInput[]
+  }
+
+  export type VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput> | VehicleAlertCreateWithoutVehicleInput[] | VehicleAlertUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleAlertCreateOrConnectWithoutVehicleInput | VehicleAlertCreateOrConnectWithoutVehicleInput[]
+    upsert?: VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput | VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: VehicleAlertCreateManyVehicleInputEnvelope
+    set?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+    disconnect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+    delete?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+    connect?: VehicleAlertWhereUniqueInput | VehicleAlertWhereUniqueInput[]
+    update?: VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput | VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: VehicleAlertUpdateManyWithWhereWithoutVehicleInput | VehicleAlertUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: VehicleAlertScalarWhereInput | VehicleAlertScalarWhereInput[]
+  }
+
+  export type VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput> | VehicleDeviceAssignmentCreateWithoutVehicleInput[] | VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput | VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput[]
+    upsert?: VehicleDeviceAssignmentUpsertWithWhereUniqueWithoutVehicleInput | VehicleDeviceAssignmentUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: VehicleDeviceAssignmentCreateManyVehicleInputEnvelope
+    set?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
+    disconnect?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
+    delete?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
+    connect?: VehicleDeviceAssignmentWhereUniqueInput | VehicleDeviceAssignmentWhereUniqueInput[]
+    update?: VehicleDeviceAssignmentUpdateWithWhereUniqueWithoutVehicleInput | VehicleDeviceAssignmentUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: VehicleDeviceAssignmentUpdateManyWithWhereWithoutVehicleInput | VehicleDeviceAssignmentUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: VehicleDeviceAssignmentScalarWhereInput | VehicleDeviceAssignmentScalarWhereInput[]
+  }
+
+  export type VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput> | VehicleGeofenceLogCreateWithoutVehicleInput[] | VehicleGeofenceLogUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: VehicleGeofenceLogCreateOrConnectWithoutVehicleInput | VehicleGeofenceLogCreateOrConnectWithoutVehicleInput[]
+    upsert?: VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput | VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: VehicleGeofenceLogCreateManyVehicleInputEnvelope
+    set?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+    disconnect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+    delete?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+    connect?: VehicleGeofenceLogWhereUniqueInput | VehicleGeofenceLogWhereUniqueInput[]
+    update?: VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput | VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput | VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput[]
+    deleteMany?: VehicleGeofenceLogScalarWhereInput | VehicleGeofenceLogScalarWhereInput[]
   }
 
   export type VehicleDeviceAssignmentCreateNestedManyWithoutDeviceInput = {
@@ -20624,24 +20692,16 @@ export namespace Prisma {
     deleteMany?: VehicleDeviceAssignmentScalarWhereInput | VehicleDeviceAssignmentScalarWhereInput[]
   }
 
-  export type VehicleCreateNestedOneWithoutDeviceAssignmentsInput = {
-    create?: XOR<VehicleCreateWithoutDeviceAssignmentsInput, VehicleUncheckedCreateWithoutDeviceAssignmentsInput>
-    connectOrCreate?: VehicleCreateOrConnectWithoutDeviceAssignmentsInput
-    connect?: VehicleWhereUniqueInput
-  }
-
   export type IotDeviceCreateNestedOneWithoutAssignmentsInput = {
     create?: XOR<IotDeviceCreateWithoutAssignmentsInput, IotDeviceUncheckedCreateWithoutAssignmentsInput>
     connectOrCreate?: IotDeviceCreateOrConnectWithoutAssignmentsInput
     connect?: IotDeviceWhereUniqueInput
   }
 
-  export type VehicleUpdateOneRequiredWithoutDeviceAssignmentsNestedInput = {
+  export type VehicleCreateNestedOneWithoutDeviceAssignmentsInput = {
     create?: XOR<VehicleCreateWithoutDeviceAssignmentsInput, VehicleUncheckedCreateWithoutDeviceAssignmentsInput>
     connectOrCreate?: VehicleCreateOrConnectWithoutDeviceAssignmentsInput
-    upsert?: VehicleUpsertWithoutDeviceAssignmentsInput
     connect?: VehicleWhereUniqueInput
-    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutDeviceAssignmentsInput, VehicleUpdateWithoutDeviceAssignmentsInput>, VehicleUncheckedUpdateWithoutDeviceAssignmentsInput>
   }
 
   export type IotDeviceUpdateOneRequiredWithoutAssignmentsNestedInput = {
@@ -20650,6 +20710,14 @@ export namespace Prisma {
     upsert?: IotDeviceUpsertWithoutAssignmentsInput
     connect?: IotDeviceWhereUniqueInput
     update?: XOR<XOR<IotDeviceUpdateToOneWithWhereWithoutAssignmentsInput, IotDeviceUpdateWithoutAssignmentsInput>, IotDeviceUncheckedUpdateWithoutAssignmentsInput>
+  }
+
+  export type VehicleUpdateOneRequiredWithoutDeviceAssignmentsNestedInput = {
+    create?: XOR<VehicleCreateWithoutDeviceAssignmentsInput, VehicleUncheckedCreateWithoutDeviceAssignmentsInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutDeviceAssignmentsInput
+    upsert?: VehicleUpsertWithoutDeviceAssignmentsInput
+    connect?: VehicleWhereUniqueInput
+    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutDeviceAssignmentsInput, VehicleUpdateWithoutDeviceAssignmentsInput>, VehicleUncheckedUpdateWithoutDeviceAssignmentsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -20962,6 +21030,22 @@ export namespace Prisma {
     _max?: NestedEnumRentalStatusFilter<$PrismaModel>
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type NestedEnumGpsStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.GpsStatus | EnumGpsStatusFieldRefInput<$PrismaModel>
     in?: $Enums.GpsStatus[]
@@ -21077,9 +21161,9 @@ export namespace Prisma {
     phone?: string | null
     status?: $Enums.UserStatus
     createdAt?: Date | string
-    rentals?: RentalCreateNestedManyWithoutStaffInput
     geofences?: GeofenceCreateNestedManyWithoutCreatorInput
     maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutCreatorInput
+    rentals?: RentalCreateNestedManyWithoutStaffInput
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
@@ -21090,9 +21174,9 @@ export namespace Prisma {
     phone?: string | null
     status?: $Enums.UserStatus
     createdAt?: Date | string
-    rentals?: RentalUncheckedCreateNestedManyWithoutStaffInput
     geofences?: GeofenceUncheckedCreateNestedManyWithoutCreatorInput
     maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutCreatorInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutStaffInput
   }
 
   export type UserCreateOrConnectWithoutRoleInput = {
@@ -21133,57 +21217,6 @@ export namespace Prisma {
     roleId?: IntFilter<"User"> | number
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     createdAt?: DateTimeFilter<"User"> | Date | string
-  }
-
-  export type RoleCreateWithoutUsersInput = {
-    roleName: string
-  }
-
-  export type RoleUncheckedCreateWithoutUsersInput = {
-    roleId?: number
-    roleName: string
-  }
-
-  export type RoleCreateOrConnectWithoutUsersInput = {
-    where: RoleWhereUniqueInput
-    create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
-  }
-
-  export type RentalCreateWithoutStaffInput = {
-    startTime: Date | string
-    endTime?: Date | string | null
-    startKm?: Decimal | DecimalJsLike | number | string
-    endKm?: Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: $Enums.RentalStatus
-    createdAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutRentalsInput
-    customer: CustomerCreateNestedOneWithoutRentalsInput
-    gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
-    alerts?: VehicleAlertCreateNestedManyWithoutRentalInput
-  }
-
-  export type RentalUncheckedCreateWithoutStaffInput = {
-    rentalId?: number
-    vehicleId: number
-    customerId: number
-    startTime: Date | string
-    endTime?: Date | string | null
-    startKm?: Decimal | DecimalJsLike | number | string
-    endKm?: Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: $Enums.RentalStatus
-    createdAt?: Date | string
-    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutRentalInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutRentalInput
-  }
-
-  export type RentalCreateOrConnectWithoutStaffInput = {
-    where: RentalWhereUniqueInput
-    create: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput>
-  }
-
-  export type RentalCreateManyStaffInputEnvelope = {
-    data: RentalCreateManyStaffInput | RentalCreateManyStaffInput[]
-    skipDuplicates?: boolean
   }
 
   export type GeofenceCreateWithoutCreatorInput = {
@@ -21250,56 +21283,57 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type RoleUpsertWithoutUsersInput = {
-    update: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
-    create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
-    where?: RoleWhereInput
+  export type RentalCreateWithoutStaffInput = {
+    startTime: Date | string
+    endTime?: Date | string | null
+    startKm?: Decimal | DecimalJsLike | number | string
+    endKm?: Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: $Enums.RentalStatus
+    createdAt?: Date | string
+    rentalFee?: number
+    gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
+    customer: CustomerCreateNestedOneWithoutRentalsInput
+    vehicle: VehicleCreateNestedOneWithoutRentalsInput
+    alerts?: VehicleAlertCreateNestedManyWithoutRentalInput
   }
 
-  export type RoleUpdateToOneWithWhereWithoutUsersInput = {
-    where?: RoleWhereInput
-    data: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
+  export type RentalUncheckedCreateWithoutStaffInput = {
+    rentalId?: number
+    vehicleId: number
+    customerId: number
+    startTime: Date | string
+    endTime?: Date | string | null
+    startKm?: Decimal | DecimalJsLike | number | string
+    endKm?: Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: $Enums.RentalStatus
+    createdAt?: Date | string
+    rentalFee?: number
+    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutRentalInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutRentalInput
   }
 
-  export type RoleUpdateWithoutUsersInput = {
-    roleName?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type RoleUncheckedUpdateWithoutUsersInput = {
-    roleId?: IntFieldUpdateOperationsInput | number
-    roleName?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type RentalUpsertWithWhereUniqueWithoutStaffInput = {
+  export type RentalCreateOrConnectWithoutStaffInput = {
     where: RentalWhereUniqueInput
-    update: XOR<RentalUpdateWithoutStaffInput, RentalUncheckedUpdateWithoutStaffInput>
     create: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput>
   }
 
-  export type RentalUpdateWithWhereUniqueWithoutStaffInput = {
-    where: RentalWhereUniqueInput
-    data: XOR<RentalUpdateWithoutStaffInput, RentalUncheckedUpdateWithoutStaffInput>
+  export type RentalCreateManyStaffInputEnvelope = {
+    data: RentalCreateManyStaffInput | RentalCreateManyStaffInput[]
+    skipDuplicates?: boolean
   }
 
-  export type RentalUpdateManyWithWhereWithoutStaffInput = {
-    where: RentalScalarWhereInput
-    data: XOR<RentalUpdateManyMutationInput, RentalUncheckedUpdateManyWithoutStaffInput>
+  export type RoleCreateWithoutUsersInput = {
+    roleName: string
   }
 
-  export type RentalScalarWhereInput = {
-    AND?: RentalScalarWhereInput | RentalScalarWhereInput[]
-    OR?: RentalScalarWhereInput[]
-    NOT?: RentalScalarWhereInput | RentalScalarWhereInput[]
-    rentalId?: IntFilter<"Rental"> | number
-    vehicleId?: IntFilter<"Rental"> | number
-    customerId?: IntFilter<"Rental"> | number
-    rentedBy?: IntFilter<"Rental"> | number
-    startTime?: DateTimeFilter<"Rental"> | Date | string
-    endTime?: DateTimeNullableFilter<"Rental"> | Date | string | null
-    startKm?: DecimalFilter<"Rental"> | Decimal | DecimalJsLike | number | string
-    endKm?: DecimalNullableFilter<"Rental"> | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFilter<"Rental"> | $Enums.RentalStatus
-    createdAt?: DateTimeFilter<"Rental"> | Date | string
+  export type RoleUncheckedCreateWithoutUsersInput = {
+    roleId?: number
+    roleName: string
+  }
+
+  export type RoleCreateOrConnectWithoutUsersInput = {
+    where: RoleWhereUniqueInput
+    create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
   }
 
   export type GeofenceUpsertWithWhereUniqueWithoutCreatorInput = {
@@ -21364,6 +21398,59 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"MaintenanceLog"> | Date | string
   }
 
+  export type RentalUpsertWithWhereUniqueWithoutStaffInput = {
+    where: RentalWhereUniqueInput
+    update: XOR<RentalUpdateWithoutStaffInput, RentalUncheckedUpdateWithoutStaffInput>
+    create: XOR<RentalCreateWithoutStaffInput, RentalUncheckedCreateWithoutStaffInput>
+  }
+
+  export type RentalUpdateWithWhereUniqueWithoutStaffInput = {
+    where: RentalWhereUniqueInput
+    data: XOR<RentalUpdateWithoutStaffInput, RentalUncheckedUpdateWithoutStaffInput>
+  }
+
+  export type RentalUpdateManyWithWhereWithoutStaffInput = {
+    where: RentalScalarWhereInput
+    data: XOR<RentalUpdateManyMutationInput, RentalUncheckedUpdateManyWithoutStaffInput>
+  }
+
+  export type RentalScalarWhereInput = {
+    AND?: RentalScalarWhereInput | RentalScalarWhereInput[]
+    OR?: RentalScalarWhereInput[]
+    NOT?: RentalScalarWhereInput | RentalScalarWhereInput[]
+    rentalId?: IntFilter<"Rental"> | number
+    vehicleId?: IntFilter<"Rental"> | number
+    customerId?: IntFilter<"Rental"> | number
+    rentedBy?: IntFilter<"Rental"> | number
+    startTime?: DateTimeFilter<"Rental"> | Date | string
+    endTime?: DateTimeNullableFilter<"Rental"> | Date | string | null
+    startKm?: DecimalFilter<"Rental"> | Decimal | DecimalJsLike | number | string
+    endKm?: DecimalNullableFilter<"Rental"> | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFilter<"Rental"> | $Enums.RentalStatus
+    createdAt?: DateTimeFilter<"Rental"> | Date | string
+    rentalFee?: FloatFilter<"Rental"> | number
+  }
+
+  export type RoleUpsertWithoutUsersInput = {
+    update: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
+    create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
+    where?: RoleWhereInput
+  }
+
+  export type RoleUpdateToOneWithWhereWithoutUsersInput = {
+    where?: RoleWhereInput
+    data: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type RoleUpdateWithoutUsersInput = {
+    roleName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RoleUncheckedUpdateWithoutUsersInput = {
+    roleId?: IntFieldUpdateOperationsInput | number
+    roleName?: StringFieldUpdateOperationsInput | string
+  }
+
   export type UserCreateWithoutGeofencesInput = {
     fullName: string
     email: string
@@ -21371,9 +21458,9 @@ export namespace Prisma {
     phone?: string | null
     status?: $Enums.UserStatus
     createdAt?: Date | string
-    role: RoleCreateNestedOneWithoutUsersInput
-    rentals?: RentalCreateNestedManyWithoutStaffInput
     maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutCreatorInput
+    rentals?: RentalCreateNestedManyWithoutStaffInput
+    role: RoleCreateNestedOneWithoutUsersInput
   }
 
   export type UserUncheckedCreateWithoutGeofencesInput = {
@@ -21385,8 +21472,8 @@ export namespace Prisma {
     roleId: number
     status?: $Enums.UserStatus
     createdAt?: Date | string
-    rentals?: RentalUncheckedCreateNestedManyWithoutStaffInput
     maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutCreatorInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutStaffInput
   }
 
   export type UserCreateOrConnectWithoutGeofencesInput = {
@@ -21439,9 +21526,9 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
-    rentals?: RentalUpdateManyWithoutStaffNestedInput
     maintenanceLogs?: MaintenanceLogUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUpdateManyWithoutStaffNestedInput
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
   }
 
   export type UserUncheckedUpdateWithoutGeofencesInput = {
@@ -21453,8 +21540,8 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    rentals?: RentalUncheckedUpdateManyWithoutStaffNestedInput
     maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutStaffNestedInput
   }
 
   export type VehicleGeofenceLogUpsertWithWhereUniqueWithoutGeofenceInput = {
@@ -21486,50 +21573,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"VehicleGeofenceLog"> | Date | string
   }
 
-  export type VehicleCreateWithoutGeofenceLogsInput = {
-    plateNumber: string
-    vehicleName: string
-    vehicleType: string
-    brand?: string | null
-    model?: string | null
-    color?: string | null
-    yearManufactured?: number | null
-    status?: $Enums.VehicleStatus
-    totalKm?: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
-    rentals?: RentalCreateNestedManyWithoutVehicleInput
-    gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
-    maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
-    monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
-  }
-
-  export type VehicleUncheckedCreateWithoutGeofenceLogsInput = {
-    vehicleId?: number
-    plateNumber: string
-    vehicleName: string
-    vehicleType: string
-    brand?: string | null
-    model?: string | null
-    color?: string | null
-    yearManufactured?: number | null
-    status?: $Enums.VehicleStatus
-    totalKm?: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
-    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
-    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
-    maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
-    monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
-  }
-
-  export type VehicleCreateOrConnectWithoutGeofenceLogsInput = {
-    where: VehicleWhereUniqueInput
-    create: XOR<VehicleCreateWithoutGeofenceLogsInput, VehicleUncheckedCreateWithoutGeofenceLogsInput>
-  }
-
   export type GeofenceCreateWithoutGeofenceLogsInput = {
     geofenceName: string
     geofenceType: $Enums.GeofenceType
@@ -21558,54 +21601,48 @@ export namespace Prisma {
     create: XOR<GeofenceCreateWithoutGeofenceLogsInput, GeofenceUncheckedCreateWithoutGeofenceLogsInput>
   }
 
-  export type VehicleUpsertWithoutGeofenceLogsInput = {
-    update: XOR<VehicleUpdateWithoutGeofenceLogsInput, VehicleUncheckedUpdateWithoutGeofenceLogsInput>
+  export type VehicleCreateWithoutGeofenceLogsInput = {
+    plateNumber: string
+    vehicleName: string
+    vehicleType: string
+    brand?: string | null
+    model?: string | null
+    color?: string | null
+    yearManufactured?: number | null
+    status?: $Enums.VehicleStatus
+    totalKm?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
+    maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
+    monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
+    rentals?: RentalCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
+  }
+
+  export type VehicleUncheckedCreateWithoutGeofenceLogsInput = {
+    vehicleId?: number
+    plateNumber: string
+    vehicleName: string
+    vehicleType: string
+    brand?: string | null
+    model?: string | null
+    color?: string | null
+    yearManufactured?: number | null
+    status?: $Enums.VehicleStatus
+    totalKm?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
+    maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
+    monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
+  }
+
+  export type VehicleCreateOrConnectWithoutGeofenceLogsInput = {
+    where: VehicleWhereUniqueInput
     create: XOR<VehicleCreateWithoutGeofenceLogsInput, VehicleUncheckedCreateWithoutGeofenceLogsInput>
-    where?: VehicleWhereInput
-  }
-
-  export type VehicleUpdateToOneWithWhereWithoutGeofenceLogsInput = {
-    where?: VehicleWhereInput
-    data: XOR<VehicleUpdateWithoutGeofenceLogsInput, VehicleUncheckedUpdateWithoutGeofenceLogsInput>
-  }
-
-  export type VehicleUpdateWithoutGeofenceLogsInput = {
-    plateNumber?: StringFieldUpdateOperationsInput | string
-    vehicleName?: StringFieldUpdateOperationsInput | string
-    vehicleType?: StringFieldUpdateOperationsInput | string
-    brand?: NullableStringFieldUpdateOperationsInput | string | null
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
-    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUpdateManyWithoutVehicleNestedInput
-    gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
-    maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
-    monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
-  }
-
-  export type VehicleUncheckedUpdateWithoutGeofenceLogsInput = {
-    vehicleId?: IntFieldUpdateOperationsInput | number
-    plateNumber?: StringFieldUpdateOperationsInput | string
-    vehicleName?: StringFieldUpdateOperationsInput | string
-    vehicleType?: StringFieldUpdateOperationsInput | string
-    brand?: NullableStringFieldUpdateOperationsInput | string | null
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
-    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
-    gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
-    maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
-    monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type GeofenceUpsertWithoutGeofenceLogsInput = {
@@ -21642,6 +21679,86 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type VehicleUpsertWithoutGeofenceLogsInput = {
+    update: XOR<VehicleUpdateWithoutGeofenceLogsInput, VehicleUncheckedUpdateWithoutGeofenceLogsInput>
+    create: XOR<VehicleCreateWithoutGeofenceLogsInput, VehicleUncheckedCreateWithoutGeofenceLogsInput>
+    where?: VehicleWhereInput
+  }
+
+  export type VehicleUpdateToOneWithWhereWithoutGeofenceLogsInput = {
+    where?: VehicleWhereInput
+    data: XOR<VehicleUpdateWithoutGeofenceLogsInput, VehicleUncheckedUpdateWithoutGeofenceLogsInput>
+  }
+
+  export type VehicleUpdateWithoutGeofenceLogsInput = {
+    plateNumber?: StringFieldUpdateOperationsInput | string
+    vehicleName?: StringFieldUpdateOperationsInput | string
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
+    maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
+    monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
+  }
+
+  export type VehicleUncheckedUpdateWithoutGeofenceLogsInput = {
+    vehicleId?: IntFieldUpdateOperationsInput | number
+    plateNumber?: StringFieldUpdateOperationsInput | string
+    vehicleName?: StringFieldUpdateOperationsInput | string
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
+    maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
+    monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
+  }
+
+  export type UserCreateWithoutMaintenanceLogsInput = {
+    fullName: string
+    email: string
+    passwordHash: string
+    phone?: string | null
+    status?: $Enums.UserStatus
+    createdAt?: Date | string
+    geofences?: GeofenceCreateNestedManyWithoutCreatorInput
+    rentals?: RentalCreateNestedManyWithoutStaffInput
+    role: RoleCreateNestedOneWithoutUsersInput
+  }
+
+  export type UserUncheckedCreateWithoutMaintenanceLogsInput = {
+    userId?: number
+    fullName: string
+    email: string
+    passwordHash: string
+    phone?: string | null
+    roleId: number
+    status?: $Enums.UserStatus
+    createdAt?: Date | string
+    geofences?: GeofenceUncheckedCreateNestedManyWithoutCreatorInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutStaffInput
+  }
+
+  export type UserCreateOrConnectWithoutMaintenanceLogsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMaintenanceLogsInput, UserUncheckedCreateWithoutMaintenanceLogsInput>
+  }
+
   export type VehicleCreateWithoutMaintenanceLogsInput = {
     plateNumber: string
     vehicleName: string
@@ -21653,12 +21770,12 @@ export namespace Prisma {
     status?: $Enums.VehicleStatus
     totalKm?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
-    rentals?: RentalCreateNestedManyWithoutVehicleInput
     gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
     monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
+    rentals?: RentalCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUncheckedCreateWithoutMaintenanceLogsInput = {
@@ -21673,12 +21790,12 @@ export namespace Prisma {
     status?: $Enums.VehicleStatus
     totalKm?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
-    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
     gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
     monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleCreateOrConnectWithoutMaintenanceLogsInput = {
@@ -21686,34 +21803,40 @@ export namespace Prisma {
     create: XOR<VehicleCreateWithoutMaintenanceLogsInput, VehicleUncheckedCreateWithoutMaintenanceLogsInput>
   }
 
-  export type UserCreateWithoutMaintenanceLogsInput = {
-    fullName: string
-    email: string
-    passwordHash: string
-    phone?: string | null
-    status?: $Enums.UserStatus
-    createdAt?: Date | string
-    role: RoleCreateNestedOneWithoutUsersInput
-    rentals?: RentalCreateNestedManyWithoutStaffInput
-    geofences?: GeofenceCreateNestedManyWithoutCreatorInput
-  }
-
-  export type UserUncheckedCreateWithoutMaintenanceLogsInput = {
-    userId?: number
-    fullName: string
-    email: string
-    passwordHash: string
-    phone?: string | null
-    roleId: number
-    status?: $Enums.UserStatus
-    createdAt?: Date | string
-    rentals?: RentalUncheckedCreateNestedManyWithoutStaffInput
-    geofences?: GeofenceUncheckedCreateNestedManyWithoutCreatorInput
-  }
-
-  export type UserCreateOrConnectWithoutMaintenanceLogsInput = {
-    where: UserWhereUniqueInput
+  export type UserUpsertWithoutMaintenanceLogsInput = {
+    update: XOR<UserUpdateWithoutMaintenanceLogsInput, UserUncheckedUpdateWithoutMaintenanceLogsInput>
     create: XOR<UserCreateWithoutMaintenanceLogsInput, UserUncheckedCreateWithoutMaintenanceLogsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMaintenanceLogsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMaintenanceLogsInput, UserUncheckedUpdateWithoutMaintenanceLogsInput>
+  }
+
+  export type UserUpdateWithoutMaintenanceLogsInput = {
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    geofences?: GeofenceUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUpdateManyWithoutStaffNestedInput
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMaintenanceLogsInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    roleId?: IntFieldUpdateOperationsInput | number
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    geofences?: GeofenceUncheckedUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutStaffNestedInput
   }
 
   export type VehicleUpsertWithoutMaintenanceLogsInput = {
@@ -21738,12 +21861,12 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUpdateManyWithoutVehicleNestedInput
     gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
     monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleUncheckedUpdateWithoutMaintenanceLogsInput = {
@@ -21758,48 +21881,12 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
     gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
     monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
-  }
-
-  export type UserUpsertWithoutMaintenanceLogsInput = {
-    update: XOR<UserUpdateWithoutMaintenanceLogsInput, UserUncheckedUpdateWithoutMaintenanceLogsInput>
-    create: XOR<UserCreateWithoutMaintenanceLogsInput, UserUncheckedCreateWithoutMaintenanceLogsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutMaintenanceLogsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutMaintenanceLogsInput, UserUncheckedUpdateWithoutMaintenanceLogsInput>
-  }
-
-  export type UserUpdateWithoutMaintenanceLogsInput = {
-    fullName?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
-    rentals?: RentalUpdateManyWithoutStaffNestedInput
-    geofences?: GeofenceUpdateManyWithoutCreatorNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutMaintenanceLogsInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    fullName?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    roleId?: IntFieldUpdateOperationsInput | number
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    rentals?: RentalUncheckedUpdateManyWithoutStaffNestedInput
-    geofences?: GeofenceUncheckedUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type RentalCreateWithoutCustomerInput = {
@@ -21809,9 +21896,10 @@ export namespace Prisma {
     endKm?: Decimal | DecimalJsLike | number | string | null
     rentalStatus?: $Enums.RentalStatus
     createdAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutRentalsInput
-    staff: UserCreateNestedOneWithoutRentalsInput
+    rentalFee?: number
     gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
+    staff: UserCreateNestedOneWithoutRentalsInput
+    vehicle: VehicleCreateNestedOneWithoutRentalsInput
     alerts?: VehicleAlertCreateNestedManyWithoutRentalInput
   }
 
@@ -21825,6 +21913,7 @@ export namespace Prisma {
     endKm?: Decimal | DecimalJsLike | number | string | null
     rentalStatus?: $Enums.RentalStatus
     createdAt?: Date | string
+    rentalFee?: number
     gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutRentalInput
     alerts?: VehicleAlertUncheckedCreateNestedManyWithoutRentalInput
   }
@@ -21855,48 +21944,39 @@ export namespace Prisma {
     data: XOR<RentalUpdateManyMutationInput, RentalUncheckedUpdateManyWithoutCustomerInput>
   }
 
-  export type VehicleCreateWithoutRentalsInput = {
-    plateNumber: string
-    vehicleName: string
-    vehicleType: string
-    brand?: string | null
-    model?: string | null
-    color?: string | null
-    yearManufactured?: number | null
-    status?: $Enums.VehicleStatus
-    totalKm?: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
-    gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
-    maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
-    monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
+  export type GpsLogCreateWithoutRentalInput = {
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    speedKmh?: Decimal | DecimalJsLike | number | string
+    gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
+    homeLatitude?: Decimal | DecimalJsLike | number | string | null
+    homeLongitude?: Decimal | DecimalJsLike | number | string | null
+    vehicle: VehicleCreateNestedOneWithoutGpsLogsInput
   }
 
-  export type VehicleUncheckedCreateWithoutRentalsInput = {
-    vehicleId?: number
-    plateNumber: string
-    vehicleName: string
-    vehicleType: string
-    brand?: string | null
-    model?: string | null
-    color?: string | null
-    yearManufactured?: number | null
-    status?: $Enums.VehicleStatus
-    totalKm?: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
-    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
-    maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
-    monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
+  export type GpsLogUncheckedCreateWithoutRentalInput = {
+    gpsLogId?: number
+    vehicleId: number
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    speedKmh?: Decimal | DecimalJsLike | number | string
+    gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
+    homeLatitude?: Decimal | DecimalJsLike | number | string | null
+    homeLongitude?: Decimal | DecimalJsLike | number | string | null
   }
 
-  export type VehicleCreateOrConnectWithoutRentalsInput = {
-    where: VehicleWhereUniqueInput
-    create: XOR<VehicleCreateWithoutRentalsInput, VehicleUncheckedCreateWithoutRentalsInput>
+  export type GpsLogCreateOrConnectWithoutRentalInput = {
+    where: GpsLogWhereUniqueInput
+    create: XOR<GpsLogCreateWithoutRentalInput, GpsLogUncheckedCreateWithoutRentalInput>
+  }
+
+  export type GpsLogCreateManyRentalInputEnvelope = {
+    data: GpsLogCreateManyRentalInput | GpsLogCreateManyRentalInput[]
+    skipDuplicates?: boolean
   }
 
   export type CustomerCreateWithoutRentalsInput = {
@@ -21930,9 +22010,9 @@ export namespace Prisma {
     phone?: string | null
     status?: $Enums.UserStatus
     createdAt?: Date | string
-    role: RoleCreateNestedOneWithoutUsersInput
     geofences?: GeofenceCreateNestedManyWithoutCreatorInput
     maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutCreatorInput
+    role: RoleCreateNestedOneWithoutUsersInput
   }
 
   export type UserUncheckedCreateWithoutRentalsInput = {
@@ -21953,39 +22033,48 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutRentalsInput, UserUncheckedCreateWithoutRentalsInput>
   }
 
-  export type GpsLogCreateWithoutRentalInput = {
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
-    speedKmh?: Decimal | DecimalJsLike | number | string
-    gpsStatus?: $Enums.GpsStatus
-    homeLatitude?: Decimal | DecimalJsLike | number | string | null
-    homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutGpsLogsInput
+  export type VehicleCreateWithoutRentalsInput = {
+    plateNumber: string
+    vehicleName: string
+    vehicleType: string
+    brand?: string | null
+    model?: string | null
+    color?: string | null
+    yearManufactured?: number | null
+    status?: $Enums.VehicleStatus
+    totalKm?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
+    maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
+    monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
   }
 
-  export type GpsLogUncheckedCreateWithoutRentalInput = {
-    gpsLogId?: number
-    vehicleId: number
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
-    speedKmh?: Decimal | DecimalJsLike | number | string
-    gpsStatus?: $Enums.GpsStatus
-    homeLatitude?: Decimal | DecimalJsLike | number | string | null
-    homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
+  export type VehicleUncheckedCreateWithoutRentalsInput = {
+    vehicleId?: number
+    plateNumber: string
+    vehicleName: string
+    vehicleType: string
+    brand?: string | null
+    model?: string | null
+    color?: string | null
+    yearManufactured?: number | null
+    status?: $Enums.VehicleStatus
+    totalKm?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
+    maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
+    monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
   }
 
-  export type GpsLogCreateOrConnectWithoutRentalInput = {
-    where: GpsLogWhereUniqueInput
-    create: XOR<GpsLogCreateWithoutRentalInput, GpsLogUncheckedCreateWithoutRentalInput>
-  }
-
-  export type GpsLogCreateManyRentalInputEnvelope = {
-    data: GpsLogCreateManyRentalInput | GpsLogCreateManyRentalInput[]
-    skipDuplicates?: boolean
+  export type VehicleCreateOrConnectWithoutRentalsInput = {
+    where: VehicleWhereUniqueInput
+    create: XOR<VehicleCreateWithoutRentalsInput, VehicleUncheckedCreateWithoutRentalsInput>
   }
 
   export type VehicleAlertCreateWithoutRentalInput = {
@@ -21995,8 +22084,8 @@ export namespace Prisma {
     alertMessage?: string | null
     isAcknowledged?: boolean
     acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
     createdAt?: Date | string
+    resolvedAt?: Date | string | null
     vehicle: VehicleCreateNestedOneWithoutAlertsInput
   }
 
@@ -22009,8 +22098,8 @@ export namespace Prisma {
     alertMessage?: string | null
     isAcknowledged?: boolean
     acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
     createdAt?: Date | string
+    resolvedAt?: Date | string | null
   }
 
   export type VehicleAlertCreateOrConnectWithoutRentalInput = {
@@ -22023,54 +22112,37 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type VehicleUpsertWithoutRentalsInput = {
-    update: XOR<VehicleUpdateWithoutRentalsInput, VehicleUncheckedUpdateWithoutRentalsInput>
-    create: XOR<VehicleCreateWithoutRentalsInput, VehicleUncheckedCreateWithoutRentalsInput>
-    where?: VehicleWhereInput
+  export type GpsLogUpsertWithWhereUniqueWithoutRentalInput = {
+    where: GpsLogWhereUniqueInput
+    update: XOR<GpsLogUpdateWithoutRentalInput, GpsLogUncheckedUpdateWithoutRentalInput>
+    create: XOR<GpsLogCreateWithoutRentalInput, GpsLogUncheckedCreateWithoutRentalInput>
   }
 
-  export type VehicleUpdateToOneWithWhereWithoutRentalsInput = {
-    where?: VehicleWhereInput
-    data: XOR<VehicleUpdateWithoutRentalsInput, VehicleUncheckedUpdateWithoutRentalsInput>
+  export type GpsLogUpdateWithWhereUniqueWithoutRentalInput = {
+    where: GpsLogWhereUniqueInput
+    data: XOR<GpsLogUpdateWithoutRentalInput, GpsLogUncheckedUpdateWithoutRentalInput>
   }
 
-  export type VehicleUpdateWithoutRentalsInput = {
-    plateNumber?: StringFieldUpdateOperationsInput | string
-    vehicleName?: StringFieldUpdateOperationsInput | string
-    vehicleType?: StringFieldUpdateOperationsInput | string
-    brand?: NullableStringFieldUpdateOperationsInput | string | null
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
-    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
-    gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
-    maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
-    monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
+  export type GpsLogUpdateManyWithWhereWithoutRentalInput = {
+    where: GpsLogScalarWhereInput
+    data: XOR<GpsLogUpdateManyMutationInput, GpsLogUncheckedUpdateManyWithoutRentalInput>
   }
 
-  export type VehicleUncheckedUpdateWithoutRentalsInput = {
-    vehicleId?: IntFieldUpdateOperationsInput | number
-    plateNumber?: StringFieldUpdateOperationsInput | string
-    vehicleName?: StringFieldUpdateOperationsInput | string
-    vehicleType?: StringFieldUpdateOperationsInput | string
-    brand?: NullableStringFieldUpdateOperationsInput | string | null
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
-    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
-    gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
-    maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
-    monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
+  export type GpsLogScalarWhereInput = {
+    AND?: GpsLogScalarWhereInput | GpsLogScalarWhereInput[]
+    OR?: GpsLogScalarWhereInput[]
+    NOT?: GpsLogScalarWhereInput | GpsLogScalarWhereInput[]
+    gpsLogId?: IntFilter<"GpsLog"> | number
+    vehicleId?: IntFilter<"GpsLog"> | number
+    rentalId?: IntNullableFilter<"GpsLog"> | number | null
+    latitude?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
+    speedKmh?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
+    gpsStatus?: EnumGpsStatusFilter<"GpsLog"> | $Enums.GpsStatus
+    recordedAt?: DateTimeFilter<"GpsLog"> | Date | string
+    distanceFromHome?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
+    homeLatitude?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
+    homeLongitude?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type CustomerUpsertWithoutRentalsInput = {
@@ -22121,9 +22193,9 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     geofences?: GeofenceUpdateManyWithoutCreatorNestedInput
     maintenanceLogs?: MaintenanceLogUpdateManyWithoutCreatorNestedInput
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRentalsInput = {
@@ -22139,37 +22211,54 @@ export namespace Prisma {
     maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
-  export type GpsLogUpsertWithWhereUniqueWithoutRentalInput = {
-    where: GpsLogWhereUniqueInput
-    update: XOR<GpsLogUpdateWithoutRentalInput, GpsLogUncheckedUpdateWithoutRentalInput>
-    create: XOR<GpsLogCreateWithoutRentalInput, GpsLogUncheckedCreateWithoutRentalInput>
+  export type VehicleUpsertWithoutRentalsInput = {
+    update: XOR<VehicleUpdateWithoutRentalsInput, VehicleUncheckedUpdateWithoutRentalsInput>
+    create: XOR<VehicleCreateWithoutRentalsInput, VehicleUncheckedCreateWithoutRentalsInput>
+    where?: VehicleWhereInput
   }
 
-  export type GpsLogUpdateWithWhereUniqueWithoutRentalInput = {
-    where: GpsLogWhereUniqueInput
-    data: XOR<GpsLogUpdateWithoutRentalInput, GpsLogUncheckedUpdateWithoutRentalInput>
+  export type VehicleUpdateToOneWithWhereWithoutRentalsInput = {
+    where?: VehicleWhereInput
+    data: XOR<VehicleUpdateWithoutRentalsInput, VehicleUncheckedUpdateWithoutRentalsInput>
   }
 
-  export type GpsLogUpdateManyWithWhereWithoutRentalInput = {
-    where: GpsLogScalarWhereInput
-    data: XOR<GpsLogUpdateManyMutationInput, GpsLogUncheckedUpdateManyWithoutRentalInput>
+  export type VehicleUpdateWithoutRentalsInput = {
+    plateNumber?: StringFieldUpdateOperationsInput | string
+    vehicleName?: StringFieldUpdateOperationsInput | string
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
+    maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
+    monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
   }
 
-  export type GpsLogScalarWhereInput = {
-    AND?: GpsLogScalarWhereInput | GpsLogScalarWhereInput[]
-    OR?: GpsLogScalarWhereInput[]
-    NOT?: GpsLogScalarWhereInput | GpsLogScalarWhereInput[]
-    gpsLogId?: IntFilter<"GpsLog"> | number
-    vehicleId?: IntFilter<"GpsLog"> | number
-    rentalId?: IntNullableFilter<"GpsLog"> | number | null
-    latitude?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
-    speedKmh?: DecimalFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string
-    gpsStatus?: EnumGpsStatusFilter<"GpsLog"> | $Enums.GpsStatus
-    homeLatitude?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    homeLongitude?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: DecimalNullableFilter<"GpsLog"> | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFilter<"GpsLog"> | Date | string
+  export type VehicleUncheckedUpdateWithoutRentalsInput = {
+    vehicleId?: IntFieldUpdateOperationsInput | number
+    plateNumber?: StringFieldUpdateOperationsInput | string
+    vehicleName?: StringFieldUpdateOperationsInput | string
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
+    maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
+    monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleAlertUpsertWithWhereUniqueWithoutRentalInput = {
@@ -22201,8 +22290,8 @@ export namespace Prisma {
     alertMessage?: StringNullableFilter<"VehicleAlert"> | string | null
     isAcknowledged?: BoolFilter<"VehicleAlert"> | boolean
     acknowledgedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
-    resolvedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
     createdAt?: DateTimeFilter<"VehicleAlert"> | Date | string
+    resolvedAt?: DateTimeNullableFilter<"VehicleAlert"> | Date | string | null
   }
 
   export type VehicleCreateWithoutMonthlyReportsInput = {
@@ -22216,12 +22305,12 @@ export namespace Prisma {
     status?: $Enums.VehicleStatus
     totalKm?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
-    rentals?: RentalCreateNestedManyWithoutVehicleInput
     gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
     maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
+    rentals?: RentalCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUncheckedCreateWithoutMonthlyReportsInput = {
@@ -22236,12 +22325,12 @@ export namespace Prisma {
     status?: $Enums.VehicleStatus
     totalKm?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
-    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
     gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
     maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleCreateOrConnectWithoutMonthlyReportsInput = {
@@ -22271,12 +22360,12 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUpdateManyWithoutVehicleNestedInput
     gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
     maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleUncheckedUpdateWithoutMonthlyReportsInput = {
@@ -22291,56 +22380,12 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
     gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
     maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
-  }
-
-  export type VehicleCreateWithoutGpsLogsInput = {
-    plateNumber: string
-    vehicleName: string
-    vehicleType: string
-    brand?: string | null
-    model?: string | null
-    color?: string | null
-    yearManufactured?: number | null
-    status?: $Enums.VehicleStatus
-    totalKm?: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
-    rentals?: RentalCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
-    maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
-    monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
-  }
-
-  export type VehicleUncheckedCreateWithoutGpsLogsInput = {
-    vehicleId?: number
-    plateNumber: string
-    vehicleName: string
-    vehicleType: string
-    brand?: string | null
-    model?: string | null
-    color?: string | null
-    yearManufactured?: number | null
-    status?: $Enums.VehicleStatus
-    totalKm?: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
-    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
-    maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
-    monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
-  }
-
-  export type VehicleCreateOrConnectWithoutGpsLogsInput = {
-    where: VehicleWhereUniqueInput
-    create: XOR<VehicleCreateWithoutGpsLogsInput, VehicleUncheckedCreateWithoutGpsLogsInput>
+    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type RentalCreateWithoutGpsLogsInput = {
@@ -22350,9 +22395,10 @@ export namespace Prisma {
     endKm?: Decimal | DecimalJsLike | number | string | null
     rentalStatus?: $Enums.RentalStatus
     createdAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutRentalsInput
+    rentalFee?: number
     customer: CustomerCreateNestedOneWithoutRentalsInput
     staff: UserCreateNestedOneWithoutRentalsInput
+    vehicle: VehicleCreateNestedOneWithoutRentalsInput
     alerts?: VehicleAlertCreateNestedManyWithoutRentalInput
   }
 
@@ -22367,12 +22413,97 @@ export namespace Prisma {
     endKm?: Decimal | DecimalJsLike | number | string | null
     rentalStatus?: $Enums.RentalStatus
     createdAt?: Date | string
+    rentalFee?: number
     alerts?: VehicleAlertUncheckedCreateNestedManyWithoutRentalInput
   }
 
   export type RentalCreateOrConnectWithoutGpsLogsInput = {
     where: RentalWhereUniqueInput
     create: XOR<RentalCreateWithoutGpsLogsInput, RentalUncheckedCreateWithoutGpsLogsInput>
+  }
+
+  export type VehicleCreateWithoutGpsLogsInput = {
+    plateNumber: string
+    vehicleName: string
+    vehicleType: string
+    brand?: string | null
+    model?: string | null
+    color?: string | null
+    yearManufactured?: number | null
+    status?: $Enums.VehicleStatus
+    totalKm?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
+    monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
+    rentals?: RentalCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
+  }
+
+  export type VehicleUncheckedCreateWithoutGpsLogsInput = {
+    vehicleId?: number
+    plateNumber: string
+    vehicleName: string
+    vehicleType: string
+    brand?: string | null
+    model?: string | null
+    color?: string | null
+    yearManufactured?: number | null
+    status?: $Enums.VehicleStatus
+    totalKm?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
+    monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
+  }
+
+  export type VehicleCreateOrConnectWithoutGpsLogsInput = {
+    where: VehicleWhereUniqueInput
+    create: XOR<VehicleCreateWithoutGpsLogsInput, VehicleUncheckedCreateWithoutGpsLogsInput>
+  }
+
+  export type RentalUpsertWithoutGpsLogsInput = {
+    update: XOR<RentalUpdateWithoutGpsLogsInput, RentalUncheckedUpdateWithoutGpsLogsInput>
+    create: XOR<RentalCreateWithoutGpsLogsInput, RentalUncheckedCreateWithoutGpsLogsInput>
+    where?: RentalWhereInput
+  }
+
+  export type RentalUpdateToOneWithWhereWithoutGpsLogsInput = {
+    where?: RentalWhereInput
+    data: XOR<RentalUpdateWithoutGpsLogsInput, RentalUncheckedUpdateWithoutGpsLogsInput>
+  }
+
+  export type RentalUpdateWithoutGpsLogsInput = {
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
+    staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutRentalNestedInput
+  }
+
+  export type RentalUncheckedUpdateWithoutGpsLogsInput = {
+    rentalId?: IntFieldUpdateOperationsInput | number
+    vehicleId?: IntFieldUpdateOperationsInput | number
+    customerId?: IntFieldUpdateOperationsInput | number
+    rentedBy?: IntFieldUpdateOperationsInput | number
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutRentalNestedInput
   }
 
   export type VehicleUpsertWithoutGpsLogsInput = {
@@ -22397,12 +22528,12 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
     maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
     monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleUncheckedUpdateWithoutGpsLogsInput = {
@@ -22417,50 +22548,46 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
     maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
     monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
-  export type RentalUpsertWithoutGpsLogsInput = {
-    update: XOR<RentalUpdateWithoutGpsLogsInput, RentalUncheckedUpdateWithoutGpsLogsInput>
-    create: XOR<RentalCreateWithoutGpsLogsInput, RentalUncheckedCreateWithoutGpsLogsInput>
-    where?: RentalWhereInput
+  export type RentalCreateWithoutAlertsInput = {
+    startTime: Date | string
+    endTime?: Date | string | null
+    startKm?: Decimal | DecimalJsLike | number | string
+    endKm?: Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: $Enums.RentalStatus
+    createdAt?: Date | string
+    rentalFee?: number
+    gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
+    customer: CustomerCreateNestedOneWithoutRentalsInput
+    staff: UserCreateNestedOneWithoutRentalsInput
+    vehicle: VehicleCreateNestedOneWithoutRentalsInput
   }
 
-  export type RentalUpdateToOneWithWhereWithoutGpsLogsInput = {
-    where?: RentalWhereInput
-    data: XOR<RentalUpdateWithoutGpsLogsInput, RentalUncheckedUpdateWithoutGpsLogsInput>
+  export type RentalUncheckedCreateWithoutAlertsInput = {
+    rentalId?: number
+    vehicleId: number
+    customerId: number
+    rentedBy: number
+    startTime: Date | string
+    endTime?: Date | string | null
+    startKm?: Decimal | DecimalJsLike | number | string
+    endKm?: Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: $Enums.RentalStatus
+    createdAt?: Date | string
+    rentalFee?: number
+    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutRentalInput
   }
 
-  export type RentalUpdateWithoutGpsLogsInput = {
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
-    customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
-    staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutRentalNestedInput
-  }
-
-  export type RentalUncheckedUpdateWithoutGpsLogsInput = {
-    rentalId?: IntFieldUpdateOperationsInput | number
-    vehicleId?: IntFieldUpdateOperationsInput | number
-    customerId?: IntFieldUpdateOperationsInput | number
-    rentedBy?: IntFieldUpdateOperationsInput | number
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutRentalNestedInput
+  export type RentalCreateOrConnectWithoutAlertsInput = {
+    where: RentalWhereUniqueInput
+    create: XOR<RentalCreateWithoutAlertsInput, RentalUncheckedCreateWithoutAlertsInput>
   }
 
   export type VehicleCreateWithoutAlertsInput = {
@@ -22474,12 +22601,12 @@ export namespace Prisma {
     status?: $Enums.VehicleStatus
     totalKm?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
-    rentals?: RentalCreateNestedManyWithoutVehicleInput
     gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
     maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
     monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
+    rentals?: RentalCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleUncheckedCreateWithoutAlertsInput = {
@@ -22494,12 +22621,12 @@ export namespace Prisma {
     status?: $Enums.VehicleStatus
     totalKm?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
-    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
     gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
     maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
     monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
   }
 
   export type VehicleCreateOrConnectWithoutAlertsInput = {
@@ -22507,36 +22634,44 @@ export namespace Prisma {
     create: XOR<VehicleCreateWithoutAlertsInput, VehicleUncheckedCreateWithoutAlertsInput>
   }
 
-  export type RentalCreateWithoutAlertsInput = {
-    startTime: Date | string
-    endTime?: Date | string | null
-    startKm?: Decimal | DecimalJsLike | number | string
-    endKm?: Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: $Enums.RentalStatus
-    createdAt?: Date | string
-    vehicle: VehicleCreateNestedOneWithoutRentalsInput
-    customer: CustomerCreateNestedOneWithoutRentalsInput
-    staff: UserCreateNestedOneWithoutRentalsInput
-    gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
-  }
-
-  export type RentalUncheckedCreateWithoutAlertsInput = {
-    rentalId?: number
-    vehicleId: number
-    customerId: number
-    rentedBy: number
-    startTime: Date | string
-    endTime?: Date | string | null
-    startKm?: Decimal | DecimalJsLike | number | string
-    endKm?: Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: $Enums.RentalStatus
-    createdAt?: Date | string
-    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutRentalInput
-  }
-
-  export type RentalCreateOrConnectWithoutAlertsInput = {
-    where: RentalWhereUniqueInput
+  export type RentalUpsertWithoutAlertsInput = {
+    update: XOR<RentalUpdateWithoutAlertsInput, RentalUncheckedUpdateWithoutAlertsInput>
     create: XOR<RentalCreateWithoutAlertsInput, RentalUncheckedCreateWithoutAlertsInput>
+    where?: RentalWhereInput
+  }
+
+  export type RentalUpdateToOneWithWhereWithoutAlertsInput = {
+    where?: RentalWhereInput
+    data: XOR<RentalUpdateWithoutAlertsInput, RentalUncheckedUpdateWithoutAlertsInput>
+  }
+
+  export type RentalUpdateWithoutAlertsInput = {
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
+    customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
+    staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
+  }
+
+  export type RentalUncheckedUpdateWithoutAlertsInput = {
+    rentalId?: IntFieldUpdateOperationsInput | number
+    vehicleId?: IntFieldUpdateOperationsInput | number
+    customerId?: IntFieldUpdateOperationsInput | number
+    rentedBy?: IntFieldUpdateOperationsInput | number
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    gpsLogs?: GpsLogUncheckedUpdateManyWithoutRentalNestedInput
   }
 
   export type VehicleUpsertWithoutAlertsInput = {
@@ -22561,12 +22696,12 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUpdateManyWithoutVehicleNestedInput
     gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
     maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
     monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
   }
 
   export type VehicleUncheckedUpdateWithoutAlertsInput = {
@@ -22581,112 +22716,12 @@ export namespace Prisma {
     status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
     totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
-    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
     gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
     maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
     monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
-  }
-
-  export type RentalUpsertWithoutAlertsInput = {
-    update: XOR<RentalUpdateWithoutAlertsInput, RentalUncheckedUpdateWithoutAlertsInput>
-    create: XOR<RentalCreateWithoutAlertsInput, RentalUncheckedCreateWithoutAlertsInput>
-    where?: RentalWhereInput
-  }
-
-  export type RentalUpdateToOneWithWhereWithoutAlertsInput = {
-    where?: RentalWhereInput
-    data: XOR<RentalUpdateWithoutAlertsInput, RentalUncheckedUpdateWithoutAlertsInput>
-  }
-
-  export type RentalUpdateWithoutAlertsInput = {
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
-    customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
-    staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
-    gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
-  }
-
-  export type RentalUncheckedUpdateWithoutAlertsInput = {
-    rentalId?: IntFieldUpdateOperationsInput | number
-    vehicleId?: IntFieldUpdateOperationsInput | number
-    customerId?: IntFieldUpdateOperationsInput | number
-    rentedBy?: IntFieldUpdateOperationsInput | number
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    gpsLogs?: GpsLogUncheckedUpdateManyWithoutRentalNestedInput
-  }
-
-  export type VehicleDeviceAssignmentCreateWithoutVehicleInput = {
-    assignedAt?: Date | string
-    removedAt?: Date | string | null
-    isActive?: boolean
-    device: IotDeviceCreateNestedOneWithoutAssignmentsInput
-  }
-
-  export type VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput = {
-    assignmentId?: number
-    deviceId: number
-    assignedAt?: Date | string
-    removedAt?: Date | string | null
-    isActive?: boolean
-  }
-
-  export type VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput = {
-    where: VehicleDeviceAssignmentWhereUniqueInput
-    create: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput>
-  }
-
-  export type VehicleDeviceAssignmentCreateManyVehicleInputEnvelope = {
-    data: VehicleDeviceAssignmentCreateManyVehicleInput | VehicleDeviceAssignmentCreateManyVehicleInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type RentalCreateWithoutVehicleInput = {
-    startTime: Date | string
-    endTime?: Date | string | null
-    startKm?: Decimal | DecimalJsLike | number | string
-    endKm?: Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: $Enums.RentalStatus
-    createdAt?: Date | string
-    customer: CustomerCreateNestedOneWithoutRentalsInput
-    staff: UserCreateNestedOneWithoutRentalsInput
-    gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
-    alerts?: VehicleAlertCreateNestedManyWithoutRentalInput
-  }
-
-  export type RentalUncheckedCreateWithoutVehicleInput = {
-    rentalId?: number
-    customerId: number
-    rentedBy: number
-    startTime: Date | string
-    endTime?: Date | string | null
-    startKm?: Decimal | DecimalJsLike | number | string
-    endKm?: Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: $Enums.RentalStatus
-    createdAt?: Date | string
-    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutRentalInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutRentalInput
-  }
-
-  export type RentalCreateOrConnectWithoutVehicleInput = {
-    where: RentalWhereUniqueInput
-    create: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput>
-  }
-
-  export type RentalCreateManyVehicleInputEnvelope = {
-    data: RentalCreateManyVehicleInput | RentalCreateManyVehicleInput[]
-    skipDuplicates?: boolean
+    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
+    deviceAssignments?: VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type GpsLogCreateWithoutVehicleInput = {
@@ -22694,10 +22729,10 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     speedKmh?: Decimal | DecimalJsLike | number | string
     gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
     homeLatitude?: Decimal | DecimalJsLike | number | string | null
     homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
     rental?: RentalCreateNestedOneWithoutGpsLogsInput
   }
 
@@ -22708,10 +22743,10 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     speedKmh?: Decimal | DecimalJsLike | number | string
     gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
     homeLatitude?: Decimal | DecimalJsLike | number | string | null
     homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
   }
 
   export type GpsLogCreateOrConnectWithoutVehicleInput = {
@@ -22721,68 +22756,6 @@ export namespace Prisma {
 
   export type GpsLogCreateManyVehicleInputEnvelope = {
     data: GpsLogCreateManyVehicleInput | GpsLogCreateManyVehicleInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type VehicleAlertCreateWithoutVehicleInput = {
-    alertType: $Enums.AlertType
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    alertMessage?: string | null
-    isAcknowledged?: boolean
-    acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
-    createdAt?: Date | string
-    rental?: RentalCreateNestedOneWithoutAlertsInput
-  }
-
-  export type VehicleAlertUncheckedCreateWithoutVehicleInput = {
-    alertId?: number
-    rentalId?: number | null
-    alertType: $Enums.AlertType
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    alertMessage?: string | null
-    isAcknowledged?: boolean
-    acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
-    createdAt?: Date | string
-  }
-
-  export type VehicleAlertCreateOrConnectWithoutVehicleInput = {
-    where: VehicleAlertWhereUniqueInput
-    create: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput>
-  }
-
-  export type VehicleAlertCreateManyVehicleInputEnvelope = {
-    data: VehicleAlertCreateManyVehicleInput | VehicleAlertCreateManyVehicleInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type VehicleGeofenceLogCreateWithoutVehicleInput = {
-    eventType: $Enums.GeofenceEvent
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    geofence: GeofenceCreateNestedOneWithoutGeofenceLogsInput
-  }
-
-  export type VehicleGeofenceLogUncheckedCreateWithoutVehicleInput = {
-    geofenceLogId?: number
-    geofenceId: number
-    eventType: $Enums.GeofenceEvent
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-  }
-
-  export type VehicleGeofenceLogCreateOrConnectWithoutVehicleInput = {
-    where: VehicleGeofenceLogWhereUniqueInput
-    create: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput>
-  }
-
-  export type VehicleGeofenceLogCreateManyVehicleInputEnvelope = {
-    data: VehicleGeofenceLogCreateManyVehicleInput | VehicleGeofenceLogCreateManyVehicleInput[]
     skipDuplicates?: boolean
   }
 
@@ -22846,48 +22819,130 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type VehicleDeviceAssignmentUpsertWithWhereUniqueWithoutVehicleInput = {
-    where: VehicleDeviceAssignmentWhereUniqueInput
-    update: XOR<VehicleDeviceAssignmentUpdateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedUpdateWithoutVehicleInput>
-    create: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput>
+  export type RentalCreateWithoutVehicleInput = {
+    startTime: Date | string
+    endTime?: Date | string | null
+    startKm?: Decimal | DecimalJsLike | number | string
+    endKm?: Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: $Enums.RentalStatus
+    createdAt?: Date | string
+    rentalFee?: number
+    gpsLogs?: GpsLogCreateNestedManyWithoutRentalInput
+    customer: CustomerCreateNestedOneWithoutRentalsInput
+    staff: UserCreateNestedOneWithoutRentalsInput
+    alerts?: VehicleAlertCreateNestedManyWithoutRentalInput
   }
 
-  export type VehicleDeviceAssignmentUpdateWithWhereUniqueWithoutVehicleInput = {
-    where: VehicleDeviceAssignmentWhereUniqueInput
-    data: XOR<VehicleDeviceAssignmentUpdateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedUpdateWithoutVehicleInput>
+  export type RentalUncheckedCreateWithoutVehicleInput = {
+    rentalId?: number
+    customerId: number
+    rentedBy: number
+    startTime: Date | string
+    endTime?: Date | string | null
+    startKm?: Decimal | DecimalJsLike | number | string
+    endKm?: Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: $Enums.RentalStatus
+    createdAt?: Date | string
+    rentalFee?: number
+    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutRentalInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutRentalInput
   }
 
-  export type VehicleDeviceAssignmentUpdateManyWithWhereWithoutVehicleInput = {
-    where: VehicleDeviceAssignmentScalarWhereInput
-    data: XOR<VehicleDeviceAssignmentUpdateManyMutationInput, VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleInput>
-  }
-
-  export type VehicleDeviceAssignmentScalarWhereInput = {
-    AND?: VehicleDeviceAssignmentScalarWhereInput | VehicleDeviceAssignmentScalarWhereInput[]
-    OR?: VehicleDeviceAssignmentScalarWhereInput[]
-    NOT?: VehicleDeviceAssignmentScalarWhereInput | VehicleDeviceAssignmentScalarWhereInput[]
-    assignmentId?: IntFilter<"VehicleDeviceAssignment"> | number
-    vehicleId?: IntFilter<"VehicleDeviceAssignment"> | number
-    deviceId?: IntFilter<"VehicleDeviceAssignment"> | number
-    assignedAt?: DateTimeFilter<"VehicleDeviceAssignment"> | Date | string
-    removedAt?: DateTimeNullableFilter<"VehicleDeviceAssignment"> | Date | string | null
-    isActive?: BoolFilter<"VehicleDeviceAssignment"> | boolean
-  }
-
-  export type RentalUpsertWithWhereUniqueWithoutVehicleInput = {
+  export type RentalCreateOrConnectWithoutVehicleInput = {
     where: RentalWhereUniqueInput
-    update: XOR<RentalUpdateWithoutVehicleInput, RentalUncheckedUpdateWithoutVehicleInput>
     create: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput>
   }
 
-  export type RentalUpdateWithWhereUniqueWithoutVehicleInput = {
-    where: RentalWhereUniqueInput
-    data: XOR<RentalUpdateWithoutVehicleInput, RentalUncheckedUpdateWithoutVehicleInput>
+  export type RentalCreateManyVehicleInputEnvelope = {
+    data: RentalCreateManyVehicleInput | RentalCreateManyVehicleInput[]
+    skipDuplicates?: boolean
   }
 
-  export type RentalUpdateManyWithWhereWithoutVehicleInput = {
-    where: RentalScalarWhereInput
-    data: XOR<RentalUpdateManyMutationInput, RentalUncheckedUpdateManyWithoutVehicleInput>
+  export type VehicleAlertCreateWithoutVehicleInput = {
+    alertType: $Enums.AlertType
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    alertMessage?: string | null
+    isAcknowledged?: boolean
+    acknowledgedAt?: Date | string | null
+    createdAt?: Date | string
+    resolvedAt?: Date | string | null
+    rental?: RentalCreateNestedOneWithoutAlertsInput
+  }
+
+  export type VehicleAlertUncheckedCreateWithoutVehicleInput = {
+    alertId?: number
+    rentalId?: number | null
+    alertType: $Enums.AlertType
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    alertMessage?: string | null
+    isAcknowledged?: boolean
+    acknowledgedAt?: Date | string | null
+    createdAt?: Date | string
+    resolvedAt?: Date | string | null
+  }
+
+  export type VehicleAlertCreateOrConnectWithoutVehicleInput = {
+    where: VehicleAlertWhereUniqueInput
+    create: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type VehicleAlertCreateManyVehicleInputEnvelope = {
+    data: VehicleAlertCreateManyVehicleInput | VehicleAlertCreateManyVehicleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VehicleDeviceAssignmentCreateWithoutVehicleInput = {
+    assignedAt?: Date | string
+    removedAt?: Date | string | null
+    isActive?: boolean
+    device: IotDeviceCreateNestedOneWithoutAssignmentsInput
+  }
+
+  export type VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput = {
+    assignmentId?: number
+    deviceId: number
+    assignedAt?: Date | string
+    removedAt?: Date | string | null
+    isActive?: boolean
+  }
+
+  export type VehicleDeviceAssignmentCreateOrConnectWithoutVehicleInput = {
+    where: VehicleDeviceAssignmentWhereUniqueInput
+    create: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type VehicleDeviceAssignmentCreateManyVehicleInputEnvelope = {
+    data: VehicleDeviceAssignmentCreateManyVehicleInput | VehicleDeviceAssignmentCreateManyVehicleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VehicleGeofenceLogCreateWithoutVehicleInput = {
+    eventType: $Enums.GeofenceEvent
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    geofence: GeofenceCreateNestedOneWithoutGeofenceLogsInput
+  }
+
+  export type VehicleGeofenceLogUncheckedCreateWithoutVehicleInput = {
+    geofenceLogId?: number
+    geofenceId: number
+    eventType: $Enums.GeofenceEvent
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+  }
+
+  export type VehicleGeofenceLogCreateOrConnectWithoutVehicleInput = {
+    where: VehicleGeofenceLogWhereUniqueInput
+    create: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type VehicleGeofenceLogCreateManyVehicleInputEnvelope = {
+    data: VehicleGeofenceLogCreateManyVehicleInput | VehicleGeofenceLogCreateManyVehicleInput[]
+    skipDuplicates?: boolean
   }
 
   export type GpsLogUpsertWithWhereUniqueWithoutVehicleInput = {
@@ -22904,38 +22959,6 @@ export namespace Prisma {
   export type GpsLogUpdateManyWithWhereWithoutVehicleInput = {
     where: GpsLogScalarWhereInput
     data: XOR<GpsLogUpdateManyMutationInput, GpsLogUncheckedUpdateManyWithoutVehicleInput>
-  }
-
-  export type VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput = {
-    where: VehicleAlertWhereUniqueInput
-    update: XOR<VehicleAlertUpdateWithoutVehicleInput, VehicleAlertUncheckedUpdateWithoutVehicleInput>
-    create: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput>
-  }
-
-  export type VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput = {
-    where: VehicleAlertWhereUniqueInput
-    data: XOR<VehicleAlertUpdateWithoutVehicleInput, VehicleAlertUncheckedUpdateWithoutVehicleInput>
-  }
-
-  export type VehicleAlertUpdateManyWithWhereWithoutVehicleInput = {
-    where: VehicleAlertScalarWhereInput
-    data: XOR<VehicleAlertUpdateManyMutationInput, VehicleAlertUncheckedUpdateManyWithoutVehicleInput>
-  }
-
-  export type VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput = {
-    where: VehicleGeofenceLogWhereUniqueInput
-    update: XOR<VehicleGeofenceLogUpdateWithoutVehicleInput, VehicleGeofenceLogUncheckedUpdateWithoutVehicleInput>
-    create: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput>
-  }
-
-  export type VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput = {
-    where: VehicleGeofenceLogWhereUniqueInput
-    data: XOR<VehicleGeofenceLogUpdateWithoutVehicleInput, VehicleGeofenceLogUncheckedUpdateWithoutVehicleInput>
-  }
-
-  export type VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput = {
-    where: VehicleGeofenceLogScalarWhereInput
-    data: XOR<VehicleGeofenceLogUpdateManyMutationInput, VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleInput>
   }
 
   export type MaintenanceLogUpsertWithWhereUniqueWithoutVehicleInput = {
@@ -22984,6 +23007,82 @@ export namespace Prisma {
     generatedAt?: DateTimeFilter<"MonthlyReport"> | Date | string
   }
 
+  export type RentalUpsertWithWhereUniqueWithoutVehicleInput = {
+    where: RentalWhereUniqueInput
+    update: XOR<RentalUpdateWithoutVehicleInput, RentalUncheckedUpdateWithoutVehicleInput>
+    create: XOR<RentalCreateWithoutVehicleInput, RentalUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type RentalUpdateWithWhereUniqueWithoutVehicleInput = {
+    where: RentalWhereUniqueInput
+    data: XOR<RentalUpdateWithoutVehicleInput, RentalUncheckedUpdateWithoutVehicleInput>
+  }
+
+  export type RentalUpdateManyWithWhereWithoutVehicleInput = {
+    where: RentalScalarWhereInput
+    data: XOR<RentalUpdateManyMutationInput, RentalUncheckedUpdateManyWithoutVehicleInput>
+  }
+
+  export type VehicleAlertUpsertWithWhereUniqueWithoutVehicleInput = {
+    where: VehicleAlertWhereUniqueInput
+    update: XOR<VehicleAlertUpdateWithoutVehicleInput, VehicleAlertUncheckedUpdateWithoutVehicleInput>
+    create: XOR<VehicleAlertCreateWithoutVehicleInput, VehicleAlertUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type VehicleAlertUpdateWithWhereUniqueWithoutVehicleInput = {
+    where: VehicleAlertWhereUniqueInput
+    data: XOR<VehicleAlertUpdateWithoutVehicleInput, VehicleAlertUncheckedUpdateWithoutVehicleInput>
+  }
+
+  export type VehicleAlertUpdateManyWithWhereWithoutVehicleInput = {
+    where: VehicleAlertScalarWhereInput
+    data: XOR<VehicleAlertUpdateManyMutationInput, VehicleAlertUncheckedUpdateManyWithoutVehicleInput>
+  }
+
+  export type VehicleDeviceAssignmentUpsertWithWhereUniqueWithoutVehicleInput = {
+    where: VehicleDeviceAssignmentWhereUniqueInput
+    update: XOR<VehicleDeviceAssignmentUpdateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedUpdateWithoutVehicleInput>
+    create: XOR<VehicleDeviceAssignmentCreateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type VehicleDeviceAssignmentUpdateWithWhereUniqueWithoutVehicleInput = {
+    where: VehicleDeviceAssignmentWhereUniqueInput
+    data: XOR<VehicleDeviceAssignmentUpdateWithoutVehicleInput, VehicleDeviceAssignmentUncheckedUpdateWithoutVehicleInput>
+  }
+
+  export type VehicleDeviceAssignmentUpdateManyWithWhereWithoutVehicleInput = {
+    where: VehicleDeviceAssignmentScalarWhereInput
+    data: XOR<VehicleDeviceAssignmentUpdateManyMutationInput, VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleInput>
+  }
+
+  export type VehicleDeviceAssignmentScalarWhereInput = {
+    AND?: VehicleDeviceAssignmentScalarWhereInput | VehicleDeviceAssignmentScalarWhereInput[]
+    OR?: VehicleDeviceAssignmentScalarWhereInput[]
+    NOT?: VehicleDeviceAssignmentScalarWhereInput | VehicleDeviceAssignmentScalarWhereInput[]
+    assignmentId?: IntFilter<"VehicleDeviceAssignment"> | number
+    vehicleId?: IntFilter<"VehicleDeviceAssignment"> | number
+    deviceId?: IntFilter<"VehicleDeviceAssignment"> | number
+    assignedAt?: DateTimeFilter<"VehicleDeviceAssignment"> | Date | string
+    removedAt?: DateTimeNullableFilter<"VehicleDeviceAssignment"> | Date | string | null
+    isActive?: BoolFilter<"VehicleDeviceAssignment"> | boolean
+  }
+
+  export type VehicleGeofenceLogUpsertWithWhereUniqueWithoutVehicleInput = {
+    where: VehicleGeofenceLogWhereUniqueInput
+    update: XOR<VehicleGeofenceLogUpdateWithoutVehicleInput, VehicleGeofenceLogUncheckedUpdateWithoutVehicleInput>
+    create: XOR<VehicleGeofenceLogCreateWithoutVehicleInput, VehicleGeofenceLogUncheckedCreateWithoutVehicleInput>
+  }
+
+  export type VehicleGeofenceLogUpdateWithWhereUniqueWithoutVehicleInput = {
+    where: VehicleGeofenceLogWhereUniqueInput
+    data: XOR<VehicleGeofenceLogUpdateWithoutVehicleInput, VehicleGeofenceLogUncheckedUpdateWithoutVehicleInput>
+  }
+
+  export type VehicleGeofenceLogUpdateManyWithWhereWithoutVehicleInput = {
+    where: VehicleGeofenceLogScalarWhereInput
+    data: XOR<VehicleGeofenceLogUpdateManyMutationInput, VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleInput>
+  }
+
   export type VehicleDeviceAssignmentCreateWithoutDeviceInput = {
     assignedAt?: Date | string
     removedAt?: Date | string | null
@@ -23025,50 +23124,6 @@ export namespace Prisma {
     data: XOR<VehicleDeviceAssignmentUpdateManyMutationInput, VehicleDeviceAssignmentUncheckedUpdateManyWithoutDeviceInput>
   }
 
-  export type VehicleCreateWithoutDeviceAssignmentsInput = {
-    plateNumber: string
-    vehicleName: string
-    vehicleType: string
-    brand?: string | null
-    model?: string | null
-    color?: string | null
-    yearManufactured?: number | null
-    status?: $Enums.VehicleStatus
-    totalKm?: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    rentals?: RentalCreateNestedManyWithoutVehicleInput
-    gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
-    maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
-    monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
-  }
-
-  export type VehicleUncheckedCreateWithoutDeviceAssignmentsInput = {
-    vehicleId?: number
-    plateNumber: string
-    vehicleName: string
-    vehicleType: string
-    brand?: string | null
-    model?: string | null
-    color?: string | null
-    yearManufactured?: number | null
-    status?: $Enums.VehicleStatus
-    totalKm?: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
-    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
-    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
-    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
-    maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
-    monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
-  }
-
-  export type VehicleCreateOrConnectWithoutDeviceAssignmentsInput = {
-    where: VehicleWhereUniqueInput
-    create: XOR<VehicleCreateWithoutDeviceAssignmentsInput, VehicleUncheckedCreateWithoutDeviceAssignmentsInput>
-  }
-
   export type IotDeviceCreateWithoutAssignmentsInput = {
     serialNumber: string
     mqttTopic: string
@@ -23095,54 +23150,48 @@ export namespace Prisma {
     create: XOR<IotDeviceCreateWithoutAssignmentsInput, IotDeviceUncheckedCreateWithoutAssignmentsInput>
   }
 
-  export type VehicleUpsertWithoutDeviceAssignmentsInput = {
-    update: XOR<VehicleUpdateWithoutDeviceAssignmentsInput, VehicleUncheckedUpdateWithoutDeviceAssignmentsInput>
+  export type VehicleCreateWithoutDeviceAssignmentsInput = {
+    plateNumber: string
+    vehicleName: string
+    vehicleType: string
+    brand?: string | null
+    model?: string | null
+    color?: string | null
+    yearManufactured?: number | null
+    status?: $Enums.VehicleStatus
+    totalKm?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    gpsLogs?: GpsLogCreateNestedManyWithoutVehicleInput
+    maintenanceLogs?: MaintenanceLogCreateNestedManyWithoutVehicleInput
+    monthlyReports?: MonthlyReportCreateNestedManyWithoutVehicleInput
+    rentals?: RentalCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogCreateNestedManyWithoutVehicleInput
+  }
+
+  export type VehicleUncheckedCreateWithoutDeviceAssignmentsInput = {
+    vehicleId?: number
+    plateNumber: string
+    vehicleName: string
+    vehicleType: string
+    brand?: string | null
+    model?: string | null
+    color?: string | null
+    yearManufactured?: number | null
+    status?: $Enums.VehicleStatus
+    totalKm?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    gpsLogs?: GpsLogUncheckedCreateNestedManyWithoutVehicleInput
+    maintenanceLogs?: MaintenanceLogUncheckedCreateNestedManyWithoutVehicleInput
+    monthlyReports?: MonthlyReportUncheckedCreateNestedManyWithoutVehicleInput
+    rentals?: RentalUncheckedCreateNestedManyWithoutVehicleInput
+    alerts?: VehicleAlertUncheckedCreateNestedManyWithoutVehicleInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedCreateNestedManyWithoutVehicleInput
+  }
+
+  export type VehicleCreateOrConnectWithoutDeviceAssignmentsInput = {
+    where: VehicleWhereUniqueInput
     create: XOR<VehicleCreateWithoutDeviceAssignmentsInput, VehicleUncheckedCreateWithoutDeviceAssignmentsInput>
-    where?: VehicleWhereInput
-  }
-
-  export type VehicleUpdateToOneWithWhereWithoutDeviceAssignmentsInput = {
-    where?: VehicleWhereInput
-    data: XOR<VehicleUpdateWithoutDeviceAssignmentsInput, VehicleUncheckedUpdateWithoutDeviceAssignmentsInput>
-  }
-
-  export type VehicleUpdateWithoutDeviceAssignmentsInput = {
-    plateNumber?: StringFieldUpdateOperationsInput | string
-    vehicleName?: StringFieldUpdateOperationsInput | string
-    vehicleType?: StringFieldUpdateOperationsInput | string
-    brand?: NullableStringFieldUpdateOperationsInput | string | null
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
-    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    rentals?: RentalUpdateManyWithoutVehicleNestedInput
-    gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
-    maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
-    monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
-  }
-
-  export type VehicleUncheckedUpdateWithoutDeviceAssignmentsInput = {
-    vehicleId?: IntFieldUpdateOperationsInput | number
-    plateNumber?: StringFieldUpdateOperationsInput | string
-    vehicleName?: StringFieldUpdateOperationsInput | string
-    vehicleType?: StringFieldUpdateOperationsInput | string
-    brand?: NullableStringFieldUpdateOperationsInput | string | null
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
-    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
-    gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
-    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
-    maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
-    monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
   export type IotDeviceUpsertWithoutAssignmentsInput = {
@@ -23177,6 +23226,56 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type VehicleUpsertWithoutDeviceAssignmentsInput = {
+    update: XOR<VehicleUpdateWithoutDeviceAssignmentsInput, VehicleUncheckedUpdateWithoutDeviceAssignmentsInput>
+    create: XOR<VehicleCreateWithoutDeviceAssignmentsInput, VehicleUncheckedCreateWithoutDeviceAssignmentsInput>
+    where?: VehicleWhereInput
+  }
+
+  export type VehicleUpdateToOneWithWhereWithoutDeviceAssignmentsInput = {
+    where?: VehicleWhereInput
+    data: XOR<VehicleUpdateWithoutDeviceAssignmentsInput, VehicleUncheckedUpdateWithoutDeviceAssignmentsInput>
+  }
+
+  export type VehicleUpdateWithoutDeviceAssignmentsInput = {
+    plateNumber?: StringFieldUpdateOperationsInput | string
+    vehicleName?: StringFieldUpdateOperationsInput | string
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gpsLogs?: GpsLogUpdateManyWithoutVehicleNestedInput
+    maintenanceLogs?: MaintenanceLogUpdateManyWithoutVehicleNestedInput
+    monthlyReports?: MonthlyReportUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUpdateManyWithoutVehicleNestedInput
+  }
+
+  export type VehicleUncheckedUpdateWithoutDeviceAssignmentsInput = {
+    vehicleId?: IntFieldUpdateOperationsInput | number
+    plateNumber?: StringFieldUpdateOperationsInput | string
+    vehicleName?: StringFieldUpdateOperationsInput | string
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    model?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    yearManufactured?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+    totalKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gpsLogs?: GpsLogUncheckedUpdateManyWithoutVehicleNestedInput
+    maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutVehicleNestedInput
+    monthlyReports?: MonthlyReportUncheckedUpdateManyWithoutVehicleNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutVehicleNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutVehicleNestedInput
+    geofenceLogs?: VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleNestedInput
+  }
+
   export type UserCreateManyRoleInput = {
     userId?: number
     fullName: string
@@ -23194,9 +23293,9 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    rentals?: RentalUpdateManyWithoutStaffNestedInput
     geofences?: GeofenceUpdateManyWithoutCreatorNestedInput
     maintenanceLogs?: MaintenanceLogUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUpdateManyWithoutStaffNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
@@ -23207,9 +23306,9 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    rentals?: RentalUncheckedUpdateManyWithoutStaffNestedInput
     geofences?: GeofenceUncheckedUpdateManyWithoutCreatorNestedInput
     maintenanceLogs?: MaintenanceLogUncheckedUpdateManyWithoutCreatorNestedInput
+    rentals?: RentalUncheckedUpdateManyWithoutStaffNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -23220,18 +23319,6 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type RentalCreateManyStaffInput = {
-    rentalId?: number
-    vehicleId: number
-    customerId: number
-    startTime: Date | string
-    endTime?: Date | string | null
-    startKm?: Decimal | DecimalJsLike | number | string
-    endKm?: Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: $Enums.RentalStatus
-    createdAt?: Date | string
   }
 
   export type GeofenceCreateManyCreatorInput = {
@@ -23256,43 +23343,17 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type RentalUpdateWithoutStaffInput = {
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
-    customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
-    gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutRentalNestedInput
-  }
-
-  export type RentalUncheckedUpdateWithoutStaffInput = {
-    rentalId?: IntFieldUpdateOperationsInput | number
-    vehicleId?: IntFieldUpdateOperationsInput | number
-    customerId?: IntFieldUpdateOperationsInput | number
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    gpsLogs?: GpsLogUncheckedUpdateManyWithoutRentalNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutRentalNestedInput
-  }
-
-  export type RentalUncheckedUpdateManyWithoutStaffInput = {
-    rentalId?: IntFieldUpdateOperationsInput | number
-    vehicleId?: IntFieldUpdateOperationsInput | number
-    customerId?: IntFieldUpdateOperationsInput | number
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type RentalCreateManyStaffInput = {
+    rentalId?: number
+    vehicleId: number
+    customerId: number
+    startTime: Date | string
+    endTime?: Date | string | null
+    startKm?: Decimal | DecimalJsLike | number | string
+    endKm?: Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: $Enums.RentalStatus
+    createdAt?: Date | string
+    rentalFee?: number
   }
 
   export type GeofenceUpdateWithoutCreatorInput = {
@@ -23361,6 +23422,48 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type RentalUpdateWithoutStaffInput = {
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
+    customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutRentalNestedInput
+  }
+
+  export type RentalUncheckedUpdateWithoutStaffInput = {
+    rentalId?: IntFieldUpdateOperationsInput | number
+    vehicleId?: IntFieldUpdateOperationsInput | number
+    customerId?: IntFieldUpdateOperationsInput | number
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    gpsLogs?: GpsLogUncheckedUpdateManyWithoutRentalNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutRentalNestedInput
+  }
+
+  export type RentalUncheckedUpdateManyWithoutStaffInput = {
+    rentalId?: IntFieldUpdateOperationsInput | number
+    vehicleId?: IntFieldUpdateOperationsInput | number
+    customerId?: IntFieldUpdateOperationsInput | number
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type VehicleGeofenceLogCreateManyGeofenceInput = {
     geofenceLogId?: number
     vehicleId: number
@@ -23406,6 +23509,7 @@ export namespace Prisma {
     endKm?: Decimal | DecimalJsLike | number | string | null
     rentalStatus?: $Enums.RentalStatus
     createdAt?: Date | string
+    rentalFee?: number
   }
 
   export type RentalUpdateWithoutCustomerInput = {
@@ -23415,9 +23519,10 @@ export namespace Prisma {
     endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
-    staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
+    rentalFee?: FloatFieldUpdateOperationsInput | number
     gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
+    staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutRentalsNestedInput
     alerts?: VehicleAlertUpdateManyWithoutRentalNestedInput
   }
 
@@ -23431,6 +23536,7 @@ export namespace Prisma {
     endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
     gpsLogs?: GpsLogUncheckedUpdateManyWithoutRentalNestedInput
     alerts?: VehicleAlertUncheckedUpdateManyWithoutRentalNestedInput
   }
@@ -23445,6 +23551,7 @@ export namespace Prisma {
     endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
   }
 
   export type GpsLogCreateManyRentalInput = {
@@ -23454,10 +23561,10 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     speedKmh?: Decimal | DecimalJsLike | number | string
     gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
     homeLatitude?: Decimal | DecimalJsLike | number | string | null
     homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
   }
 
   export type VehicleAlertCreateManyRentalInput = {
@@ -23469,8 +23576,8 @@ export namespace Prisma {
     alertMessage?: string | null
     isAcknowledged?: boolean
     acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
     createdAt?: Date | string
+    resolvedAt?: Date | string | null
   }
 
   export type GpsLogUpdateWithoutRentalInput = {
@@ -23478,10 +23585,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     vehicle?: VehicleUpdateOneRequiredWithoutGpsLogsNestedInput
   }
 
@@ -23492,10 +23599,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GpsLogUncheckedUpdateManyWithoutRentalInput = {
@@ -23505,10 +23612,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VehicleAlertUpdateWithoutRentalInput = {
@@ -23518,8 +23625,8 @@ export namespace Prisma {
     alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
     isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
     acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     vehicle?: VehicleUpdateOneRequiredWithoutAlertsNestedInput
   }
 
@@ -23532,8 +23639,8 @@ export namespace Prisma {
     alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
     isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
     acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type VehicleAlertUncheckedUpdateManyWithoutRentalInput = {
@@ -23545,28 +23652,8 @@ export namespace Prisma {
     alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
     isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
     acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type VehicleDeviceAssignmentCreateManyVehicleInput = {
-    assignmentId?: number
-    deviceId: number
-    assignedAt?: Date | string
-    removedAt?: Date | string | null
-    isActive?: boolean
-  }
-
-  export type RentalCreateManyVehicleInput = {
-    rentalId?: number
-    customerId: number
-    rentedBy: number
-    startTime: Date | string
-    endTime?: Date | string | null
-    startKm?: Decimal | DecimalJsLike | number | string
-    endKm?: Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: $Enums.RentalStatus
-    createdAt?: Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type GpsLogCreateManyVehicleInput = {
@@ -23576,32 +23663,10 @@ export namespace Prisma {
     longitude: Decimal | DecimalJsLike | number | string
     speedKmh?: Decimal | DecimalJsLike | number | string
     gpsStatus?: $Enums.GpsStatus
+    recordedAt?: Date | string
+    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
     homeLatitude?: Decimal | DecimalJsLike | number | string | null
     homeLongitude?: Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: Decimal | DecimalJsLike | number | string | null
-    recordedAt?: Date | string
-  }
-
-  export type VehicleAlertCreateManyVehicleInput = {
-    alertId?: number
-    rentalId?: number | null
-    alertType: $Enums.AlertType
-    latitude?: Decimal | DecimalJsLike | number | string | null
-    longitude?: Decimal | DecimalJsLike | number | string | null
-    alertMessage?: string | null
-    isAcknowledged?: boolean
-    acknowledgedAt?: Date | string | null
-    resolvedAt?: Date | string | null
-    createdAt?: Date | string
-  }
-
-  export type VehicleGeofenceLogCreateManyVehicleInput = {
-    geofenceLogId?: number
-    geofenceId: number
-    eventType: $Enums.GeofenceEvent
-    latitude: Decimal | DecimalJsLike | number | string
-    longitude: Decimal | DecimalJsLike | number | string
-    createdAt?: Date | string
   }
 
   export type MaintenanceLogCreateManyVehicleInput = {
@@ -23625,66 +23690,47 @@ export namespace Prisma {
     generatedAt?: Date | string
   }
 
-  export type VehicleDeviceAssignmentUpdateWithoutVehicleInput = {
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    device?: IotDeviceUpdateOneRequiredWithoutAssignmentsNestedInput
+  export type RentalCreateManyVehicleInput = {
+    rentalId?: number
+    customerId: number
+    rentedBy: number
+    startTime: Date | string
+    endTime?: Date | string | null
+    startKm?: Decimal | DecimalJsLike | number | string
+    endKm?: Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: $Enums.RentalStatus
+    createdAt?: Date | string
+    rentalFee?: number
   }
 
-  export type VehicleDeviceAssignmentUncheckedUpdateWithoutVehicleInput = {
-    assignmentId?: IntFieldUpdateOperationsInput | number
-    deviceId?: IntFieldUpdateOperationsInput | number
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+  export type VehicleAlertCreateManyVehicleInput = {
+    alertId?: number
+    rentalId?: number | null
+    alertType: $Enums.AlertType
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    alertMessage?: string | null
+    isAcknowledged?: boolean
+    acknowledgedAt?: Date | string | null
+    createdAt?: Date | string
+    resolvedAt?: Date | string | null
   }
 
-  export type VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleInput = {
-    assignmentId?: IntFieldUpdateOperationsInput | number
-    deviceId?: IntFieldUpdateOperationsInput | number
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+  export type VehicleDeviceAssignmentCreateManyVehicleInput = {
+    assignmentId?: number
+    deviceId: number
+    assignedAt?: Date | string
+    removedAt?: Date | string | null
+    isActive?: boolean
   }
 
-  export type RentalUpdateWithoutVehicleInput = {
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
-    staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
-    gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
-    alerts?: VehicleAlertUpdateManyWithoutRentalNestedInput
-  }
-
-  export type RentalUncheckedUpdateWithoutVehicleInput = {
-    rentalId?: IntFieldUpdateOperationsInput | number
-    customerId?: IntFieldUpdateOperationsInput | number
-    rentedBy?: IntFieldUpdateOperationsInput | number
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    gpsLogs?: GpsLogUncheckedUpdateManyWithoutRentalNestedInput
-    alerts?: VehicleAlertUncheckedUpdateManyWithoutRentalNestedInput
-  }
-
-  export type RentalUncheckedUpdateManyWithoutVehicleInput = {
-    rentalId?: IntFieldUpdateOperationsInput | number
-    customerId?: IntFieldUpdateOperationsInput | number
-    rentedBy?: IntFieldUpdateOperationsInput | number
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type VehicleGeofenceLogCreateManyVehicleInput = {
+    geofenceLogId?: number
+    geofenceId: number
+    eventType: $Enums.GeofenceEvent
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
   }
 
   export type GpsLogUpdateWithoutVehicleInput = {
@@ -23692,10 +23738,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rental?: RentalUpdateOneWithoutGpsLogsNestedInput
   }
 
@@ -23706,10 +23752,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GpsLogUncheckedUpdateManyWithoutVehicleInput = {
@@ -23719,74 +23765,10 @@ export namespace Prisma {
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     speedKmh?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     gpsStatus?: EnumGpsStatusFieldUpdateOperationsInput | $Enums.GpsStatus
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLatitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     homeLongitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    distanceFromHome?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type VehicleAlertUpdateWithoutVehicleInput = {
-    alertType?: EnumAlertTypeFieldUpdateOperationsInput | $Enums.AlertType
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
-    isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
-    acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    rental?: RentalUpdateOneWithoutAlertsNestedInput
-  }
-
-  export type VehicleAlertUncheckedUpdateWithoutVehicleInput = {
-    alertId?: IntFieldUpdateOperationsInput | number
-    rentalId?: NullableIntFieldUpdateOperationsInput | number | null
-    alertType?: EnumAlertTypeFieldUpdateOperationsInput | $Enums.AlertType
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
-    isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
-    acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type VehicleAlertUncheckedUpdateManyWithoutVehicleInput = {
-    alertId?: IntFieldUpdateOperationsInput | number
-    rentalId?: NullableIntFieldUpdateOperationsInput | number | null
-    alertType?: EnumAlertTypeFieldUpdateOperationsInput | $Enums.AlertType
-    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
-    isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
-    acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type VehicleGeofenceLogUpdateWithoutVehicleInput = {
-    eventType?: EnumGeofenceEventFieldUpdateOperationsInput | $Enums.GeofenceEvent
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    geofence?: GeofenceUpdateOneRequiredWithoutGeofenceLogsNestedInput
-  }
-
-  export type VehicleGeofenceLogUncheckedUpdateWithoutVehicleInput = {
-    geofenceLogId?: IntFieldUpdateOperationsInput | number
-    geofenceId?: IntFieldUpdateOperationsInput | number
-    eventType?: EnumGeofenceEventFieldUpdateOperationsInput | $Enums.GeofenceEvent
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleInput = {
-    geofenceLogId?: IntFieldUpdateOperationsInput | number
-    geofenceId?: IntFieldUpdateOperationsInput | number
-    eventType?: EnumGeofenceEventFieldUpdateOperationsInput | $Enums.GeofenceEvent
-    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MaintenanceLogUpdateWithoutVehicleInput = {
@@ -23848,6 +23830,135 @@ export namespace Prisma {
     totalImpacts?: IntFieldUpdateOperationsInput | number
     totalOutOfZone?: IntFieldUpdateOperationsInput | number
     generatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RentalUpdateWithoutVehicleInput = {
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    gpsLogs?: GpsLogUpdateManyWithoutRentalNestedInput
+    customer?: CustomerUpdateOneRequiredWithoutRentalsNestedInput
+    staff?: UserUpdateOneRequiredWithoutRentalsNestedInput
+    alerts?: VehicleAlertUpdateManyWithoutRentalNestedInput
+  }
+
+  export type RentalUncheckedUpdateWithoutVehicleInput = {
+    rentalId?: IntFieldUpdateOperationsInput | number
+    customerId?: IntFieldUpdateOperationsInput | number
+    rentedBy?: IntFieldUpdateOperationsInput | number
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+    gpsLogs?: GpsLogUncheckedUpdateManyWithoutRentalNestedInput
+    alerts?: VehicleAlertUncheckedUpdateManyWithoutRentalNestedInput
+  }
+
+  export type RentalUncheckedUpdateManyWithoutVehicleInput = {
+    rentalId?: IntFieldUpdateOperationsInput | number
+    customerId?: IntFieldUpdateOperationsInput | number
+    rentedBy?: IntFieldUpdateOperationsInput | number
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startKm?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    endKm?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalStatus?: EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rentalFee?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type VehicleAlertUpdateWithoutVehicleInput = {
+    alertType?: EnumAlertTypeFieldUpdateOperationsInput | $Enums.AlertType
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
+    acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rental?: RentalUpdateOneWithoutAlertsNestedInput
+  }
+
+  export type VehicleAlertUncheckedUpdateWithoutVehicleInput = {
+    alertId?: IntFieldUpdateOperationsInput | number
+    rentalId?: NullableIntFieldUpdateOperationsInput | number | null
+    alertType?: EnumAlertTypeFieldUpdateOperationsInput | $Enums.AlertType
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
+    acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type VehicleAlertUncheckedUpdateManyWithoutVehicleInput = {
+    alertId?: IntFieldUpdateOperationsInput | number
+    rentalId?: NullableIntFieldUpdateOperationsInput | number | null
+    alertType?: EnumAlertTypeFieldUpdateOperationsInput | $Enums.AlertType
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    alertMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    isAcknowledged?: BoolFieldUpdateOperationsInput | boolean
+    acknowledgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type VehicleDeviceAssignmentUpdateWithoutVehicleInput = {
+    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    device?: IotDeviceUpdateOneRequiredWithoutAssignmentsNestedInput
+  }
+
+  export type VehicleDeviceAssignmentUncheckedUpdateWithoutVehicleInput = {
+    assignmentId?: IntFieldUpdateOperationsInput | number
+    deviceId?: IntFieldUpdateOperationsInput | number
+    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type VehicleDeviceAssignmentUncheckedUpdateManyWithoutVehicleInput = {
+    assignmentId?: IntFieldUpdateOperationsInput | number
+    deviceId?: IntFieldUpdateOperationsInput | number
+    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    removedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type VehicleGeofenceLogUpdateWithoutVehicleInput = {
+    eventType?: EnumGeofenceEventFieldUpdateOperationsInput | $Enums.GeofenceEvent
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    geofence?: GeofenceUpdateOneRequiredWithoutGeofenceLogsNestedInput
+  }
+
+  export type VehicleGeofenceLogUncheckedUpdateWithoutVehicleInput = {
+    geofenceLogId?: IntFieldUpdateOperationsInput | number
+    geofenceId?: IntFieldUpdateOperationsInput | number
+    eventType?: EnumGeofenceEventFieldUpdateOperationsInput | $Enums.GeofenceEvent
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VehicleGeofenceLogUncheckedUpdateManyWithoutVehicleInput = {
+    geofenceLogId?: IntFieldUpdateOperationsInput | number
+    geofenceId?: IntFieldUpdateOperationsInput | number
+    eventType?: EnumGeofenceEventFieldUpdateOperationsInput | $Enums.GeofenceEvent
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VehicleDeviceAssignmentCreateManyDeviceInput = {

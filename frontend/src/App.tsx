@@ -14,6 +14,7 @@ import RentalListPage from './pages/rental/RentalList';
 import ReportListPage from './pages/report/ReportList';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import Layout from './components/common/Layout';
+import CustomerListPage from './pages/customers/CustomerList';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated());
@@ -40,6 +41,7 @@ function App() {
           <Route path="maintenances" element={<MaintenanceListPage />} />
           <Route path="rentals" element={<RentalListPage />} />
           <Route path="reports" element={<ReportListPage />} />
+          <Route path="customers" element={<CustomerListPage />} />
         </Route>
         
         <Route path="*" element={<Navigate to="/" replace />} />

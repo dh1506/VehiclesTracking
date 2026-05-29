@@ -39,10 +39,13 @@ export const createMaintenance = async (data: CreateMaintenanceInput, reportedBy
     vehicleId: data.vehicleId,
     maintenanceType: data.maintenanceType,
     createdBy: reportedBy,
+    maintenanceDate: data.scheduledDate
+    ? new Date(data.scheduledDate)
+    : new Date(),
   };
   if (data.cost !== undefined) createData.cost = data.cost;
   if (data.notes !== undefined) createData.description = data.notes;
-  if (data.scheduledDate !== undefined) createData.maintenanceDate = new Date(data.scheduledDate);
+  // if (data.scheduledDate !== undefined) createData.maintenanceDate = new Date(data.scheduledDate);
 
   return prisma.maintenanceLog.create({ data: createData });
 };

@@ -28,3 +28,11 @@ export const updateVehicle = (id: number, payload: Partial<Vehicle>): Promise<Ap
 export const deleteVehicle = (id: number): Promise<ApiResponse<null>> => {
   return apiClient.delete(`/vehicles/${id}`);
 };
+
+export const assignDevice = (vehicleId: number, deviceId: number): Promise<ApiResponse<any>> => {
+  return apiClient.post(`/vehicles/${vehicleId}/assign-device`, { deviceId });
+};
+
+export const unassignDevice = (vehicleId: number): Promise<ApiResponse<any>> => {
+  return apiClient.delete(`/vehicles/${vehicleId}/unassign-device`);
+};

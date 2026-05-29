@@ -56,6 +56,7 @@ export const createRental = async (data: CreateRentalInput, createdBy: number) =
     rentedBy: createdBy,
     startTime: data.startTime ? new Date(data.startTime) : new Date(),
     rentalStatus: 'active',
+    rentalFee: data.rentalFee !== undefined ? Number(data.rentalFee) : 0
   };
 
   const contract = await prisma.rental.create({ data: createData });
@@ -75,6 +76,7 @@ export const updateRental = async (rentalId: number, data: UpdateRentalInput) =>
   const updateData: any = {};
   if (data.status !== undefined) updateData.rentalStatus = data.status;
   if (data.endTime !== undefined) updateData.endTime = new Date(data.endTime);
+  if (data.rentalFee !== undefined) updateData.rentalFee = Number(data.rentalFee);
 
   const updated = await prisma.rental.update({ where: { rentalId }, data: updateData });
 

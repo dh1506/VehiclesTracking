@@ -1,3 +1,4 @@
+// src/services/tracking.service.ts
 import apiClient from '../lib/axios';
 import type { ApiResponse } from './api';
 
@@ -39,8 +40,21 @@ export interface TrackingAlertsFilters {
 export const getTrackingHistory = (filters?: TrackingHistoryFilters): Promise<ApiResponse<TrackingHistoryItem[]>> => {
   const params: any = {};
   if (filters?.vehicleId) params.vehicleId = filters.vehicleId;
-  if (filters?.startTime) params.startTime = filters.startTime;
-  if (filters?.endTime) params.endTime = filters.endTime;
+
+  // CHUẨN HÓA SANG ISO STRING GỬI LÊN BACKEND
+  if (filters?.startTime && filters.startTime !== "") {
+    const parsedDate = new Date(filters.startTime);
+    if (!isNaN(parsedDate.getTime())) {
+      params.startTime = parsedDate.toISOString(); // Chuyển đổi thành dạng: YYYY-MM-DDTHH:mm:ss.sssZ
+    }
+  }
+
+  if (filters?.endTime && filters.endTime !== "") {
+    const parsedDate = new Date(filters.endTime);
+    if (!isNaN(parsedDate.getTime())) {
+      params.endTime = parsedDate.toISOString(); // Chuyển đổi thành dạng: YYYY-MM-DDTHH:mm:ss.sssZ
+    }
+  }
 
   return apiClient.get('/tracking/history', { params });
 };
@@ -50,8 +64,21 @@ export const getAlerts = (filters?: TrackingAlertsFilters): Promise<ApiResponse<
   if (filters?.vehicleId) params.vehicleId = filters.vehicleId;
   if (filters?.alertType) params.alertType = filters.alertType;
   if (filters?.isResolved !== undefined) params.isResolved = String(filters.isResolved);
-  if (filters?.startTime) params.startTime = filters.startTime;
-  if (filters?.endTime) params.endTime = filters.endTime;
+
+  // CHUẨN HÓA SANG ISO STRING GỬI LÊN BACKEND
+  if (filters?.startTime && filters.startTime !== "") {
+    const parsedDate = new Date(filters.startTime);
+    if (!isNaN(parsedDate.getTime())) {
+      params.startTime = parsedDate.toISOString(); // Chuyển đổi thành dạng: YYYY-MM-DDTHH:mm:ss.sssZ
+    }
+  }
+
+  if (filters?.endTime && filters.endTime !== "") {
+    const parsedDate = new Date(filters.endTime);
+    if (!isNaN(parsedDate.getTime())) {
+      params.endTime = parsedDate.toISOString(); // Chuyển đổi thành dạng: YYYY-MM-DDTHH:mm:ss.sssZ
+    }
+  }
 
   return apiClient.get('/tracking/alerts', { params });
 };
