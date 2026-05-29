@@ -141,11 +141,6 @@ export function GeofenceForm({ initialValues, onSubmit, submitLabel = 'Lưu vùn
         <textarea {...register('description')} rows={2} className="w-full border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="VD: Tránh xa khu vực hồ bơi công cộng..." />
       </div>
 
-      <div className="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-        <input id="isActive" type="checkbox" {...register('isActive')} className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
-        <label htmlFor="isActive" className="text-xs font-bold text-slate-600 cursor-pointer">Kích hoạt vùng giám sát ngay lập tức</label>
-      </div>
-
       <div className="flex justify-end pt-3 border-t">
         <Button type="submit" className="h-10 px-6 rounded-xl font-bold bg-indigo-600 hover:bg-indigo-700 text-xs shadow-lg" disabled={formState.isSubmitting}>
           {submitLabel}

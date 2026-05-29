@@ -5,7 +5,7 @@ import { useCreateGeofence, useUpdateGeofence, useDeleteGeofence } from '../../f
 import { Button } from '../../components/ui/button';
 import GeofenceForm from '../../features/geofence/components/GeofenceForm';
 import { toast } from 'sonner';
-import { Map, Edit3, Trash2, CheckCircle2, XCircle, Compass, Plus, X } from 'lucide-react';
+import { Map, Edit3, Trash2, Compass, Plus, X } from 'lucide-react';
 
 export default function GeofenceListPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -93,7 +93,6 @@ export default function GeofenceListPage() {
                 <th className="p-4 pl-6">Tên vùng giám sát</th>
                 <th className="p-4">Tọa độ tâm</th>
                 <th className="p-4">Bán kính an toàn</th>
-                <th className="p-4">Trạng thái</th>
                 <th className="p-4 pr-6 text-right">Thao tác</th>
               </tr>
             </thead>
@@ -120,25 +119,6 @@ export default function GeofenceListPage() {
                   </td>
                   <td className="p-4 font-semibold text-slate-700">
                     {Number(geofence.radiusMeter || 0)?.toLocaleString()} m
-                  </td>
-                  <td className="p-4">
-                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${
-                      geofence.isActive 
-                        ? 'bg-emerald-50 text-emerald-700 border-emerald-100' 
-                        : 'bg-slate-50 text-slate-500 border-slate-100'
-                    }`}>
-                      {geofence.isActive ? (
-                        <>
-                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
-                          Đang kích hoạt
-                        </>
-                      ) : (
-                        <>
-                          <XCircle className="h-3.5 w-3.5 text-slate-400" />
-                          Vô hiệu hóa
-                        </>
-                      )}
-                    </span>
                   </td>
                   <td className="p-4 pr-6 text-right">
                     <div className="flex items-center justify-end gap-1">
