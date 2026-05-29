@@ -86,14 +86,14 @@ export function GeofenceForm({ initialValues, onSubmit, submitLabel = 'Lưu vùn
           {/* Vĩ độ */}
           <div className="space-y-1">
             <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider">Vĩ độ (Latitude)</label>
-            <Input type="number" step="any" {...register('latitude', { valueAsNumber: true })} className="h-10 rounded-xl text-xs bg-slate-50" readOnly placeholder="Click bản đồ để lấy tọa độ" />
+            <Input type="number" step="any" {...register('latitude', { valueAsNumber: true })} className="h-10 rounded-xl text-xs bg-slate-50"  placeholder="Click bản đồ để lấy tọa độ" />
             {formState.errors.latitude && <p className="text-xs text-rose-600 font-medium mt-1">{formState.errors.latitude.message}</p>}
           </div>
 
           {/* Kinh độ */}
           <div className="space-y-1">
             <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider">Kinh độ (Longitude)</label>
-            <Input type="number" step="any" {...register('longitude', { valueAsNumber: true })} className="h-10 rounded-xl text-xs bg-slate-50" readOnly placeholder="Click bản đồ để lấy tọa độ" />
+            <Input type="number" step="any" {...register('longitude', { valueAsNumber: true })} className="h-10 rounded-xl text-xs bg-slate-50"  placeholder="Click bản đồ để lấy tọa độ" />
             {formState.errors.longitude && <p className="text-xs text-rose-600 font-medium mt-1">{formState.errors.longitude.message}</p>}
           </div>
 

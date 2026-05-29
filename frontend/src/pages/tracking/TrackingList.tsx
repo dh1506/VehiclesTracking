@@ -9,7 +9,7 @@ import { Button } from '../../components/ui/button';
 import { toast } from 'sonner';
 
 // Cấu hình Map Leaflet
-import { MapContainer, TileLayer, Polyline, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { 
@@ -28,6 +28,31 @@ let DefaultIcon = L.icon({
   iconAnchor: [12, 41],
 });
 L.Marker.prototype.options.icon = DefaultIcon;
+
+const latestDeviceIcon = L.divIcon({
+  className: 'bg-transparent border-none', // Bắt buộc phải có để xóa nền trắng viền đen mặc định
+  html: `<div class="relative flex h-6 w-6 overflow-visible">
+    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+    <span class="relative inline-flex rounded-full h-6 w-6 bg-indigo-600 border-2 border-white items-center justify-center shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+    </span>
+  </div>`,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+});
+
+// Component tự động di chuyển camera lấy xe làm tiêu điểm
+function AutoFocusDevice({ center }: { center: [number, number] }) {
+  const map = useMap();
+  useEffect(() => {
+    if (center && center[0] && center[1] && !isNaN(center[0]) && !isNaN(center[1])) {
+      // Đảm bảo Leaflet cập nhật lại kích thước khung chứa trước khi bay tới tiêu điểm
+      map.invalidateSize();
+      map.setView(center, 15); 
+    }
+  }, [center, map]);
+  return null;
+}
 
 export default function TrackingListPage() {
   const [activeTab, setActiveTab] = useState<'history' | 'alerts'>('history');
@@ -136,9 +161,25 @@ export default function TrackingListPage() {
   };
 
   // Trích xuất tọa độ di chuyển
-  const polylinePositions: [number, number][] = historyQuery.data?.data
-    ?.filter((item: any) => item.lat && item.lon)
-    .map((item: any) => [item.lat, item.lon]) || [];
+  const polylinePositions: [number, number][] = useMemo(() => {
+    if (!historyQuery.data?.data) return [];
+    
+    return historyQuery.data.data
+      .map((item: any) => {
+        // Tự động nhận diện trường tọa độ linh hoạt theo bất kỳ tên cột nào Database đang dùng
+        const lat = item.lat ?? item.latitude ?? item.centerLat;
+        const lon = item.lon ?? item.longitude ?? item.centerLon;
+        return [Number(lat), Number(lon)] as [number, number];
+      })
+      // Lọc bỏ các tọa độ lỗi, NaN hoặc bằng 0
+      .filter((pos) => !isNaN(pos[0]) && !isNaN(pos[1]) && pos[0] !== 0 && pos[1] !== 0);
+  }, [historyQuery.data]);
+
+  useEffect(() => {
+    if (historyQuery.data?.data && historyQuery.data.data.length > 0) {
+      console.log("Cấu trúc của 1 bản ghi GPS thật trong DB của bạn:", historyQuery.data.data[0]);
+    }
+  }, [historyQuery.data]);
 
   const maxSpeed = historyQuery.data?.data?.reduce((max: number, item: any) => (item.speed > max ? item.speed : max), 0) || 0;
 
@@ -424,29 +465,37 @@ export default function TrackingListPage() {
           />
           {polylinePositions.length > 0 && (
             <>
-              {/* Vẽ đường đi phát sáng */}
+              {/* Tự động di chuyển camera lấy điểm cuối cùng làm tiêu điểm trung tâm */}
+              {polylinePositions[polylinePositions.length - 1] && (
+                <AutoFocusDevice center={polylinePositions[polylinePositions.length - 1]} />
+              )}
+
+              {/* Vẽ lộ trình di chuyển */}
               <Polyline positions={polylinePositions} color="#818CF8" weight={8} opacity={0.2} />
               <Polyline positions={polylinePositions} color="#4F46E5" weight={4} opacity={0.9} />
               
-              {/* Điểm đầu */}
-              <Marker position={polylinePositions[0]} icon={DefaultIcon}>
-                <Popup>
-                  <div className="text-xs text-slate-800">
-                    <p className="font-bold text-indigo-600">Điểm xuất phát</p>
-                    <p className="text-slate-400 mt-1">Ghi nhận lần đầu tiên trong khoảng thời gian đã chọn.</p>
-                  </div>
-                </Popup>
-              </Marker>
+              {/* Điểm xuất phát của xe */}
+              {polylinePositions[0] && (
+                <Marker position={polylinePositions[0]} icon={DefaultIcon}>
+                  <Popup>
+                    <div className="text-xs text-slate-800">
+                      <p className="font-bold text-indigo-600">Điểm xuất phát hành trình</p>
+                    </div>
+                  </Popup>
+                </Marker>
+              )}
 
-              {/* Điểm cuối */}
-              <Marker position={polylinePositions[polylinePositions.length - 1]} icon={DefaultIcon}>
-                <Popup>
-                  <div className="text-xs text-slate-800">
-                    <p className="font-bold text-emerald-600">Vị trí cuối cùng</p>
-                    <p className="text-slate-400 mt-1">Được cập nhật gần nhất khớp với bộ lọc di chuyển.</p>
-                  </div>
-                </Popup>
-              </Marker>
+              {/* Điểm hoạt động hiện tại (Sử dụng Icon radar phát sóng) */}
+              {polylinePositions[polylinePositions.length - 1] && (
+                <Marker position={polylinePositions[polylinePositions.length - 1]} icon={latestDeviceIcon}>
+                  <Popup>
+                    <div className="text-xs text-slate-800 space-y-1">
+                      <p className="font-bold text-indigo-600">Vị trí hiện tại của thiết bị</p>
+                      <p>Vận tốc ghi nhận: <span className="font-bold">{maxSpeed} km/h</span></p>
+                    </div>
+                  </Popup>
+                </Marker>
+              )}
             </>
           )}
         </MapContainer>

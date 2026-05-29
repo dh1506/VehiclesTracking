@@ -22,11 +22,11 @@ model Rental {
   endKm        Decimal?       @map("end_km") @db.Decimal(10, 2)
   rentalStatus RentalStatus   @default(active) @map("rental_status")
   createdAt    DateTime       @default(now()) @map("created_at")
+  rentalFee    Float          @default(0)
   gpsLogs      GpsLog[]
   customer     Customer       @relation(fields: [customerId], references: [customerId])
   staff        User           @relation("StaffRentals", fields: [rentedBy], references: [userId])
   vehicle      Vehicle        @relation(fields: [vehicleId], references: [vehicleId])
-  rentalFee    Float    @default(0)
   alerts       VehicleAlert[]
 
   @@index([customerId], map: "rentals_customer_id_fkey")

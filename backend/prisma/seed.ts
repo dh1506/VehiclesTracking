@@ -24,20 +24,20 @@ async function main() {
   const adminRole = await prisma.role.findUnique({ where: { roleName: 'Admin' } });
   
   if (adminRole) {
-    const passwordHash = await bcrypt.hash('admin123', 10);
+    const passwordHash = await bcrypt.hash('quan123456@', 10);
     await prisma.user.upsert({
-      where: { email: 'admin@system.com' },
+      where: { email: 'quan@gmail.com' },
       update: {},
       create: {
-        fullName: 'System Admin',
-        email: 'admin@system.com',
+        fullName: 'Đỗ Anh Quân',
+        email: 'quan@gmail.com',
         passwordHash,
         phone: '0999999999',
         roleId: adminRole.roleId,
         status: 'active',
       },
     });
-    console.log('✅ Admin user seeded (admin@system.com / admin123)');
+    console.log('✅ Admin user seeded (quan@gmail.com / quan123456@)');
   }
 
   // 3. Tạo vehicle và iot device để test MQTT
