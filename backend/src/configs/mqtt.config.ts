@@ -1,3 +1,4 @@
+// backend/src/services/mqtt.service.ts
 import mqtt from 'mqtt';
 import { env } from './env.config.js';
 import { prisma } from './db.config.js';
@@ -8,38 +9,39 @@ const TOPIC_ALERT = 'gps/alert';
 const TOPIC_PING = 'gps/ping';
 
 /**
- * Lấy vehicleId từ payload (nếu Arduino gửi serial/sim/deviceId) hoặc fallback tới device online gần nhất
+ * Phân tích và truy vết vehicleId dựa trên clientId (MQTT Connection ID) hoặc data payload
  */
-const getVehicleId = async (payload: any, data: any): Promise<number | null> => {
-  // 1️⃣ Nếu payload có serialNumber -> lookup theo serialNumber
-  if (payload.serialNumber && typeof payload.serialNumber === 'string') {
-    const device = await prisma.iotDevice.findUnique({
-      where: { serialNumber: payload.serialNumber },
-      include: { assignments: { where: { isActive: true } } }
-    });
-    if (device?.assignments[0]?.vehicleId) return device.assignments[0].vehicleId;
-  }
+const getVehicleId = async (clientId: string, data: any): Promise<number | null> => {
+  // 1️⃣ Bóc tách clientId biến thiên (Ví dụ: "tuan_bike_10230" -> tách lấy tiền tố "tuan_bike")
+  if (clientId && clientId !== 'unknown') {
+    const prefix = clientId.split('_').slice(0, -1).join('_'); // Cắt bỏ phần đuôi số ngẫu nhiên sinh ra bởi millis()
+    const targetSerialNumber = prefix || clientId;
 
-  // 2️⃣ Nếu payload có simNumber -> lookup theo simNumber
-  if (payload.simNumber && typeof payload.simNumber === 'string') {
     const device = await prisma.iotDevice.findFirst({
-      where: { simNumber: payload.simNumber },
+      where: {
+        OR: [
+          { serialNumber: targetSerialNumber },
+          { serialNumber: clientId } // Đề phòng trường hợp dùng ID tĩnh không có đuôi số
+        ]
+      },
       include: { assignments: { where: { isActive: true } } }
     });
-    if (device?.assignments[0]?.vehicleId) return device.assignments[0].vehicleId;
+
+    if (device?.assignments[0]?.vehicleId) {
+      return device.assignments[0].vehicleId;
+    }
   }
 
-  // 3️⃣ Nếu payload có deviceId (numeric) -> lookup theo PK
-  if (payload.deviceId && (typeof payload.deviceId === 'number' || !Number.isNaN(Number(payload.deviceId)))) {
-    const id = Number(payload.deviceId);
+  // 2️⃣ Kiểm tra nếu trong gói tin JSON có đính kèm trực tiếp thông tin nhận diện
+  if (data?.serialNumber) {
     const device = await prisma.iotDevice.findUnique({
-      where: { deviceId: id },
+      where: { serialNumber: data.serialNumber },
       include: { assignments: { where: { isActive: true } } }
     });
     if (device?.assignments[0]?.vehicleId) return device.assignments[0].vehicleId;
   }
 
-  // 4️⃣ Fallback: lấy device online gần nhất có assignment active
+  // 3️⃣ Fallback dự phòng: lấy thiết bị online gần nhất
   const recentDevice = await prisma.iotDevice.findFirst({
     where: { status: 'online', assignments: { some: { isActive: true } } },
     orderBy: { lastOnlineAt: 'desc' },
@@ -51,7 +53,7 @@ const getVehicleId = async (payload: any, data: any): Promise<number | null> => 
 };
 
 /**
- * Validate dữ liệu GPS từ Arduino
+ * Khớp và kiểm tra tính hợp lệ của dữ liệu GPS
  */
 const validateGpsData = (data: any): boolean => {
   return (
@@ -78,24 +80,26 @@ export const initMqtt = () => {
     try {
       const payloadString = message.toString();
       const data = JSON.parse(payloadString);
+      
+      // Lấy Client ID từ tùy chọn kết nối của thiết bị đang gửi tin
       const clientId = client.options.clientId || 'unknown';
 
-      // ✅ Lấy vehicleId từ payload hoặc last active device
+      // Định danh xe
       const vehicleId = await getVehicleId(clientId, data);
       if (!vehicleId) {
-        console.warn(`⚠️ Không tìm được xe tương ứng với message từ ${clientId}`);
+        console.warn(`⚠️ Không tìm được xe tương ứng cho thiết bị kết nối với Client ID: ${clientId}`);
         return;
       }
 
+      // XỬ LÝ KÊNH 1: GỬI TỌA ĐỘ ĐỊNH VỊ XE (gps/location)
       if (topic === TOPIC_LOC) {
-        // Validate GPS data
         if (!validateGpsData(data)) {
           console.warn(`⚠️ Dữ liệu GPS không hợp lệ: ${payloadString}`);
           return;
         }
 
-        // Lưu GPS log
-        const gpsLog = await prisma.gpsLog.create({
+        // Lưu bản ghi vào nhật ký GPS
+        await prisma.gpsLog.create({
           data: {
             vehicleId,
             latitude: data.lat,
@@ -108,48 +112,65 @@ export const initMqtt = () => {
           }
         });
 
-        // Emit real-time location cho clients
+        // Phát tín hiệu Socket.io thời gian thực cho màn hình giám sát Web
         emitVehicleLocation(vehicleId, data);
       }
 
+      // XỬ LÝ KÊNH 2: CẢNH BÁO SỰ CỐ KHẨN (gps/alert)
       else if (topic === TOPIC_ALERT) {
         const alertType = data.alert;
 
         if (alertType === 'NORMAL') {
-          // Xóa alert trước đó nếu có
+          // Giải tỏa cảnh báo cũ của xe
           await prisma.vehicleAlert.updateMany({
             where: { vehicleId, resolvedAt: null },
-            data: { resolvedAt: new Date() }
+            data: { resolvedAt: new Date(), isAcknowledged: true }
           });
           emitVehicleAlert(vehicleId, { alert: 'NORMAL' });
-        } else if (alertType === 'ACCIDENT' || alertType === 'IMPACT' || alertType === 'OUT_OF_ZONE') {
-          // Validate dữ liệu alert
-          if (alertType === 'ACCIDENT' && !validateGpsData(data)) {
-            console.warn(`⚠️ Dữ liệu ACCIDENT không hợp lệ`);
-            return;
+        } 
+        else if (alertType === 'ACCIDENT' || alertType === 'IMPACT' || alertType === 'OUT_OF_ZONE') {
+          
+          let alertLat = data.lat;
+          let alertLon = data.lon;
+
+          // 🌟 GIẢI PHÁP SỬA LỖI 2: Nếu cảnh báo OUT_OF_ZONE thiếu tọa độ, lấy tọa độ mới nhất của xe trong DB
+          if (alertType === 'OUT_OF_ZONE' && (!alertLat || !alertLon)) {
+            const latestLog = await prisma.gpsLog.findFirst({
+              where: { vehicleId },
+              orderBy: { recordedAt: 'desc' }
+            });
+            if (latestLog) {
+              alertLat = Number(latestLog.latitude);
+              alertLon = Number(latestLog.longitude);
+            }
           }
 
-          // Lưu alert
-          const alertRecord = await prisma.vehicleAlert.create({
+          // Lưu cảnh báo sự cố vào Database
+          await prisma.vehicleAlert.create({
             data: {
               vehicleId,
               alertType: alertType === 'ACCIDENT' ? 'accident' : 
                         alertType === 'IMPACT' ? 'impact' : 'out_of_zone',
-              latitude: data.lat,
-              longitude: data.lon,
-              alertMessage: `⚠️ ${alertType}`
+              latitude: alertLat || null,
+              longitude: alertLon || null,
+              alertMessage: `⚠️ Xe vượt ranh giới an toàn cho phép (${data.dist ? data.dist.toFixed(0) : 'N/A'}m)`
             }
           });
 
-          // Emit alert cho clients
-          emitVehicleAlert(vehicleId, data);
+          // Bắn Socket.io cập nhật còi hú khẩn cấp cho trang Web điều hành
+          emitVehicleAlert(vehicleId, {
+            alert: alertType,
+            lat: alertLat,
+            lon: alertLon,
+            dist: data.dist
+          });
 
-          console.log(`🚨 Alert: ${alertType} cho xe ID ${vehicleId}`);
+          console.log(`🚨 Cảnh báo hệ thống: [${alertType}] nhận được từ xe ID ${vehicleId}`);
         }
       }
 
+      // XỬ LÝ KÊNH 3: NHỊP TIM GIỮ KẾT NỐI (gps/ping)
       else if (topic === TOPIC_PING) {
-        // Cập nhật last_online_at của device
         const device = await prisma.iotDevice.findFirst({
           where: {
             assignments: { some: { vehicleId, isActive: true } }
@@ -167,15 +188,15 @@ export const initMqtt = () => {
       }
 
     } catch (error) {
-      console.error('❌ Lỗi xử lý MQTT message:', error);
+      console.error('❌ Lỗi hệ thống khi xử lý MQTT message:', error);
     }
   });
 
   client.on('error', (err) => {
-    console.error('❌ Lỗi MQTT Client:', err);
+    console.error('❌ Lỗi kết nối MQTT Client:', err);
   });
 
   client.on('disconnect', () => {
-    console.log('⚠️ Mất kết nối MQTT Broker');
+    console.log('⚠️ Mất liên kết kết nối MQTT Broker');
   });
 };
