@@ -65,7 +65,10 @@ export const initMqtt = () => {
     `📡 Đang kết nối MQTT Broker: ${env.MQTT_BROKER_URL}`
   );
 
-  const client = mqtt.connect(env.MQTT_BROKER_URL);
+  mqttClient =
+  mqtt.connect(env.MQTT_BROKER_URL);
+
+  const client = mqttClient;
 
   client.on('connect', () => {
 
@@ -394,6 +397,10 @@ export const initMqtt = () => {
                 `gps/config/${device.serialNumber}`,
                 configPayload
               );
+              console.log(
+                `📡 Send geofence -> ${device.serialNumber}`,
+                configPayload
+              );
             }
           }
 
@@ -435,3 +442,4 @@ export const initMqtt = () => {
   );
 };
 
+export let mqttClient: mqtt.MqttClient;

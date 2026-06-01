@@ -1,6 +1,7 @@
 import { prisma } from '../configs/db.config.js';
 import { AppError } from '../utils/app-error.js';
 import type { CreateGeofenceInput, UpdateGeofenceInput } from '../schemas/geofence.schema.js';
+import { mqttClient } from '../configs/mqtt.config.js';
 
 export const getAllGeofences = async (filters: { search?: string }) => {
   const where: any = {};
@@ -53,10 +54,29 @@ export const updateGeofence = async (geofenceId: number, data: UpdateGeofenceInp
   if (data.radiusMeters !== undefined) mapped.radiusMeter = data.radiusMeters;
   if (data.isActive !== undefined) mapped.isActive = data.isActive; // if you added this field later
 
-  return prisma.geofence.update({
+  const updated = await prisma.geofence.update({
     where: { geofenceId },
     data: mapped,
   });
+
+  const devices =
+  await prisma.iotDevice.findMany({
+    where: {
+      status: 'online'
+    }
+  });
+
+  for (const device of devices) {
+
+    mqttClient.publish(
+      `gps/config/${device.serialNumber}`,
+      JSON.stringify({
+        lat: Number(updated.centerLat),
+        lon: Number(updated.centerLon),
+        rad: Number(updated.radiusMeter ?? 2600)
+      })
+    );
+  }
 };
 
 export const deleteGeofence = async (geofenceId: number) => {
