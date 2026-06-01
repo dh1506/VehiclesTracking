@@ -171,6 +171,7 @@ export const initMqtt = () => {
 
       // XỬ LÝ KÊNH 3: NHỊP TIM GIỮ KẾT NỐI (gps/ping)
       else if (topic === TOPIC_PING) {
+        // Cập nhật last_online_at của device
         const device = await prisma.iotDevice.findFirst({
           where: {
             assignments: { some: { vehicleId, isActive: true } }
@@ -182,6 +183,25 @@ export const initMqtt = () => {
             where: { deviceId: device.deviceId },
             data: { lastOnlineAt: new Date(), status: 'online' }
           });
+
+          // 📡 BỔ SUNG: TRUY XUẤT GEOFENCE MỚI NHẤT TRONG DB VÀ GỬI XUỐNG CHO THIẾT BỊ
+          const latestGeofence = await prisma.geofence.findFirst({
+            orderBy: { createdAt: 'desc' } // Lấy vùng địa giới mới nhất được tạo
+          });
+
+          if (latestGeofence && latestGeofence.centerLat && latestGeofence.centerLon) {
+            const configPayload = JSON.stringify({
+              lat: Number(latestGeofence.centerLat),
+              lon: Number(latestGeofence.centerLon),
+              rad: Number(latestGeofence.radiusMeter || 2600)
+            });
+
+            // Publish cấu hình xuống kênh riêng của thiết bị (Ví dụ: "gps/config/tuan_bike")
+            const configTopic = `gps/config/${device.serialNumber}`;
+            client.publish(configTopic, configPayload);
+            
+            console.log(`📡 Đã đẩy cấu hình Geofence mới nhất xuống cho thiết bị [${device.serialNumber}]: ${configPayload}`);
+          }
         }
 
         emitVehicleStatus(vehicleId, 'online');
