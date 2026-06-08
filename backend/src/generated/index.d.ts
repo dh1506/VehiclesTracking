@@ -17795,7 +17795,7 @@ export namespace Prisma {
   }
 
   export type CustomerUncheckedCreateInput = {
-    customerId?: number | undefined
+    customerId?: number
     fullName: string
     phone: string
     email?: string | null
@@ -17816,7 +17816,7 @@ export namespace Prisma {
   }
 
   export type CustomerUncheckedUpdateInput = {
-    customerId?: IntFieldUpdateOperationsInput | number | undefined
+    customerId?: IntFieldUpdateOperationsInput | number
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null

@@ -55,7 +55,7 @@ async function main() {
   });
 
   const serial = 'DEV001';
-  const sim = '0896202919';
+  const sim = '0784211857';
   const device = await prisma.iotDevice.upsert({
     where: { serialNumber: serial },
     update: { status: 'online', simNumber: sim },

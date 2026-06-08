@@ -6,6 +6,8 @@ export function useTrackingHistory(filters?: TrackingHistoryFilters, enabled = t
     queryKey: ['trackingHistory', filters],
     queryFn: () => getTrackingHistory(filters),
     enabled,
+    refetchInterval: 5000,
+    staleTime: 0, // Buộc React Query luôn lấy dữ liệu mới từ server khi poll
   });
 }
 
@@ -14,5 +16,7 @@ export function useTrackingAlerts(filters?: TrackingAlertsFilters, enabled = tru
     queryKey: ['trackingAlerts', filters],
     queryFn: () => getAlerts(filters),
     enabled,
+    refetchInterval: 5000, // Tự động cập nhật các sự cố cảnh báo mỗi 1 phút (60 giây)
+    staleTime: 0, // Buộc React Query luôn lấy dữ liệu mới từ server khi poll
   });
 }

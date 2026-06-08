@@ -8,6 +8,9 @@ export interface TrackingHistoryItem {
   lat?: number;
   lon?: number;
   speed?: number;
+  latitude?: number;
+  longitude?: number;
+  speedKmh?: number;
   recordedAt?: string;
 }
 

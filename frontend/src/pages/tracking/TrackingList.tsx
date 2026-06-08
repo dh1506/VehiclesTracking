@@ -8,6 +8,7 @@ import { trackingAlertsFilterSchema, trackingHistoryFilterSchema, type TrackingA
 import { Button } from '../../components/ui/button';
 import { toast } from 'sonner';
 
+
 // Cấu hình Map Leaflet
 import { MapContainer, TileLayer, Polyline, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -181,7 +182,15 @@ export default function TrackingListPage() {
     }
   }, [historyQuery.data]);
 
-  const maxSpeed = historyQuery.data?.data?.reduce((max: number, item: any) => (item.speed > max ? item.speed : max), 0) || 0;
+  const reversedHistoryData = useMemo(() => {
+    if (!historyQuery.data?.data) return [];
+    return [...historyQuery.data.data].reverse();
+  }, [historyQuery.data?.data]);
+
+  const maxSpeed = historyQuery.data?.data?.reduce((max: number, item: any) => {
+    const speed = item.speedKmh ?? item.speed ?? 0;
+    return Number(speed) > max ? Number(speed) : max;
+  }, 0) || 0;
 
   return (
     <div className="h-[calc(100vh-64px)] flex flex-col xl:flex-row bg-slate-900 text-slate-100 overflow-hidden">
@@ -218,7 +227,7 @@ export default function TrackingListPage() {
               </button>
               <button 
                 onClick={() => setActiveTab('alerts')}
-                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
+                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all relative ${
                   activeTab === 'alerts' 
                     ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/15' 
                     : 'text-slate-400 hover:text-slate-200'
@@ -293,19 +302,24 @@ export default function TrackingListPage() {
               <div className="border-t border-slate-800/80 pt-5 space-y-3">
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tọa độ GPS gần nhất</h4>
                 <div className="space-y-3 max-h-48 overflow-y-auto pr-1">
-                  {historyQuery.data?.data?.map((item: any, idx: number) => (
-                    <div key={idx} className="relative pl-6 pb-2 border-l border-slate-800 last:border-0 last:pb-0 animate-fade-in">
-                      <span className="absolute left-[-4.5px] top-1.5 h-2 w-2 rounded-full bg-indigo-500" />
-                      <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800/60 text-[11px] space-y-1">
-                        <div className="flex justify-between font-semibold text-slate-300">
-                          <span>Vĩ độ/Kinh độ: {item.lat}, {item.lon}</span>
-                          <span className="text-indigo-400">{item.speed ?? 0} km/h</span>
+                  {reversedHistoryData.map((item: any, idx: number) => {
+                    const lat = item.lat ?? item.latitude;
+                    const lon = item.lon ?? item.longitude;
+                    const speed = item.speedKmh ?? item.speed ?? 0;
+                    return (
+                      <div key={idx} className="relative pl-6 pb-2 border-l border-slate-800 last:border-0 last:pb-0 animate-fade-in">
+                        <span className="absolute left-[-4.5px] top-1.5 h-2 w-2 rounded-full bg-indigo-500" />
+                        <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800/60 text-[11px] space-y-1">
+                          <div className="flex justify-between font-semibold text-slate-300">
+                            <span>Vĩ độ/Kinh độ: {lat}, {lon}</span>
+                            <span className="text-indigo-400">{speed} km/h</span>
+                          </div>
+                          <p className="text-slate-500">{new Date(item.recordedAt).toLocaleString('vi-VN')}</p>
                         </div>
-                        <p className="text-slate-500">{new Date(item.recordedAt).toLocaleString('vi-VN')}</p>
                       </div>
-                    </div>
-                  ))}
-                  {(!historyQuery.data?.data || historyQuery.data.data.length === 0) && (
+                    );
+                  })}
+                  {reversedHistoryData.length === 0 && (
                     <div className="text-center p-6 text-xs text-slate-600">Chọn xe và mốc thời gian bằng Dropdown để truy xuất GPS.</div>
                   )}
                 </div>
@@ -384,26 +398,42 @@ export default function TrackingListPage() {
               </form>
 
               {/* Danh sách các Thẻ sự cố khẩn cấp */}
-              <div className="space-y-3 max-h-48 overflow-y-auto pr-1">
-                {alertsQuery.data?.data?.map((alert: any) => (
+              <div className="space-y-3 max-h-64 overflow-y-auto pr-1">
+                {alertsQuery.data?.data?.map((alert: any) => {
+                  const alertLabels: Record<string, string> = {
+                    out_of_zone: 'Vượt vùng giám sát',
+                    accident: 'Tai nạn',
+                    impact: 'Va chạm',
+                    disconnected: 'Mất tín hiệu',
+                  };
+                  const labelText = alertLabels[alert.alertType] ?? alert.alertType.toUpperCase();
+                  return (
                   <div key={alert.alertId} className={`p-4 rounded-xl border flex flex-col justify-between space-y-3 animate-fade-in ${
                     alert.isAcknowledged 
                       ? 'bg-slate-900/40 border-slate-800/80 text-slate-400' 
-                      : 'bg-rose-950/20 border-rose-900/30 text-rose-200'
+                      : alert.alertType === 'out_of_zone'
+                        ? 'bg-rose-950/30 border-rose-800/50 text-rose-200 shadow-lg shadow-rose-950/20'
+                        : 'bg-rose-950/20 border-rose-900/30 text-rose-200'
                   }`}>
                     <div className="flex items-start justify-between">
                       <div className="flex gap-2">
-                        <AlertOctagon className={`h-4 w-4 shrink-0 mt-0.5 ${alert.isAcknowledged ? 'text-slate-500' : 'text-rose-500'}`} />
+                        <AlertOctagon className={`h-4 w-4 shrink-0 mt-0.5 ${alert.isAcknowledged ? 'text-slate-500' : 'text-rose-400'}`} />
                         <div>
-                          <p className="text-xs font-bold uppercase tracking-wider">Sự kiện: {alert.alertType}</p>
+                          <p className="text-xs font-bold uppercase tracking-wider">{labelText}</p>
                           <p className="text-[11px] text-slate-500 mt-0.5">Xe: {alert.vehicle?.plateNumber || `ID: ${alert.vehicleId}`}</p>
+                          {alert.alertMessage && (
+                            <p className="text-[10px] text-rose-300/80 mt-1 leading-relaxed">{alert.alertMessage}</p>
+                          )}
+                          {alert.latitude && alert.longitude && (
+                            <p className="text-[10px] text-slate-600 mt-0.5 font-mono">📍 {Number(alert.latitude).toFixed(5)}, {Number(alert.longitude).toFixed(5)}</p>
+                          )}
                         </div>
                       </div>
-                      <span className="text-[10px] text-slate-500">{new Date(alert.createdAt).toLocaleTimeString('vi-VN')}</span>
+                      <span className="text-[10px] text-slate-500 shrink-0 ml-2">{new Date(alert.createdAt).toLocaleTimeString('vi-VN')}</span>
                     </div>
 
                     <div className="flex items-center justify-between border-t border-slate-800/50 pt-2.5">
-                      <span className="text-[10px]">{alert.isAcknowledged ? 'Đã giải tỏa xong' : 'Yêu cầu xử lý'}</span>
+                      <span className="text-[10px]">{alert.isAcknowledged ? '✅ Đã giải tỏa xong' : '🔴 Yêu cầu xử lý'}</span>
                       {!alert.isAcknowledged && (
                         <Button 
                           size="sm" 
@@ -415,8 +445,13 @@ export default function TrackingListPage() {
                       )}
                     </div>
                   </div>
-                ))}
+                  );
+                })}
+                {(!alertsQuery.data?.data || alertsQuery.data.data.length === 0) && (
+                  <div className="text-center p-6 text-xs text-slate-600">Không có sự cố cảnh báo trong khoảng thời gian đã chọn.</div>
+                )}
               </div>
+
             </div>
           )}
         </div>

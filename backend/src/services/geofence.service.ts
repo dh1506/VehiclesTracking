@@ -1,7 +1,7 @@
 import { prisma } from '../configs/db.config.js';
 import { AppError } from '../utils/app-error.js';
 import type { CreateGeofenceInput, UpdateGeofenceInput } from '../schemas/geofence.schema.js';
-import { mqttClient } from '../configs/mqtt.config.js';
+import { mqttClient, resetAllVehicleZoneStates } from '../configs/mqtt.config.js';
 
 export const getAllGeofences = async (filters: { search?: string }) => {
   const where: any = {};
@@ -38,9 +38,14 @@ export const createGeofence = async (data: CreateGeofenceInput, createdBy: numbe
   };
   if (data.description !== undefined) createData.polygonData = data.description;
 
-  return prisma.geofence.create({
+  const result = await prisma.geofence.create({
     data: createData,
   });
+
+  // Reset trạng thái zone của các xe để kiểm tra lại theo vùng mới
+  resetAllVehicleZoneStates();
+
+  return result;
 };
 
 export const updateGeofence = async (geofenceId: number, data: UpdateGeofenceInput) => {
@@ -59,7 +64,11 @@ export const updateGeofence = async (geofenceId: number, data: UpdateGeofenceInp
     data: mapped,
   });
 
+  // Reset trạng thái zone của các xe - vùng mới được thiết lập
+  resetAllVehicleZoneStates();
+
   const devices =
+
   await prisma.iotDevice.findMany({
     where: {
       status: 'online'

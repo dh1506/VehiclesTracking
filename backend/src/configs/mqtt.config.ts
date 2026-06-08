@@ -12,6 +12,26 @@ const TOPIC_LOC = 'gps/location';
 const TOPIC_ALERT = 'gps/alert';
 const TOPIC_PING = 'gps/ping';
 
+// ====================================================
+// HAVERSINE - Tính khoảng cách giữa 2 tọa độ GPS (mét)
+// ====================================================
+const haversineDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
+  const R = 6371000; // Bán kính Trái Đất (mét)
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+};
+
+// Track trạng thái in/out zone từng xe để tránh tạo alert trùng lặp
+// key: vehicleId, value: true = đang vi phạm (out), false = trong vùng
+const vehicleOutOfZoneState = new Map<number, boolean>();
+
 const validateGpsData = (data: any): boolean => {
   return (
     typeof data.lat === 'number' &&
@@ -136,12 +156,17 @@ export const initMqtt = () => {
             return;
           }
 
+          console.log(`📡 [GPS RECEIVED] Xe ID: ${vehicleId} | Lat: ${data.lat}, Lon: ${data.lon} | Tốc độ thô từ thiết bị: ${data.speed} | Payload:`, payloadString);
+
+          const rawSpeed = Number(data.speed);
+          const speedKmh = isNaN(rawSpeed) ? 0 : Math.min(Math.max(rawSpeed, 0), 999.99);
+
           await prisma.gpsLog.create({
             data: {
               vehicleId,
               latitude: data.lat,
               longitude: data.lon,
-              speedKmh: data.speed || 0,
+              speedKmh,
               gpsStatus: 'online',
               distanceFromHome: data.dist,
               homeLatitude: data.hLat,
@@ -153,6 +178,97 @@ export const initMqtt = () => {
             vehicleId,
             data
           );
+
+          // =====================================================
+          // SERVER-SIDE GEOFENCE CHECK
+          // Kiểm tra xe có ra ngoài vùng giám sát không
+          // =====================================================
+          try {
+            const activeGeofence = await getLatestGeofence();
+
+            if (
+              activeGeofence &&
+              activeGeofence.centerLat !== null &&
+              activeGeofence.centerLon !== null &&
+              activeGeofence.radiusMeter !== null
+            ) {
+              const geoLat = Number(activeGeofence.centerLat);
+              const geoLon = Number(activeGeofence.centerLon);
+              const geoRadius = Number(activeGeofence.radiusMeter);
+
+              const distance = haversineDistance(data.lat, data.lon, geoLat, geoLon);
+              const isOutside = distance > geoRadius;
+              const wasOutside = vehicleOutOfZoneState.get(vehicleId) ?? false;
+
+              if (isOutside && !wasOutside) {
+                // Xe vừa RA KHỎI vùng → tạo alert mới
+                vehicleOutOfZoneState.set(vehicleId, true);
+
+                await prisma.vehicleAlert.create({
+                  data: {
+                    vehicleId,
+                    alertType: 'out_of_zone',
+                    latitude: data.lat,
+                    longitude: data.lon,
+                    alertMessage: `⚠️ Xe vượt khỏi vùng giám sát "${activeGeofence.geofenceName}" (cách tâm ${Math.round(distance)}m, giới hạn ${Math.round(geoRadius)}m)`
+                  }
+                });
+
+                await prisma.vehicleGeofenceLog.create({
+                  data: {
+                    vehicleId,
+                    geofenceId: activeGeofence.geofenceId,
+                    eventType: 'exit',
+                    latitude: data.lat,
+                    longitude: data.lon
+                  }
+                });
+
+                emitVehicleAlert(vehicleId, {
+                  alert: 'OUT_OF_ZONE',
+                  lat: data.lat,
+                  lon: data.lon,
+                  dist: Math.round(distance),
+                  geofenceName: activeGeofence.geofenceName
+                });
+
+                console.log(`🚨 [GEOFENCE] Xe ${vehicleId} RA KHỎI vùng "${activeGeofence.geofenceName}" | Khoảng cách: ${Math.round(distance)}m > ${Math.round(geoRadius)}m`);
+
+              } else if (!isOutside && wasOutside) {
+                // Xe vừa VÀO LẠI vùng → cập nhật trạng thái + ghi log enter
+                vehicleOutOfZoneState.set(vehicleId, false);
+
+                await prisma.vehicleGeofenceLog.create({
+                  data: {
+                    vehicleId,
+                    geofenceId: activeGeofence.geofenceId,
+                    eventType: 'enter',
+                    latitude: data.lat,
+                    longitude: data.lon
+                  }
+                });
+
+                // Tự động resolve các alert out_of_zone chưa xử lý
+                await prisma.vehicleAlert.updateMany({
+                  where: {
+                    vehicleId,
+                    alertType: 'out_of_zone',
+                    resolvedAt: null
+                  },
+                  data: {
+                    resolvedAt: new Date(),
+                    isAcknowledged: true
+                  }
+                });
+
+                emitVehicleAlert(vehicleId, { alert: 'NORMAL' });
+
+                console.log(`✅ [GEOFENCE] Xe ${vehicleId} VÀO LẠI vùng "${activeGeofence.geofenceName}"`);
+              }
+            }
+          } catch (geoErr) {
+            console.error('❌ [GEOFENCE CHECK ERROR]:', geoErr);
+          }
 
           return;
         }
@@ -443,3 +559,10 @@ export const initMqtt = () => {
 };
 
 export let mqttClient: mqtt.MqttClient;
+
+// Khi geofence thay đổi, reset trạng thái vi phạm của tất cả xe
+// để hệ thống tính lại với vùng mới
+export const resetAllVehicleZoneStates = () => {
+  vehicleOutOfZoneState.clear();
+  console.log('🔄 [GEOFENCE] Đã reset trạng thái in/out zone tất cả xe theo cấu hình vùng mới');
+};

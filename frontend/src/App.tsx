@@ -15,6 +15,48 @@ import ReportListPage from './pages/report/ReportList';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import Layout from './components/common/Layout';
 import CustomerListPage from './pages/customers/CustomerList';
+import { useEffect, useRef } from 'react';
+import { io } from 'socket.io-client';
+import { env } from './config/env.config';
+import { toast } from 'sonner';
+import { useQueryClient } from '@tanstack/react-query';
+
+// Global listener – chạy suốt mọi trang, chỉ kết nối 1 lần
+function GlobalAlertListener() {
+  const queryClient = useQueryClient();
+  const socketRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (socketRef.current) return; // tránh kết nối lần 2 do StrictMode
+    const socket = io(env.SOCKET_URL, {
+      transports: ['websocket', 'polling'],
+      reconnectionAttempts: 10,
+      reconnectionDelay: 3000,
+    });
+    socketRef.current = socket;
+
+    socket.on('connect', () => console.log('🔌 [GLOBAL] Socket.IO kết nối – theo dõi Geofence'));
+
+    socket.on('alert:new', (data: any) => {
+      const alertType = data?.alert ?? data?.alertType ?? '';
+      if (alertType === 'OUT_OF_ZONE' || alertType === 'out_of_zone') {
+        const vehicleId = data?.vehicleId;
+        const dist = data?.dist ? `${data.dist}m` : 'N/A';
+        const zoneName = data?.geofenceName ?? 'vùng giám sát';
+        queryClient.invalidateQueries({ queryKey: ['trackingAlerts'] });
+        toast.error('🚨 Cảnh báo vượt vùng (Out of Zone)!', {
+          description: `Xe ID ${vehicleId} đã ra khỏi "${zoneName}" | Cách tâm: ${dist}`,
+          duration: 10000,
+          style: { background: '#18080a', border: '1.5px solid #dc2626', color: '#fecaca' },
+        });
+      }
+    });
+
+    return () => { socket.disconnect(); socketRef.current = null; };
+  }, [queryClient]);
+
+  return null;
+}
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated());
@@ -26,6 +68,7 @@ function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
+      <GlobalAlertListener />
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         
